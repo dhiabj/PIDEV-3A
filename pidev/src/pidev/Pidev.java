@@ -5,6 +5,8 @@
  */
 package pidev;
 
+import utils.DataSource;
+
 /**
  *
  * @author Dhia
@@ -16,6 +18,7 @@ public class Pidev {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        DataSource ds1 = DataSource.getInstance();
     }
     
 }
