@@ -5,10 +5,67 @@
  */
 package entities;
 
+import java.sql.Date;
+
+
+
 /**
  *
  * @author zacha
  */
 public class Commande {
+    private int id;
+    private String etat;
+    private Date date;
+    private int user_id;    
+
+    public Commande() {
+    }
+
+    public Commande(int id, String etat, Date date, int user_id) {
+        this.id = id;
+        this.etat = etat;
+        this.date = date;
+        this.user_id = user_id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getEtat() {
+        return etat;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Commande{" + "id=" + id + ", etat=" + etat + ", date=" + date + ", user_id=" + user_id + '}';
+    }
+    
+    
     
 }
