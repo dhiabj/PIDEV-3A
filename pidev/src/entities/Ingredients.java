@@ -18,6 +18,18 @@ public class Ingredients {
     public Ingredients(){
         
     }
+    
+    public Ingredients(int id){
+        this.id=id;
+    }
+    
+    public Ingredients (int id, String nom, int quantite, int menu_id){
+        this.id=id;
+        this.nom=nom;
+        this.quantite=quantite;
+        this.menu_id=menu_id;
+    }
+    
     public Ingredients (String nom, int quantite, int menu_id){
         this.nom=nom;
         this.quantite=quantite;

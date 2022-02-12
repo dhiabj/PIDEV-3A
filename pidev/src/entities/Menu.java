@@ -20,6 +20,10 @@ public class Menu {
         
     }
     
+    public Menu (int id){
+        this.id=id;
+    }
+    
     public Menu (String titre, String description, float prix, String categorie){
         this.titre=titre;
         this.description=description;
@@ -27,6 +31,16 @@ public class Menu {
         this.categorie=categorie;
         
     }
+    
+    public Menu (int id, String titre, String description, float prix, String categorie){
+        this.id=id;
+        this.titre=titre;
+        this.description=description;
+        this.prix=prix;
+        this.categorie=categorie;
+        
+    }
+
 
     @Override
     public String toString() {

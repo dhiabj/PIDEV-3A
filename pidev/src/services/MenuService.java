@@ -43,6 +43,38 @@ public class MenuService {
             Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void modifierMenu(Menu m) {
+        String req = "update menu set titre = ? , description = ? , prix= ? ,categorie= ? where id = ?";
+
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setString(1, m.getTitre());
+            pst.setString(2, m.getDescription());
+            pst.setFloat(3, m.getPrix());
+            pst.setString(4, m.getCategorie());
+            pst.setInt(5, m.getId());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    public void suppMenu(Menu m) {
+        String req = "delete from menu where id = ?";
+
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setInt(1, m.getId());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     public List<Menu> afficherMenu(){
         List<Menu> menus = new ArrayList<>();
         String sql="select * from menu";

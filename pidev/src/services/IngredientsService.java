@@ -44,6 +44,37 @@ public class IngredientsService {
             Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void modifierIngredient(Ingredients i) {
+        String req = "update ingredients set nom = ? , quantite = ? , menu_id= ? where id = ?";
+
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setString(1, i.getNom());
+            pst.setInt(2, i.getQuantite());
+            pst.setInt(3, i.getMenu_id());
+            pst.setInt(4, i.getId());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(IngredientsService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+    
+    public void suppIngredient(Ingredients i) {
+        String req = "delete from ingredients where id = ?";
+
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setInt(1, i.getId());
+            pst.executeUpdate();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(IngredientsService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
     public List<Ingredients> afficherIngredient(){
         List<Ingredients> ingredient = new ArrayList<>();
         String sql="select * from ingredients";
