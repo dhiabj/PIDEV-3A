@@ -5,7 +5,9 @@
  */
 package pidev;
 
+import entities.Ingredients;
 import entities.Menu;
+import services.IngredientsService;
 import services.MenuService;
 import utils.DataSource;
 
@@ -21,10 +23,14 @@ public class Pidev {
     public static void main(String[] args) {
         // TODO code application logic here
         DataSource ds1 = DataSource.getInstance();
-        Menu m=new Menu(2, "Pizza", "Pizza vegan",13.5F,"vegan");
+        /*Menu m=new Menu("Pizza", "Pizza vegan",13.5F,"vegan");
         MenuService ms = new MenuService();
         ms.ajouterMenu(m);
-        System.out.println(ms.afficherMenu());
+        System.out.println(ms.afficherMenu());*/
+        Ingredients i =new Ingredients("Eggs",20,1);
+        IngredientsService is= new IngredientsService();
+        is.ajouterIngredient(i);
+        System.out.println(is.afficherIngredient());
     }
     
 }
