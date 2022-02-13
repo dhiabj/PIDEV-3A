@@ -21,13 +21,24 @@ public class Commande {
 
     public Commande() {
     }
-
+ public Commande( String etat, Date date, int user_id) {
+        
+        this.etat = etat;
+        this.date = date;
+        this.user_id = user_id;
+    }
     public Commande(int id, String etat, Date date, int user_id) {
         this.id = id;
         this.etat = etat;
         this.date = date;
         this.user_id = user_id;
     }
+
+    public Commande(int id) {
+        this.id = id;
+    }
+   
+    
 
     public int getId() {
         return id;
