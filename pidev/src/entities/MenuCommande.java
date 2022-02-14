@@ -59,6 +59,11 @@ public class MenuCommande {
     public void setMenu_id(int menu_id) {
         this.menu_id = menu_id;
     }
+
+    @Override
+    public String toString() {
+        return "MenuCommande{" + "id=" + id + ", date=" + date + ", command_id=" + command_id + ", menu_id=" + menu_id + '}';
+    }
     
     
     

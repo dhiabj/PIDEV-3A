@@ -37,7 +37,7 @@ public class MenuCommandeService {
             Logger.getLogger(CommandeService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public void modifiercommande(MenuCommande c)
+    public void modifierMenucommande(MenuCommande c)
     {
     String req="update menu_commande set date= ? ,command_id= ? ,menu_id= ?  where id= ? ";
     
@@ -70,7 +70,7 @@ public class MenuCommandeService {
     }
     public List <MenuCommande> afficherMenuCommande(){
         List <MenuCommande> Menucommandes= new ArrayList<>();
-    String sql="select * from commande";
+    String sql="select * from menu_commande";
     try { pst=conn.prepareStatement(sql);
             ResultSet rs=pst.executeQuery();
     
