@@ -5,6 +5,7 @@
  */
 package entities;
 
+import java.sql.Date;
 import java.util.Objects;
 
 /**
@@ -13,23 +14,27 @@ import java.util.Objects;
  */
 public class evenement {
       private int id;
-      private String date;
+      private Date date;
      private int nbr_personnes;
      private String categorie;
 
      public evenement() {
          
      }
-    public evenement(int id, String date, int nbr_personnes, String categorie) {
+    public evenement(int id, Date date, int nbr_personnes, String categorie) {
         this.id = id;
         this.date = date;
         this.nbr_personnes = nbr_personnes;
         this.categorie = categorie;
     }
-        public evenement(String date, int nbr_personnes, String categorie) {
+        public evenement(Date date, int nbr_personnes, String categorie) {
         this.date = date;
         this.nbr_personnes = nbr_personnes;
         this.categorie = categorie;
+    }
+
+    public evenement(int id) {
+        this.id = id;
     }
 
 
@@ -42,13 +47,17 @@ public class evenement {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
+
+    
+
+    
 
     public int getNbr_personnes() {
         return nbr_personnes;

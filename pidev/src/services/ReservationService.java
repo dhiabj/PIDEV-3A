@@ -5,9 +5,7 @@
  */
 package services;
 
-import entities.evenement;
 import entities.reservation;
-import entities.user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -37,13 +35,13 @@ public class ReservationService {
 
     public void ajouterReservation(reservation r) {
 
-        String req = "insert into reservation (id_user,id_event,Nom_reservation) values (?,?,?)";
+        String req = "insert into reservation (user_id,event_id,nom) values (?,?,?)";
 
         try {
             pst = conn.prepareStatement(req);
-            pst.setInt(1, r.getId_event());
-            pst.setInt(2, r.getId_user());
-            pst.setString(3, r.getNom_reservation());
+            pst.setInt(1, r.getEvent_id());
+            pst.setInt(2, r.getUser_id());
+            pst.setString(3, r.getNom());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -53,12 +51,12 @@ public class ReservationService {
     }
 
     public void modifierReservationPst(reservation r) {
-        String req = "update reservation set Nom_reservation= ?  where id_reservation = ?";
+        String req = "update reservation set nom= ?  where id = ?";
 
         try {
             pst = conn.prepareStatement(req);
-            pst.setString(1, r.getNom_reservation());
-            pst.setInt(2, r.getId_reservation());
+            pst.setString(1, r.getNom());
+            pst.setInt(2, r.getId());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -68,11 +66,11 @@ public class ReservationService {
     }
 
     public void suppReservationPst(reservation r) {
-        String req = "delete from reservation where id_reservation = ?";
+        String req = "delete from reservation where id = ?";
 
         try {
             pst = conn.prepareStatement(req);
-            pst.setInt(1, r.getId_reservation());
+            pst.setInt(1, r.getId());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -89,7 +87,7 @@ public class ReservationService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new reservation(rs.getInt("id_reservation"), rs.getInt("id_user"), rs.getInt("id_event"), rs.getString("Nom_reservation")));
+                list.add(new reservation(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("event_id"), rs.getString("nom")));
             }
 
         } catch (SQLException ex) {

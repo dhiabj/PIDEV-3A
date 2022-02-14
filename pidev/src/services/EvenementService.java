@@ -5,7 +5,7 @@
  */
 package services;
 
-import entities.user;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,7 +40,7 @@ public class EvenementService {
 
         try {
             pst = conn.prepareStatement(req);
-            pst.setString(1, e.getDate());
+            pst.setDate(1, e.getDate());
             pst.setInt(2, e.getNbr_personnes());
             pst.setString(3, e.getCategorie());
             pst.executeUpdate();
@@ -56,7 +56,7 @@ public class EvenementService {
 
         try {
             pst = conn.prepareStatement(req);
-            pst.setString(1, e.getDate());
+            pst.setDate(1, e.getDate());
             pst.setInt(2, e.getNbr_personnes());
             pst.setString(3, e.getCategorie());
             pst.setInt(4, e.getId());
@@ -90,7 +90,7 @@ public class EvenementService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new evenement(rs.getInt("id"), rs.getString("date"), rs.getInt("nbr_personnes"), rs.getString("categorie")));
+                list.add(new evenement(rs.getInt("id"), rs.getDate("date"), rs.getInt("nbr_personnes"), rs.getString("categorie")));
             }
 
         } catch (SQLException ex) {

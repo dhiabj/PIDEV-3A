@@ -11,63 +11,71 @@ package entities;
  */
 public class reservation {
 
-    private int id_reservation;
-    private int id_user;
-    private int id_event;
-    private String Nom_reservation;
+    private int id;
+    private int user_id;
+    private int event_id;
+    private String nom;
 
     public reservation() {
     }
 
-    public reservation(int id_reservation, int id_user, int id_event, String Nom_reservation) {
-        this.id_reservation = id_reservation;
-        this.id_user = id_user;
-        this.id_event = id_event;
-        this.Nom_reservation = Nom_reservation;
+    public reservation(int id, int user_id, int event_id, String nom) {
+        this.id = id;
+        this.user_id = user_id;
+        this.event_id = event_id;
+        this.nom = nom;
     }
 
-    public reservation(int id_user, int id_event, String Nom_reservation) {
-        this.id_user = id_user;
-        this.id_event = id_event;
-        this.Nom_reservation = Nom_reservation;
+    public reservation(int id) {
+        this.id = id;
     }
 
-    public int getId_reservation() {
-        return id_reservation;
+    public reservation(int user_id, int event_id, String nom) {
+        this.user_id = user_id;
+        this.event_id = event_id;
+        this.nom = nom;
     }
 
-    public void setId_reservation(int id_reservation) {
-        this.id_reservation = id_reservation;
+    public int getId() {
+        return id;
     }
 
-    public int getId_user() {
-        return id_user;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setId_user(int id_user) {
-        this.id_user = id_user;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public int getId_event() {
-        return id_event;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
-    public void setId_event(int id_event) {
-        this.id_event = id_event;
+    public int getEvent_id() {
+        return event_id;
     }
 
-    public String getNom_reservation() {
-        return Nom_reservation;
+    public void setEvent_id(int event_id) {
+        this.event_id = event_id;
     }
 
-    public void setNom_reservation(String Nom_reservation) {
-        this.Nom_reservation = Nom_reservation;
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     @Override
     public String toString() {
-        return "reservation{" + "id_reservation=" + id_reservation + ", id_user=" + id_user + ", id_event=" + id_event + ", Nom_reservation=" + Nom_reservation + '}';
+        return "reservation{" + "id=" + id + ", user_id=" + user_id + ", event_id=" + event_id + ", nom=" + nom + '}';
     }
+
+    
+
+    
 
    
 
