@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="357.0" prefWidth="545.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="Vues.MainFXMLController">
+   <children>
+      <Button fx:id="btngestUser" layoutX="148.0" layoutY="208.0" mnemonicParsing="false" onAction="#GotoGestUser" prefHeight="30.0" prefWidth="250.0" text="Gestion Utilisateur" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btngestLivraison" layoutX="148.0" layoutY="259.0" mnemonicParsing="false" onAction="#GotoGestLivraison" prefHeight="30.0" prefWidth="250.0" text="Gestion Livraison" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/Logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

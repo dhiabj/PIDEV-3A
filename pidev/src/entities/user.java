@@ -5,6 +5,8 @@
  */
 package entities;
 
+import java.sql.Date;
+
 /**
  *
  * @author Nayrouz
@@ -14,31 +16,37 @@ public class user {
     private int id;
     private String nom;
     private String prenom;
+    private Date date;
     private String adresse;
     private int num_tel;
     private String email;
     private String password;
+    private String role;
 
     public user() {
     }
 
-    public user(int id, String nom, String prenom, String adresse, int num_tel, String email, String password) {
+    public user(int id, String nom, String prenom, String email, String password, Date date, int num_tel, String adresse,String role) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
+        this.date = date;
         this.adresse = adresse;
         this.num_tel = num_tel;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
-    public user(String nom, String prenom, String adresse, int num_tel, String email, String password) {//id auto increment
+    public user(String nom, String prenom, String email, String password, Date date, int num_tel, String adresse, String role) {//id auto increment
         this.nom = nom;
         this.prenom = prenom;
+        this.date = date;
         this.adresse = adresse;
         this.num_tel = num_tel;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
 
     public int getId() {
@@ -97,10 +105,30 @@ public class user {
         this.password = password;
     }
 
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    
+    
+
     @Override
     public String toString() {
         return "user{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", num_tel=" + num_tel + ", email=" + email + ", password=" + password + '}';
     }
+
     /**
      *
      * @param obj
