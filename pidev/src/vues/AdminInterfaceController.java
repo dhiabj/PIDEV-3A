@@ -36,7 +36,7 @@ public class AdminInterfaceController implements Initializable {
 
     @FXML
     private void handleAddMenuScene(ActionEvent event) throws Exception {
-        utility.SceneChanger.changeToScene(getClass(), event, "AdminMenu.fxml");
+        SceneChanger.changeToScene(getClass(), event, "AdminMenu.fxml");
     }
 
     @FXML

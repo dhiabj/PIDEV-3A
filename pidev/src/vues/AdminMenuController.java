@@ -5,7 +5,6 @@
  */
 package vues;
 
-import dialog.AlertDialog;
 import entities.Menu;
 import java.net.URL;
 import java.sql.Connection;
@@ -27,6 +26,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javax.swing.JOptionPane;
 import services.MenuService;
 import utils.DataSource;
 
@@ -97,7 +97,7 @@ public class AdminMenuController implements Initializable {
 
             Menu m = new Menu(titre,description,prix,categorie);
             if(ms.ajouterMenu(m)){
-                AlertDialog.display("Info", "Menu ajouté avec succès");
+                JOptionPane.showMessageDialog(null, "Menu ajouté avec succès");
                 init();
             }
         }
@@ -120,7 +120,7 @@ public class AdminMenuController implements Initializable {
 
             Menu mu = new Menu(id,titre,description,prix,categorie);
             if(ms.modifierMenu(mu)){
-                AlertDialog.display("Info", "Menu modifié avec succès");
+                JOptionPane.showMessageDialog(null, "Menu modifié avec succès");
                 init();
             }
         }
@@ -133,7 +133,7 @@ public class AdminMenuController implements Initializable {
         
         Menu md = new Menu(id);
         if(ms.suppMenu(md)){
-                AlertDialog.display("Info", "Menu supprimé avec succès");
+                JOptionPane.showMessageDialog(null, "Menu supprimé avec succès");
                 init();
             }
     }
@@ -192,7 +192,7 @@ public class AdminMenuController implements Initializable {
 
     @FXML
     private void handleReturnMenu(ActionEvent event) throws Exception {
-        utility.SceneChanger.changeToScene(getClass(), event, "AdminInterface.fxml");
+        SceneChanger.changeToScene(getClass(), event, "AdminInterface.fxml");
     }
 
     @FXML
