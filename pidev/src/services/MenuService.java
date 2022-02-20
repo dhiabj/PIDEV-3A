@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package services;
+
 import entities.Menu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,7 +30,7 @@ public class MenuService {
         conn = DataSource.getInstance().getCnx();
     }
     
-    public void ajouterMenu(Menu m){
+    public boolean ajouterMenu(Menu m){
         String req="insert into menu(titre,description,prix,categorie) values (?,?,?,?)";
         try {
             pst = conn.prepareStatement(req);
@@ -38,13 +39,15 @@ public class MenuService {
             pst.setFloat(3, m.getPrix());
             pst.setString(4, m.getCategorie());
             pst.executeUpdate();
-
+            return true;
+            
         } catch (SQLException ex) {
             Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
     
-    public void modifierMenu(Menu m) {
+    public boolean modifierMenu(Menu m) {
         String req = "update menu set titre = ? , description = ? , prix= ? ,categorie= ? where id = ?";
 
         try {
@@ -55,23 +58,27 @@ public class MenuService {
             pst.setString(4, m.getCategorie());
             pst.setInt(5, m.getId());
             pst.executeUpdate();
+            return true;
 
         } catch (SQLException ex) {
             Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
 
     }
     
-    public void suppMenu(Menu m) {
+    public boolean suppMenu(Menu m) {
         String req = "delete from menu where id = ?";
 
         try {
             pst = conn.prepareStatement(req);
             pst.setInt(1, m.getId());
             pst.executeUpdate();
+            return true;
 
         } catch (SQLException ex) {
             Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
 
     }

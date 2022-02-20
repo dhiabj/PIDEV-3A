@@ -1,0 +1,7 @@
+.error-lb{
+    -fx-text-fill: red;
+}
+.error-tf{
+    -fx-background-color: #fce4e4;
+    -fx-border-color: red;
+}
