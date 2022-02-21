@@ -20,11 +20,11 @@ import javafx.scene.control.Button;
 public class AdminInterfaceController implements Initializable {
 
     @FXML
-    private Button btn_AddMenuScene;
-    @FXML
-    private Button btn_DisplayMenu;
-    @FXML
     private Button btnExit;
+    @FXML
+    private Button btn_ManageMenu;
+    @FXML
+    private Button btn_ManageIngredients;
 
     /**
      * Initializes the controller class.
@@ -35,17 +35,17 @@ public class AdminInterfaceController implements Initializable {
     }    
 
     @FXML
-    private void handleAddMenuScene(ActionEvent event) throws Exception {
+    private void handleExit(ActionEvent event) {
+        System.exit (0);
+    }
+
+    @FXML
+    private void handleManageMenu(ActionEvent event) throws Exception {
         SceneChanger.changeToScene(getClass(), event, "AdminMenu.fxml");
     }
 
     @FXML
-    private void handleDisplayMenu(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleExit(ActionEvent event) {
-        System.exit (0);
+    private void handleManageIngredients(ActionEvent event) {
     }
     
 }

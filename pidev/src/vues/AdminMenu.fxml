@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="1030.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminMenuController">
+<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="1030.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminMenuController">
    <children>
       <TextField fx:id="txt_titre" layoutX="207.0" layoutY="125.0" prefHeight="36.0" prefWidth="257.0" />
       <TextField fx:id="txt_description" layoutX="207.0" layoutY="190.0" prefHeight="36.0" prefWidth="257.0" />

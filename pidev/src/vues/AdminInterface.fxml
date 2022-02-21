@@ -6,14 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="469.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminInterfaceController">
+<AnchorPane id="AnchorPane" prefHeight="401.0" prefWidth="469.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminInterfaceController">
    <children>
-      <Button fx:id="btn_AddMenuScene" layoutX="160.0" layoutY="189.0" mnemonicParsing="false" onAction="#handleAddMenuScene" prefHeight="36.0" prefWidth="148.0" text="Ajouter Menu">
+      <Button fx:id="btn_ManageMenu" layoutX="160.0" layoutY="189.0" mnemonicParsing="false" onAction="#handleManageMenu" prefHeight="36.0" prefWidth="148.0" text="Gérer Menus">
          <font>
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btn_DisplayMenu" layoutX="160.0" layoutY="243.0" mnemonicParsing="false" onAction="#handleDisplayMenu" prefHeight="36.0" prefWidth="148.0" text="Afficher Menus">
+      <Button fx:id="btn_ManageIngredients" layoutX="160.0" layoutY="247.0" mnemonicParsing="false" onAction="#handleManageIngredients" prefHeight="36.0" prefWidth="148.0" text="Gérer Ingredients">
          <font>
             <Font size="14.0" />
          </font>
