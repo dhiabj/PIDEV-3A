@@ -21,6 +21,11 @@ public class Commande {
 
     public Commande() {
     }
+
+    public Commande(String etat) {
+        this.etat = etat;
+    }
+    
  public Commande( String etat, Date date, int user_id) {
         
         this.etat = etat;
