@@ -6,6 +6,8 @@
 package vues;
 
 import entities.Menu;
+import java.awt.Desktop;
+import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -26,6 +28,11 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javax.swing.JOptionPane;
 import services.MenuService;
 import utils.DataSource;
@@ -78,9 +85,36 @@ public class AdminMenuController implements Initializable {
     private Button btnReturnMenu;
     @FXML
     private Button btnCancel;
+    @FXML
+    private Button btnBrowser;
+    private FileChooser fileChooser;
+    private static File file;
+    private Stage stage;
+    @FXML
+    private AnchorPane anchorPane;
+    private final Desktop desktop = Desktop.getDesktop();
+    @FXML
+    private ImageView imageView;
+    private Image image;
+    @FXML
+    private Label error_image;
     
     
     MenuService ms = new MenuService();
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        conn = DataSource.getInstance().getCnx();
+        data = FXCollections.observableArrayList();
+        txt_categorie.getItems().addAll("Vegan","Normal");
+        fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("All files", "*.*"),
+                new FileChooser.ExtensionFilter("image", "*.png", "*.jpg", "*.gif"),
+                new FileChooser.ExtensionFilter("Text File", "*.txt")  
+        );
+        init();
+    }
+    
     @FXML
     private void handleAddMenu(ActionEvent event){
         
@@ -88,14 +122,16 @@ public class AdminMenuController implements Initializable {
         boolean isDescriptionString = validation.TextFieldValidation.isTextFieldTypeString(txt_description, error_description, "La description doit être une chaine de caractères");
         boolean isPrixNumber = validation.TextFieldValidation.isTextFieldTypeNumber(txt_prix, error_prix, "Le prix doit être un nombre");
         boolean isCategorieEmpty = validation.ChoiceBoxValidation.isChoiceBoxNotEmpty(txt_categorie, error_categorie, "La catégorie est requis");
-        if(isTitreString && isDescriptionString && isPrixNumber && isCategorieEmpty){
+        boolean isImageViewEmpty = validation.ImageViewValidation.isImageViewEmpty(imageView, error_image, "Vous devez sélectionner une image");
+        if(isTitreString && isDescriptionString && isPrixNumber && isCategorieEmpty && isImageViewEmpty){
         
             String titre = txt_titre.getText();
             String description = txt_description.getText();
             float prix = Float.valueOf(txt_prix.getText());
             String categorie = txt_categorie.getValue();
+            String imageIn = file.getAbsolutePath();
 
-            Menu m = new Menu(titre,description,prix,categorie);
+            Menu m = new Menu(titre,description,prix,categorie,imageIn);
             if(ms.ajouterMenu(m)){
                 JOptionPane.showMessageDialog(null, "Menu ajouté avec succès");
                 init();
@@ -116,9 +152,10 @@ public class AdminMenuController implements Initializable {
             String description = txt_description.getText();
             float prix = Float.valueOf(txt_prix.getText());
             String categorie = txt_categorie.getValue();
+            String imageIn = m.getImage();
             int id = m.getId();
 
-            Menu mu = new Menu(id,titre,description,prix,categorie);
+            Menu mu = new Menu(id,titre,description,prix,categorie,imageIn);
             if(ms.modifierMenu(mu)){
                 JOptionPane.showMessageDialog(null, "Menu modifié avec succès");
                 init();
@@ -138,14 +175,6 @@ public class AdminMenuController implements Initializable {
             }
     }
     
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        conn = DataSource.getInstance().getCnx();
-        data = FXCollections.observableArrayList();
-        txt_categorie.getItems().addAll("Vegan","Normal");
-        init();
-    }
-
     public void setCellTable(){
         column_titre.setCellValueFactory(new PropertyValueFactory<>("titre"));
         column_description.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -159,7 +188,7 @@ public class AdminMenuController implements Initializable {
             pst = conn.prepareStatement("Select * from menu");
             rs = pst.executeQuery();
             while (rs.next()){
-                data.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5)));
+                data.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getString(6)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
@@ -186,9 +215,28 @@ public class AdminMenuController implements Initializable {
             btn_updateMenu.setDisable(false);
             btn_deleteMenu.setDisable(false);
             btn_addMenu.setDisable(true);
+            showMenuImage(ml.getId());
         });
+    }
     
-}
+    private void showMenuImage(int id){
+        try {
+            pst = conn.prepareStatement("select image from menu where id = ?");
+            pst.setInt(1,id);
+            rs = pst.executeQuery();
+            if(rs.next()){
+                String imageIn = rs.getString("image");
+                File imageOut = new File(imageIn);
+                
+                
+                image = new Image(imageOut.getAbsoluteFile().toURI().toString(), imageView.getFitWidth(), imageView.getFitHeight(), true, true);
+                imageView.setImage(image);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }
 
     @FXML
     private void handleReturnMenu(ActionEvent event) throws Exception {
@@ -202,10 +250,21 @@ public class AdminMenuController implements Initializable {
         txt_description.clear();
         txt_prix.clear();
         txt_categorie.valueProperty().set(null);
+        imageView.setImage(null);
     }
-
     
-
+    @FXML
+    private void handleBtnBrowser(ActionEvent event) {
+        stage = (Stage) anchorPane.getScene().getWindow();
+        file = fileChooser.showOpenDialog(stage);
+        if(file != null){
+            //System.out.println(getFilePath());
+            image = new Image(file.getAbsoluteFile().toURI().toString(),
+                    imageView.getFitWidth(), imageView.getFitHeight(), true, true);
+            imageView.setImage(image);
+            imageView.setPreserveRatio(true);
+        }
+    }
     
 
 }

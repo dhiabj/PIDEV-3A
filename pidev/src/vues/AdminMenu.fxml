@@ -11,13 +11,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="540.0" prefWidth="1030.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminMenuController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="694.0" prefWidth="1030.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminMenuController">
    <children>
       <TextField fx:id="txt_titre" layoutX="207.0" layoutY="125.0" prefHeight="36.0" prefWidth="257.0" />
       <TextField fx:id="txt_description" layoutX="207.0" layoutY="190.0" prefHeight="36.0" prefWidth="257.0" />
       <TextField fx:id="txt_prix" layoutX="206.0" layoutY="254.0" prefHeight="36.0" prefWidth="257.0" />
       <ChoiceBox fx:id="txt_categorie" layoutX="206.0" layoutY="318.0" prefHeight="9.0" prefWidth="74.0" />
-      <Button fx:id="btn_addMenu" layoutX="97.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleAddMenu" prefHeight="36.0" prefWidth="110.0" text="Ajouter Menu" />
+      <Button fx:id="btn_addMenu" layoutX="344.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleAddMenu" prefHeight="36.0" prefWidth="110.0" text="Ajouter Menu" />
       <Label layoutX="112.0" layoutY="134.0" text="Titre" />
       <Label layoutX="106.0" layoutY="200.0" text="Description" />
       <Label layoutX="114.0" layoutY="264.0" text="Prix" />
@@ -34,15 +34,18 @@
       <Label fx:id="error_description" layoutX="206.0" layoutY="228.0" />
       <Label fx:id="error_prix" layoutX="206.0" layoutY="290.0" />
       <Label fx:id="error_categorie" layoutX="205.0" layoutY="343.0" />
-      <Button fx:id="btn_updateMenu" layoutX="225.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleUpdateMenu" prefHeight="36.0" prefWidth="110.0" text="Modifier Menu" />
-      <Button fx:id="btn_deleteMenu" layoutX="353.0" layoutY="386.0" mnemonicParsing="false" onAction="#handleDeleteMenu" prefHeight="36.0" prefWidth="110.0" text="Supprimer Menu" />
+      <Button fx:id="btn_updateMenu" layoutX="472.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleUpdateMenu" prefHeight="36.0" prefWidth="110.0" text="Modifier Menu" />
+      <Button fx:id="btn_deleteMenu" layoutX="599.0" layoutY="481.0" mnemonicParsing="false" onAction="#handleDeleteMenu" prefHeight="36.0" prefWidth="110.0" text="Supprimer Menu" />
       <Text fill="RED" layoutX="515.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sélectionner une ligne à modifier ou à supprimer du tableau." />
-      <Button fx:id="btnReturnMenu" layoutX="37.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleReturnMenu" prefHeight="36.0" prefWidth="119.0" text="Retourner au menu" />
+      <Button fx:id="btnReturnMenu" layoutX="40.0" layoutY="632.0" mnemonicParsing="false" onAction="#handleReturnMenu" prefHeight="36.0" prefWidth="119.0" text="Retourner au menu" />
       <ImageView fitHeight="92.0" fitWidth="90.0" layoutX="290.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../ressources/logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnCancel" layoutX="353.0" layoutY="459.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="36.0" prefWidth="110.0" text="Annuler" />
+      <Button fx:id="btnCancel" layoutX="599.0" layoutY="541.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="36.0" prefWidth="110.0" text="Annuler" />
+      <Button fx:id="btnBrowser" layoutX="99.0" layoutY="562.0" mnemonicParsing="false" onAction="#handleBtnBrowser" prefHeight="36.0" prefWidth="110.0" text="Browse" />
+      <ImageView fx:id="imageView" fitHeight="163.0" fitWidth="213.0" layoutX="99.0" layoutY="378.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="error_image" layoutX="99.0" layoutY="541.0" />
    </children>
 </AnchorPane>

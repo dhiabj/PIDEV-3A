@@ -15,6 +15,7 @@ public class Menu {
     private String description;
     private float prix;
     private String categorie;
+    private String image;
     
     public Menu (){
         
@@ -24,29 +25,25 @@ public class Menu {
         this.id=id;
     }
     
-    public Menu (String titre, String description, float prix, String categorie){
+    public Menu (String titre, String description, float prix, String categorie, String image){
         this.titre=titre;
         this.description=description;
         this.prix=prix;
         this.categorie=categorie;
+        this.image=image;
         
     }
     
-    public Menu (int id, String titre, String description, float prix, String categorie){
+    public Menu (int id, String titre, String description, float prix, String categorie, String image){
         this.id=id;
         this.titre=titre;
         this.description=description;
         this.prix=prix;
         this.categorie=categorie;
+        this.image=image;
         
     }
-
-
-    @Override
-    public String toString() {
-        return "Menu{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", prix=" + prix + ", categorie=" + categorie + '}';
-    }
-
+    
     public int getId() {
         return id;
     }
@@ -87,5 +84,17 @@ public class Menu {
         this.categorie = categorie;
     }
     
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
     
+    @Override
+    public String toString() {
+        return "Menu{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", prix=" + prix + ", categorie=" + categorie + ", image=" + image + '}';
+    }
+
 }

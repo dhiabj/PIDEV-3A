@@ -10,7 +10,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,22 +21,22 @@ import utils.DataSource;
  * @author Dhia
  */
 public class MenuService {
-    private Statement st;
     private PreparedStatement pst;
-    private Connection conn;
+    private final Connection conn;
     
     public MenuService(){
         conn = DataSource.getInstance().getCnx();
     }
     
     public boolean ajouterMenu(Menu m){
-        String req="insert into menu(titre,description,prix,categorie) values (?,?,?,?)";
+        String req="insert into menu(titre,description,prix,categorie,image) values (?,?,?,?,?)";
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, m.getTitre());
             pst.setString(2, m.getDescription());
             pst.setFloat(3, m.getPrix());
             pst.setString(4, m.getCategorie());
+            pst.setString(5, m.getImage());
             pst.executeUpdate();
             return true;
             
@@ -48,7 +47,7 @@ public class MenuService {
     }
     
     public boolean modifierMenu(Menu m) {
-        String req = "update menu set titre = ? , description = ? , prix= ? ,categorie= ? where id = ?";
+        String req = "update menu set titre = ? , description = ? , prix= ? ,categorie= ?, image= ? where id = ?";
 
         try {
             pst = conn.prepareStatement(req);
@@ -56,13 +55,15 @@ public class MenuService {
             pst.setString(2, m.getDescription());
             pst.setFloat(3, m.getPrix());
             pst.setString(4, m.getCategorie());
-            pst.setInt(5, m.getId());
+            pst.setString(5, m.getImage());
+            pst.setInt(6, m.getId());
             pst.executeUpdate();
             return true;
 
         } catch (SQLException ex) {
             Logger.getLogger(MenuService.class.getName()).log(Level.SEVERE, null, ex);
             return false;
+            
         }
 
     }
