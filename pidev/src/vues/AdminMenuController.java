@@ -88,7 +88,7 @@ public class AdminMenuController implements Initializable {
     @FXML
     private Button btnBrowser;
     private FileChooser fileChooser;
-    private static File file;
+    private File file;
     private Stage stage;
     @FXML
     private AnchorPane anchorPane;
@@ -147,14 +147,16 @@ public class AdminMenuController implements Initializable {
         boolean isCategorieEmpty = validation.ChoiceBoxValidation.isChoiceBoxNotEmpty(txt_categorie, error_categorie, "La catégorie est requis");
         if(isTitreString && isDescriptionString && isPrixNumber && isCategorieEmpty){
         
-            Menu m = tableMenu.getSelectionModel().getSelectedItem();
+            Menu m = tableMenu.getItems().get(tableMenu.getSelectionModel().getSelectedIndex());
             String titre = txt_titre.getText();
             String description = txt_description.getText();
             float prix = Float.valueOf(txt_prix.getText());
             String categorie = txt_categorie.getValue();
             String imageIn = m.getImage();
+            if(file!=null){
+                imageIn = file.getAbsolutePath();
+            }
             int id = m.getId();
-
             Menu mu = new Menu(id,titre,description,prix,categorie,imageIn);
             if(ms.modifierMenu(mu)){
                 JOptionPane.showMessageDialog(null, "Menu modifié avec succès");
@@ -165,7 +167,7 @@ public class AdminMenuController implements Initializable {
     
     @FXML
     private void handleDeleteMenu(ActionEvent event) {
-        Menu m = tableMenu.getSelectionModel().getSelectedItem();
+        Menu m = tableMenu.getItems().get(tableMenu.getSelectionModel().getSelectedIndex());
         int id = m.getId();
         
         Menu md = new Menu(id);
@@ -203,6 +205,11 @@ public class AdminMenuController implements Initializable {
         btn_updateMenu.setDisable(true);
         btn_deleteMenu.setDisable(true);
         setCellValueFromTableToTextField();
+        txt_titre.clear();
+        txt_description.clear();
+        txt_prix.clear();
+        txt_categorie.valueProperty().set(null);
+        imageView.setImage(null);
     }
     
     private void setCellValueFromTableToTextField(){
@@ -246,11 +253,6 @@ public class AdminMenuController implements Initializable {
     @FXML
     private void handleCancelButton(ActionEvent event) {
         init();
-        txt_titre.clear();
-        txt_description.clear();
-        txt_prix.clear();
-        txt_categorie.valueProperty().set(null);
-        imageView.setImage(null);
     }
     
     @FXML
