@@ -6,7 +6,6 @@
 package vues;
 
 import entities.Menu;
-import java.awt.Desktop;
 import java.io.File;
 import java.net.URL;
 import java.sql.Connection;
@@ -92,15 +91,13 @@ public class AdminMenuController implements Initializable {
     private Stage stage;
     @FXML
     private AnchorPane anchorPane;
-    private final Desktop desktop = Desktop.getDesktop();
     @FXML
     private ImageView imageView;
     private Image image;
     @FXML
     private Label error_image;
     
-    
-    MenuService ms = new MenuService();
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         conn = DataSource.getInstance().getCnx();
@@ -115,14 +112,20 @@ public class AdminMenuController implements Initializable {
         init();
     }
     
+    MenuService ms = new MenuService();
     @FXML
     private void handleAddMenu(ActionEvent event){
         
-        boolean isTitreString = validation.TextFieldValidation.isTextFieldTypeString(txt_titre, error_titre, "Le titre doit être une chaine de caractères");
-        boolean isDescriptionString = validation.TextFieldValidation.isTextFieldTypeString(txt_description, error_description, "La description doit être une chaine de caractères");
-        boolean isPrixNumber = validation.TextFieldValidation.isTextFieldTypeNumber(txt_prix, error_prix, "Le prix doit être un nombre");
-        boolean isCategorieEmpty = validation.ChoiceBoxValidation.isChoiceBoxNotEmpty(txt_categorie, error_categorie, "La catégorie est requis");
-        boolean isImageViewEmpty = validation.ImageViewValidation.isImageViewEmpty(imageView, error_image, "Vous devez sélectionner une image");
+        boolean isTitreString = validation.TextFieldValidation.isTextFieldTypeString
+        (txt_titre, error_titre, "Le titre doit être une chaine de caractères");
+        boolean isDescriptionString = validation.TextFieldValidation.isTextFieldTypeString
+        (txt_description, error_description, "La description doit être une chaine de caractères");
+        boolean isPrixNumber = validation.TextFieldValidation.isTextFieldTypeNumber
+        (txt_prix, error_prix, "Le prix doit être un nombre");
+        boolean isCategorieEmpty = validation.ChoiceBoxValidation.isChoiceBoxNotEmpty
+        (txt_categorie, error_categorie, "La catégorie est requis");
+        boolean isImageViewEmpty = validation.ImageViewValidation.isImageViewEmpty
+        (imageView, error_image, "Vous devez sélectionner une image");
         if(isTitreString && isDescriptionString && isPrixNumber && isCategorieEmpty && isImageViewEmpty){
         
             String titre = txt_titre.getText();
@@ -135,16 +138,23 @@ public class AdminMenuController implements Initializable {
             if(ms.ajouterMenu(m)){
                 JOptionPane.showMessageDialog(null, "Menu ajouté avec succès");
                 init();
+            }else{
+                JOptionPane.showMessageDialog(null, "Le menu "+titre+" existe déjà");
             }
         }
     }
     
     @FXML
     private void handleUpdateMenu(ActionEvent event) {
-        boolean isTitreString = validation.TextFieldValidation.isTextFieldTypeString(txt_titre, error_titre, "Le titre doit être une chaine de caractères");
-        boolean isDescriptionString = validation.TextFieldValidation.isTextFieldTypeString(txt_description, error_description, "La description doit être une chaine de caractères");
-        boolean isPrixNumber = validation.TextFieldValidation.isTextFieldTypeNumber(txt_prix, error_prix, "Le prix doit être un nombre");
-        boolean isCategorieEmpty = validation.ChoiceBoxValidation.isChoiceBoxNotEmpty(txt_categorie, error_categorie, "La catégorie est requis");
+        boolean isTitreString = validation.TextFieldValidation.isTextFieldTypeString
+        (txt_titre, error_titre, "Le titre doit être une chaine de caractères");
+        boolean isDescriptionString = validation.TextFieldValidation.isTextFieldTypeString
+        (txt_description, error_description,
+                "La description doit être une chaine de caractères");
+        boolean isPrixNumber = validation.TextFieldValidation.isTextFieldTypeNumber
+        (txt_prix, error_prix, "Le prix doit être un nombre");
+        boolean isCategorieEmpty = validation.ChoiceBoxValidation.isChoiceBoxNotEmpty
+        (txt_categorie, error_categorie, "La catégorie est requis");
         if(isTitreString && isDescriptionString && isPrixNumber && isCategorieEmpty){
         
             Menu m = tableMenu.getItems().get(tableMenu.getSelectionModel().getSelectedIndex());
@@ -161,6 +171,8 @@ public class AdminMenuController implements Initializable {
             if(ms.modifierMenu(mu)){
                 JOptionPane.showMessageDialog(null, "Menu modifié avec succès");
                 init();
+            }else{
+                JOptionPane.showMessageDialog(null, "Le menu "+titre+" existe déjà");
             }
         }
     }

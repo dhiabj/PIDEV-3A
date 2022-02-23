@@ -45,7 +45,8 @@ public class AdminInterfaceController implements Initializable {
     }
 
     @FXML
-    private void handleManageIngredients(ActionEvent event) {
+    private void handleManageIngredients(ActionEvent event) throws Exception {
+        SceneChanger.changeToScene(getClass(), event, "AdminIngredients.fxml");
     }
     
 }

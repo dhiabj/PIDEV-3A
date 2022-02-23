@@ -13,7 +13,6 @@ public class Ingredients {
     private int id;
     private String nom;
     private int quantite;
-    private int menu_id;
     
     public Ingredients(){
         
@@ -23,22 +22,15 @@ public class Ingredients {
         this.id=id;
     }
     
-    public Ingredients (int id, String nom, int quantite, int menu_id){
-        this.id=id;
-        this.nom=nom;
-        this.quantite=quantite;
-        this.menu_id=menu_id;
-    }
-    
-    public Ingredients (String nom, int quantite, int menu_id){
-        this.nom=nom;
-        this.quantite=quantite;
-        this.menu_id=menu_id;
+    public Ingredients(String nom, int quantite) {
+        this.nom = nom;
+        this.quantite = quantite;
     }
 
-    @Override
-    public String toString() {
-        return "Ingredients{" + "id=" + id + ", nom=" + nom + ", quantite=" + quantite + ", menu_id=" + menu_id + '}';
+    public Ingredients(int id, String nom, int quantite) {
+        this.id = id;
+        this.nom = nom;
+        this.quantite = quantite;
     }
 
     public int getId() {
@@ -53,10 +45,6 @@ public class Ingredients {
         return quantite;
     }
 
-    public int getMenu_id() {
-        return menu_id;
-    }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -69,9 +57,9 @@ public class Ingredients {
         this.quantite = quantite;
     }
 
-    public void setMenu_id(int menu_id) {
-        this.menu_id = menu_id;
+    @Override
+    public String toString() {
+        return "Ingredients{" + "id=" + id + ", nom=" + nom + ", quantite=" + quantite + '}';
     }
-    
     
 }
