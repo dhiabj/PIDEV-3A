@@ -6,12 +6,12 @@
 package vues;
 
 import entities.Ingredients;
-import entities.Menu;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +20,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -29,7 +32,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
-import javax.swing.JOptionPane;
 import services.IngredientsService;
 import utils.DataSource;
 
@@ -70,9 +72,14 @@ public class AdminIngredientsController implements Initializable {
     private Label error_qte;
     @FXML
     private Spinner<Integer> sp_qte;
+    @FXML
+    private TextField txt_search;
     SpinnerValueFactory<Integer> valueFactory =
                 new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 100);
-
+    Alert alertError = new Alert(AlertType.ERROR);
+    Alert alertInfo = new Alert(AlertType.INFORMATION);
+    Alert alertCon = new Alert(AlertType.CONFIRMATION);
+    
     /**
      * Initializes the controller class.
      */
@@ -82,8 +89,9 @@ public class AdminIngredientsController implements Initializable {
         data = FXCollections.observableArrayList();
         valueFactory.setValue(1);
         sp_qte.setValueFactory(valueFactory);
+        searchIngredient();
         init();
-    }    
+    }
     
     IngredientsService is= new IngredientsService();
     @FXML
@@ -96,10 +104,16 @@ public class AdminIngredientsController implements Initializable {
 
             Ingredients i = new Ingredients(nom,quantite);
             if(is.ajouterIngredient(i)){
-                JOptionPane.showMessageDialog(null, "Ingredient ajouté avec succès");
+                alertInfo.setTitle("Info");
+                alertInfo.setHeaderText("Message");
+                alertInfo.setContentText("Ingredient ajouté avec succès");
+                alertInfo.showAndWait();
                 init();
             }else{
-                JOptionPane.showMessageDialog(null, "L'ingredient "+nom+" existe déjà");
+                alertError.setTitle("Error");
+                alertError.setHeaderText("Message");
+                alertError.setContentText("L'ingredient "+nom+" existe déjà");
+                alertError.showAndWait();
             }
         }
             
@@ -112,16 +126,22 @@ public class AdminIngredientsController implements Initializable {
         if(isNomString){
             Ingredients il = tableIngredient.getItems().
                 get(tableIngredient.getSelectionModel().getSelectedIndex());
-        String nom = txt_nom.getText();
-        int quantite = sp_qte.getValue();
-        int id = il.getId();
+            String nom = txt_nom.getText();
+            int quantite = sp_qte.getValue();
+            int id = il.getId();
         
-        Ingredients iu = new Ingredients(id,nom,quantite);
-        if(is.modifierIngredient(iu)){
-                JOptionPane.showMessageDialog(null, "Ingredient modifié avec succès");
+            Ingredients iu = new Ingredients(id,nom,quantite);
+            if(is.modifierIngredient(iu)){
+                alertInfo.setTitle("Info");
+                alertInfo.setHeaderText("Message");
+                alertInfo.setContentText("Ingredient modifié avec succès");
+                alertInfo.showAndWait();
                 init();
             }else{
-                JOptionPane.showMessageDialog(null, "L'ingredient "+nom+" existe déjà");
+                alertError.setTitle("Error");
+                alertError.setHeaderText("Message");
+                alertError.setContentText("L'ingredient "+nom+" existe déjà");
+                alertError.showAndWait();
             }
         }
     }
@@ -132,10 +152,19 @@ public class AdminIngredientsController implements Initializable {
                 get(tableIngredient.getSelectionModel().getSelectedIndex());
         int id = il.getId();
         Ingredients iu = new Ingredients(id);
-        if(is.suppIngredient(iu)){
-                JOptionPane.showMessageDialog(null, "Ingredient supprimé avec succès");
+        alertCon.setTitle("Supprimer Ingredient");
+        alertCon.setHeaderText("Êtes-vous sûr?");
+        alertCon.setContentText("Êtes-vous sûr de vouloir supprimer cet ingredient?");
+        Optional<ButtonType> option = alertCon.showAndWait();
+        if (option.get() == ButtonType.OK) {
+         if(is.suppIngredient(iu)){
+                alertInfo.setTitle("Info");
+                alertInfo.setHeaderText("Message");
+                alertInfo.setContentText("Ingredient supprimé avec succès");
+                alertInfo.showAndWait();
                 init();
             }
+      } 
     }
 
     @FXML
@@ -162,7 +191,7 @@ public class AdminIngredientsController implements Initializable {
                 data.add(new Ingredients(rs.getInt(1), rs.getString(2), rs.getInt(3)));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AdminIngredientsController.class.getName()).log(Level.SEVERE, null, ex);
         }
         tableIngredient.setItems(data);
     }
@@ -177,6 +206,29 @@ public class AdminIngredientsController implements Initializable {
             btn_addIngredient.setDisable(true);
             btn_updateIngredient.setDisable(false);
             btn_deleteIngredient.setDisable(false);
+        });
+    }
+    
+    private void searchIngredient(){
+        txt_search.setOnKeyReleased(e->{
+            if(txt_search.getText().equals("")){
+                loadDataFromDataBase();
+            }
+            else{
+                data.clear();
+                String sql = "select * from ingredients where nom LIKE '%"+txt_search.getText()+"%'"
+                            + "UNION select * from ingredients where quantite Like '%"+txt_search.getText()+"%'";
+                try {
+                    pst = conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    while (rs.next()){
+                    data.add(new Ingredients(rs.getInt(1), rs.getString(2), rs.getInt(3)));
+                }
+                tableIngredient.setItems(data);
+                }catch (SQLException ex) {
+                    Logger.getLogger(AdminIngredientsController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
         });
     }
     

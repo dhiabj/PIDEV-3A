@@ -12,6 +12,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +21,9 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -32,7 +35,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javax.swing.JOptionPane;
 import services.MenuService;
 import utils.DataSource;
 
@@ -96,6 +98,12 @@ public class AdminMenuController implements Initializable {
     private Image image;
     @FXML
     private Label error_image;
+    @FXML
+    private TextField txt_search;
+    Alert alertError = new Alert(Alert.AlertType.ERROR);
+    Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
+    Alert alertCon = new Alert(Alert.AlertType.CONFIRMATION);
+    
     
      
     @Override
@@ -109,6 +117,7 @@ public class AdminMenuController implements Initializable {
                 new FileChooser.ExtensionFilter("image", "*.png", "*.jpg", "*.gif"),
                 new FileChooser.ExtensionFilter("Text File", "*.txt")  
         );
+        searchMenu();
         init();
     }
     
@@ -136,10 +145,16 @@ public class AdminMenuController implements Initializable {
 
             Menu m = new Menu(titre,description,prix,categorie,imageIn);
             if(ms.ajouterMenu(m)){
-                JOptionPane.showMessageDialog(null, "Menu ajouté avec succès");
+                alertInfo.setTitle("Info");
+                alertInfo.setHeaderText("Message");
+                alertInfo.setContentText("Menu ajouté avec succès");
+                alertInfo.showAndWait();
                 init();
             }else{
-                JOptionPane.showMessageDialog(null, "Le menu "+titre+" existe déjà");
+                alertError.setTitle("Error");
+                alertError.setHeaderText("Message");
+                alertError.setContentText("Le menu "+titre+" existe déjà");
+                alertError.showAndWait();
             }
         }
     }
@@ -169,10 +184,16 @@ public class AdminMenuController implements Initializable {
             int id = m.getId();
             Menu mu = new Menu(id,titre,description,prix,categorie,imageIn);
             if(ms.modifierMenu(mu)){
-                JOptionPane.showMessageDialog(null, "Menu modifié avec succès");
+                alertInfo.setTitle("Info");
+                alertInfo.setHeaderText("Message");
+                alertInfo.setContentText("Menu modifié avec succès");
+                alertInfo.showAndWait();
                 init();
             }else{
-                JOptionPane.showMessageDialog(null, "Le menu "+titre+" existe déjà");
+                alertError.setTitle("Error");
+                alertError.setHeaderText("Message");
+                alertError.setContentText("Le menu "+titre+" existe déjà");
+                alertError.showAndWait();
             }
         }
     }
@@ -183,10 +204,19 @@ public class AdminMenuController implements Initializable {
         int id = m.getId();
         
         Menu md = new Menu(id);
+        alertCon.setTitle("Supprimer Menu");
+        alertCon.setHeaderText("Êtes-vous sûr?");
+        alertCon.setContentText("Êtes-vous sûr de vouloir supprimer ce menu?");
+        Optional<ButtonType> option = alertCon.showAndWait();
+        if (option.get() == ButtonType.OK) {
         if(ms.suppMenu(md)){
-                JOptionPane.showMessageDialog(null, "Menu supprimé avec succès");
+                alertInfo.setTitle("Info");
+                alertInfo.setHeaderText("Message");
+                alertInfo.setContentText("Menu supprimé avec succès");
+                alertInfo.showAndWait();
                 init();
             }
+        }
     }
     
     public void setCellTable(){
@@ -235,6 +265,31 @@ public class AdminMenuController implements Initializable {
             btn_deleteMenu.setDisable(false);
             btn_addMenu.setDisable(true);
             showMenuImage(ml.getId());
+        });
+    }
+    
+    private void searchMenu(){
+        txt_search.setOnKeyReleased(e->{
+            if(txt_search.getText().equals("")){
+                loadDataFromDataBase();
+            }
+            else{
+                data.clear();
+                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%'"
+                        + "UNION select * from menu where description Like '%"+txt_search.getText()+"%'"
+                        + "UNION select * from menu where prix Like '%"+txt_search.getText()+"%'"
+                        + "UNION select * from menu where categorie Like '%"+txt_search.getText()+"%'";
+                try {
+                    pst = conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    while (rs.next()){
+                    data.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getString(6)));
+                }
+                tableMenu.setItems(data);
+                }catch (SQLException ex) {
+                    Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
         });
     }
     
