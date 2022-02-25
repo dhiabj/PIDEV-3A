@@ -207,8 +207,12 @@ public class AdminMenuController implements Initializable {
         alertCon.setTitle("Supprimer Menu");
         alertCon.setHeaderText("Êtes-vous sûr?");
         alertCon.setContentText("Êtes-vous sûr de vouloir supprimer ce menu?");
+        ButtonType supprimer = new ButtonType("Supprimer");
+	ButtonType annuler = new ButtonType("Annuler");
+        alertCon.getButtonTypes().clear();
+        alertCon.getButtonTypes().addAll(supprimer, annuler);
         Optional<ButtonType> option = alertCon.showAndWait();
-        if (option.get() == ButtonType.OK) {
+        if (option.get() == supprimer) {
         if(ms.suppMenu(md)){
                 alertInfo.setTitle("Info");
                 alertInfo.setHeaderText("Message");

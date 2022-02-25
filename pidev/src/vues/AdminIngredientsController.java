@@ -155,8 +155,12 @@ public class AdminIngredientsController implements Initializable {
         alertCon.setTitle("Supprimer Ingredient");
         alertCon.setHeaderText("Êtes-vous sûr?");
         alertCon.setContentText("Êtes-vous sûr de vouloir supprimer cet ingredient?");
+        ButtonType supprimer = new ButtonType("Supprimer");
+	ButtonType annuler = new ButtonType("Annuler");
+        alertCon.getButtonTypes().clear();
+        alertCon.getButtonTypes().addAll(supprimer, annuler);
         Optional<ButtonType> option = alertCon.showAndWait();
-        if (option.get() == ButtonType.OK) {
+        if (option.get() == supprimer) {
          if(is.suppIngredient(iu)){
                 alertInfo.setTitle("Info");
                 alertInfo.setHeaderText("Message");
