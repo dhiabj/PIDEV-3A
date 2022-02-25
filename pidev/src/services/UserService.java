@@ -5,6 +5,7 @@
  */
 package services;
 
+import entities.MD5Utils;
 import entities.livraison;
 import entities.user;
 import java.sql.Connection;
@@ -12,9 +13,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Observable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -59,14 +57,15 @@ public class UserService {
             pst.setString(3, u.getAdresse());
             pst.setInt(4, u.getNum_tel());
             pst.setString(5, u.getEmail());
-            pst.setString(6, u.getPassword());
+            pst.setString(6, MD5Utils.cryptage(u.getPassword()));
             pst.setDate(7, u.getDate());
             pst.setString(8, u.getRole());
             pst.executeUpdate();
             return true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
@@ -90,7 +89,8 @@ public class UserService {
             return true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
@@ -106,7 +106,8 @@ public class UserService {
             return true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
             return false;
         }
 
@@ -121,15 +122,37 @@ public class UserService {
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
                 list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
-    
-        public ObservableList<String> GetNames() {
+
+    public user getUserbyEmailPass(String email, String pass) {
+
+        String req = "select * from user where email = '" + email + "' and password = '" + MD5Utils.cryptage(pass) + "'";
+
+        user u = new user();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            if (rs.first()) {
+                u = new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role"));
+            }
+            System.out.println(u);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return u;
+    }
+
+    public ObservableList<String> GetNames() {
         String req = "select nom,prenom from user";
 
         ObservableList<String> list = FXCollections.observableArrayList();
@@ -137,17 +160,19 @@ public class UserService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(rs.getString("nom")+" "+rs.getString("prenom"));
+                list.add(rs.getString("nom") + " " + rs.getString("prenom"));
+
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
-    
-        public ObservableList<user> recherche(String searchby, String value) {
-        String req = "select * from user where "+searchby+" like '%"+value+"%'";
+
+    public ObservableList<user> recherche(String searchby, String value) {
+        String req = "select * from user where " + searchby + " like '%" + value + "%'";
 
         ObservableList<user> list = FXCollections.observableArrayList();
         try {
@@ -155,15 +180,18 @@ public class UserService {
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
                 list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
-            public ObservableList<user> tri(String value) {
-        String req = "select * from user order by "+value;
+
+    public ObservableList<user> tri(String value) {
+        String req = "select * from user order by " + value;
 
         ObservableList<user> list = FXCollections.observableArrayList();
         try {
@@ -171,16 +199,18 @@ public class UserService {
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
                 list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
-            
-                public ObservableList<user> filterRole(String value) {
-        String req = "select * from user where role = '"+value+"'";
+
+    public ObservableList<user> filterRole(String value) {
+        String req = "select * from user where role = '" + value + "'";
 
         ObservableList<user> list = FXCollections.observableArrayList();
         try {
@@ -188,10 +218,12 @@ public class UserService {
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
                 list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
         return list;
     }
@@ -199,49 +231,26 @@ public class UserService {
     public ObservableList<livraison> readLivraison() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    public boolean MailExiste(String mail) {
+        try {
+            ResultSet res = ste.executeQuery("Select * from user where email='" + mail + "';");
+            return res.next();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return false;
+
+    }
+
+    public boolean EmailExiste(String mail) {
+        try {
+            ResultSet res = ste.executeQuery("Select * from user where email='" + mail + "';");
+            return res.next();
+        } catch (SQLException ex) {
+            System.out.println(ex);
+        }
+        return false;
+
+    }
 }
-
-
-// public boolean MailExiste(String mail)
-//    {
-//         try
-//        { ResultSet res= st.executeQuery("Select * from Fos_user where email='"+mail+"';");
-//             return res.next();
-//        }
-//        catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return false;
-//        
-//        
-//       
-//    }
-// public boolean UsernameExiste(String username)
-//    {
-//         try
-//        { ResultSet res= st.executeQuery("Select * from Fos_user where username like '"+username+"';");
-//             return res.next();
-//        }
-//        catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return false;
-//        
-//        
-//       
-//    }
-//     public boolean TelephoneExiste(String numero)
-//    {
-//         try
-//        { ResultSet res= st.executeQuery("Select * from Utilisateur where telephone='"+numero+"';");
-//             return res.next();
-//        }
-//        catch (SQLException ex) {
-//            System.out.println(ex);
-//        }
-//        return false;
-//        
-//        
-//       
-//    }
-//     

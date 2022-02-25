@@ -10,7 +10,6 @@ import entities.user;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,15 +17,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import services.LivraisonService;
 import services.UserService;
 
@@ -97,6 +93,8 @@ public class LivraisonFXMLController implements Initializable {
         this.Livs = ls.readLivraison();
         cbuserid.setItems(UsersName);
         cblivid.setItems(Livs);
+        cbcommandeid.setItems(FXCollections.observableArrayList(01,02,03));
+        cbetat.setItems(FXCollections.observableArrayList("En cours", "Livrée", "Annulé"));
         //cbuserid.setCellFactory(value);
     }    
 

@@ -30,6 +30,14 @@ public class MainFXMLController implements Initializable {
     private Button btngestUser;
     @FXML
     private Button btngestLivraison;
+    @FXML
+    private Button btnprofil;
+    @FXML
+    private Button btngestEvenement;
+    @FXML
+    private Button btngestReclamation;
+    @FXML
+    private Button btngestMenu;
 
     /**
      * Initializes the controller class.
@@ -37,11 +45,11 @@ public class MainFXMLController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
 
     @FXML
     private void GotoGestUser(ActionEvent event) {
-        try {
+         try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("UserFXML.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -55,7 +63,7 @@ public class MainFXMLController implements Initializable {
 
     @FXML
     private void GotoGestLivraison(ActionEvent event) {
-        try {
+          try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("LivraisonFXML.fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
             Stage stage = new Stage();
@@ -67,4 +75,30 @@ public class MainFXMLController implements Initializable {
         }
     }
 
+    @FXML
+    private void GotoGestionProfil(ActionEvent event) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("profilFXML.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Welcome");
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void GotoGestEvenement(ActionEvent event) {
+    }
+
+    @FXML
+    private void GotoGestReclamation(ActionEvent event) {
+    }
+
+    @FXML
+    private void GotoGestMenu(ActionEvent event) {
+    }
+    
 }
