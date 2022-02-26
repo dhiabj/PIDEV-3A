@@ -5,3 +5,124 @@
     -fx-background-color: #fce4e4;
     -fx-border-color: red;
 }
+
+.right-bar{
+    -fx-background-color: #D3D3D3;
+}
+
+.search-box{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+}
+
+.search-button:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 28;
+    -fx-border-width: 3;
+}
+
+.search-button:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 28;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.shadow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.chosen-menu-card{
+    -fx-background-radius: 30;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.add-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #36454F;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.add-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #36454F;
+    -fx-border-color: #36454F;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.vegan-btn{
+    -fx-background-color: #90EE90;
+    -fx-background-radius: 100;
+}
+
+.vegan-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #90EE90;
+    -fx-border-color: #90EE90;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.vegan-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #90EE90;
+    -fx-border-color: #90EE90;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.normal-btn{
+    -fx-background-color: #FF6347;
+    -fx-background-radius: 100;
+}
+
+.normal-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #FF6347;
+    -fx-border-color: #FF6347;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.normal-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #FF6347;
+    -fx-border-color: #FF6347;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.menu-item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
