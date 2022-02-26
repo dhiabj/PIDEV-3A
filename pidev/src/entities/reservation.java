@@ -15,7 +15,7 @@ public class reservation {
     private int user_id;
     private int event_id;
     private String nom;
-
+    
     public reservation() {
     }
 
@@ -34,6 +34,10 @@ public class reservation {
         this.user_id = user_id;
         this.event_id = event_id;
         this.nom = nom;
+    }
+
+    public reservation(String nom, Integer id_client, Integer event_id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public int getId() {

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import utils.DataSource;
 
 /**
@@ -35,12 +37,12 @@ public class ReservationService {
 
     public void ajouterReservation(reservation r) {
 
-        String req = "insert into reservation (user_id,event_id,nom) values (?,?,?)";
+        String req = "insert into reservation (user_id,event_id,nom) values (?,?,?) ";
 
         try {
             pst = conn.prepareStatement(req);
-            pst.setInt(1, r.getEvent_id());
-            pst.setInt(2, r.getUser_id());
+            pst.setInt(1, r.getUser_id());
+            pst.setInt(2, r.getEvent_id());           
             pst.setString(3, r.getNom());
             pst.executeUpdate();
 
@@ -79,10 +81,10 @@ public class ReservationService {
 
     }
 
-    public List<reservation> readReservation() {
+    public ObservableList<reservation> readReservation() {
         String req = "select * from reservation";
 
-        List<reservation> list = new ArrayList<>();
+        ObservableList<reservation> list = FXCollections.observableArrayList();
         try {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
@@ -96,5 +98,25 @@ public class ReservationService {
         return list;
 
     }
+    
+    
+//      public String NomEvent() {
+//        String req = "select nom from evenement E inner join reservation R where E.id=R=event_id";
+//
+//        List<reservation> list = new ArrayList<>();
+//        try {
+//            ste = conn.createStatement();
+//            rs = ste.executeQuery(req);
+//            while (rs.next()) {//parcourir le resultset
+//                list.add(new reservation(rs.getString("nom")));
+//            }
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return String;
+//
+//        
+//    }
 
 }
