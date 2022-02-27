@@ -29,14 +29,15 @@ public class MenuService {
     }
     
     public boolean ajouterMenu(Menu m){
-        String req="insert into menu(titre,description,prix,categorie,image) values (?,?,?,?,?)";
+        String req="insert into menu(titre,description,prix,ingredients,categorie,image) values (?,?,?,?,?,?)";
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, m.getTitre());
             pst.setString(2, m.getDescription());
             pst.setFloat(3, m.getPrix());
-            pst.setString(4, m.getCategorie());
-            pst.setString(5, m.getImage());
+            pst.setString(4, m.getIngredients());
+            pst.setString(5, m.getCategorie());
+            pst.setString(6, m.getImage());
             pst.executeUpdate();
             return true;
             
@@ -47,16 +48,17 @@ public class MenuService {
     }
     
     public boolean modifierMenu(Menu m) {
-        String req = "update menu set titre = ? , description = ? , prix= ? ,categorie= ?, image= ? where id = ?";
+        String req = "update menu set titre = ? , description = ? , prix= ?, ingredients = ? ,categorie= ?, image= ? where id = ?";
 
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, m.getTitre());
             pst.setString(2, m.getDescription());
             pst.setFloat(3, m.getPrix());
-            pst.setString(4, m.getCategorie());
-            pst.setString(5, m.getImage());
-            pst.setInt(6, m.getId());
+            pst.setString(4, m.getIngredients());
+            pst.setString(5, m.getCategorie());
+            pst.setString(6, m.getImage());
+            pst.setInt(7, m.getId());
             pst.executeUpdate();
             return true;
 
@@ -95,6 +97,7 @@ public class MenuService {
                 m.setTitre(rs.getString("titre"));
                 m.setDescription(rs.getString("description"));
                 m.setPrix(rs.getFloat("prix"));
+                m.setIngredients(rs.getString("ingredients"));
                 m.setCategorie(rs.getString("categorie"));
                 m.setImage(rs.getString("image"));
                 menus.add(m);
@@ -118,6 +121,7 @@ public class MenuService {
                 m.setTitre(rs.getString("titre"));
                 m.setDescription(rs.getString("description"));
                 m.setPrix(rs.getFloat("prix"));
+                m.setIngredients(rs.getString("ingredients"));
                 m.setCategorie(rs.getString("categorie"));
                 m.setImage(rs.getString("image"));
                 menus.add(m);

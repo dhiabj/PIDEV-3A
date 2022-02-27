@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -73,12 +75,17 @@ public class UserMenuController implements Initializable {
     @FXML
     private Text txt_description;
     @FXML
+    private Text txt_ingredients;
+    @FXML
+    private Label lb_ingredients;
+    @FXML
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
     private Image image;
     private MyListener myListener;
-    
+    private boolean clickedVegan = false;
+    private boolean clickedNormal = false;
     
     
     /**
@@ -95,74 +102,19 @@ public class UserMenuController implements Initializable {
         lb_titre.setText(menu.getTitre());
         lb_prix.setText(String.valueOf(menu.getPrix()) + MenuController.CURRENCY);
         txt_description.setText(menu.getDescription());
+        txt_ingredients.setText(menu.getIngredients());
         File file = new File(menu.getImage());
         image = new Image(file.getAbsoluteFile().toURI().toString());
         menuImage.setImage(image);
     }
     
-    private boolean clickedVegan = false;
-    private boolean clickedNormal = false;
-    List<Menu> foundMenus = new ArrayList<>();
-    @FXML
-    private void handleSearchButton(ActionEvent event) {
-        if(clickedVegan){
-            foundMenus.clear();
-                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%' AND categorie= 'Vegan'";
-                try {
-                    pst = conn.prepareStatement(sql);
-                    rs = pst.executeQuery();
-                    while (rs.next()){
-                    foundMenus.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getString(6)));
-                }
-                    grid.getChildren().clear();
-                    showMenu(foundMenus);
-                }catch (SQLException ex) {
-                    Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-            if(txt_search.getText().length() == 0){
-                grid.getChildren().clear();
-                showMenu(menusVegan);
-            }
-        }
-        if(clickedNormal){
-            foundMenus.clear();
-                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%' AND categorie= 'Normal'";
-                try {
-                    pst = conn.prepareStatement(sql);
-                    rs = pst.executeQuery();
-                    while (rs.next()){
-                    foundMenus.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getString(6)));
-                }
-                    grid.getChildren().clear();
-                    showMenu(foundMenus);
-                }catch (SQLException ex) {
-                    Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-            if(txt_search.getText().length() == 0){
-                grid.getChildren().clear();
-                showMenu(menusNormal);
-            }
-        }
-        
-    }
-
-    @FXML
-    private void handleAddCartButton(ActionEvent event) {
-    }
-
-    @FXML
-    private void handleCartButton(ActionEvent event) {
-    }
-    
     MenuService ms = new MenuService();
-   
+    ObservableList<Menu> menusVegan = FXCollections.observableList(ms.afficherMenuVegan());
+    ObservableList<Menu> menusNormal = FXCollections.observableList(ms.afficherMenuNormal());
     
-    List<Menu> menusVegan = ms.afficherMenuVegan();
-    List<Menu> menusNormal = ms.afficherMenuNormal();
-    private void showMenu(List<Menu> menus){
+    private void showMenu(ObservableList<Menu> menus){
         //menus.clear();
         //System.out.println(menus.isEmpty());
-        
         if(menus.size()>0){
             setChosenMenu(menus.get(0));
             myListener = new MyListener() {
@@ -217,12 +169,68 @@ public class UserMenuController implements Initializable {
     @FXML
     private void handleNormalButton(ActionEvent event) {
         chosenMenuCard.setVisible(true);
-        chosenMenuCard.setStyle("-fx-background-color: 	#F16C31; -fx-background-radius: 30;");
+        chosenMenuCard.setStyle("-fx-background-color: 	#FF4433; -fx-background-radius: 30;");
         grid.getChildren().clear();
         showMenu(menusNormal);
         clickedNormal=true;
         clickedVegan=false;
         //System.out.println(menusNormal);
     }
+    
+    List<Menu> listMenusFound = new ArrayList<>();
+    ObservableList<Menu> menusFound = FXCollections.observableList(listMenusFound);
+    @FXML
+    private void handleSearchButton(ActionEvent event) {
+        if(clickedVegan){
+            if(txt_search.getText().length() == 0){
+                grid.getChildren().clear();
+                showMenu(menusVegan);
+            }else{
+                menusFound.clear();
+                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%' AND categorie= 'Vegan'";
+                try {
+                    pst = conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    while (rs.next()){
+                    menusFound.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+                }
+                    grid.getChildren().clear();
+                    showMenu(menusFound);
+                }catch (SQLException ex) {
+                    Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            }
+        }
+        if(clickedNormal){
+            if(txt_search.getText().length() == 0){
+                grid.getChildren().clear();
+                showMenu(menusNormal);
+            }else{
+                menusFound.clear();
+                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%' AND categorie= 'Normal'";
+                try {
+                    pst = conn.prepareStatement(sql);
+                    rs = pst.executeQuery();
+                    while (rs.next()){
+                    menusFound.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getString(6), rs.getString(7)));
+                }
+                    grid.getChildren().clear();
+                    showMenu(menusFound);
+                }catch (SQLException ex) {
+                    Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            }
+        }
+    }
+
+    @FXML
+    private void handleAddCartButton(ActionEvent event) {
+    }
+
+    @FXML
+    private void handleCartButton(ActionEvent event) {
+    }
+    
+    
     
 }

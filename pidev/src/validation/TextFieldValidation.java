@@ -16,7 +16,7 @@ public class TextFieldValidation {
     
     public static boolean isTextFieldTypeString(TextField tf){
         boolean b = false;
-        if(tf.getText().matches("^[a-zA-ZÀ-Ÿ ]*$") && (tf.getText().length() != 0 || !tf.getText().isEmpty()))
+        if(tf.getText().matches("^[a-zA-ZÀ-Ÿ, ]*$") && (tf.getText().length() != 0 || !tf.getText().isEmpty()))
             b = true;
         return b;
     }
