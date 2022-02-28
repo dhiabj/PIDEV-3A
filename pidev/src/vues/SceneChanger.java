@@ -21,6 +21,7 @@ public class SceneChanger {
     public static void changeToScene(Class aClass, Event aEvent, String sceneFileStr) throws Exception{
         Parent root = FXMLLoader.load(aClass.getResource(sceneFileStr));
         Scene scene = new Scene(root);
+        //Stage stage = new Stage();
         Stage stage = (Stage) ((Node) aEvent.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
