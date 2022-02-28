@@ -17,7 +17,8 @@ public class Commande {
     private int id;
     private String etat;
     private Date date;
-    private int user_id;    
+    private int user_id; 
+    private String nom;
 
     public Commande() {
     }
@@ -26,7 +27,7 @@ public class Commande {
         this.etat = etat;
     }
     
- public Commande( String etat, Date date, int user_id) {
+    public Commande( String etat, Date date, int user_id) {
         
         this.etat = etat;
         this.date = date;
@@ -37,6 +38,27 @@ public class Commande {
         this.etat = etat;
         this.date = date;
         this.user_id = user_id;
+    }
+    
+    public Commande(int id, String etat, Date date, String nom) {
+        this.id = id;
+        this.etat = etat;
+        this.date = date;
+        this.nom = nom;
+    }
+
+    public Commande(int id, String etat) {
+        this.id = id;
+        this.etat = etat;
+    }
+
+    
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public Commande(int id) {
@@ -79,7 +101,7 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Commande{" + "id=" + id + ", etat=" + etat + ", date=" + date + ", user_id=" + user_id + '}';
+        return "Commande{" + "id=" + id + ", etat=" + etat + ", date=" + date + ", nom=" + nom + '}';
     }
     
     

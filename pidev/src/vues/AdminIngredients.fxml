@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="601.0" prefWidth="933.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminIngredientsController">
+   <children>
+      <TextField fx:id="txt_nom" layoutX="206.0" layoutY="185.0" prefHeight="36.0" prefWidth="257.0" />
+      <Button fx:id="btn_addIngredient" layoutX="74.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleAddIngredient" prefHeight="36.0" prefWidth="119.0" text="Ajouter Ingredient" />
+      <Label layoutX="102.0" layoutY="203.0" text="Nom" />
+      <Label layoutX="99.0" layoutY="249.0" text="Quantité" />
+      <TableView fx:id="tableIngredient" layoutX="517.0" layoutY="71.0" prefHeight="298.0" prefWidth="373.0">
+        <columns>
+          <TableColumn fx:id="column_nom" prefWidth="188.0" text="Nom" />
+            <TableColumn fx:id="column_qte" minWidth="3.0" prefWidth="184.0" text="Quantité" />
+        </columns>
+      </TableView>
+      <Label fx:id="error_nom" layoutX="205.0" layoutY="220.0" />
+      <Label fx:id="error_qte" layoutX="205.0" layoutY="270.0" />
+      <Button fx:id="btn_updateIngredient" layoutX="214.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleUpdateIngredient" prefHeight="36.0" prefWidth="119.0" text="Modifier Ingredient" />
+      <Button fx:id="btn_deleteIngredient" layoutX="352.0" layoutY="329.0" mnemonicParsing="false" onAction="#handleDeleteIngredient" prefHeight="36.0" prefWidth="130.0" text="Supprimer Ingredient" />
+      <Text fill="RED" layoutX="517.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sélectionner une ligne à modifier ou à supprimer du tableau." />
+      <Button fx:id="btnReturnMenu" layoutX="40.0" layoutY="532.0" mnemonicParsing="false" onAction="#handleReturnMenu" prefHeight="36.0" prefWidth="119.0" text="Retourner au menu" />
+      <ImageView fitHeight="105.0" fitWidth="119.0" layoutX="264.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btnCancel" layoutX="352.0" layoutY="384.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="36.0" prefWidth="110.0" text="Annuler" />
+      <Spinner fx:id="sp_qte" layoutX="206.0" layoutY="245.0" prefHeight="25.0" prefWidth="67.0" />
+      <TextField fx:id="txt_search" layoutX="517.0" layoutY="384.0" prefHeight="36.0" prefWidth="257.0" promptText="Rechercher Ingredient" />
+   </children>
+</AnchorPane>

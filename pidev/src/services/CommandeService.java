@@ -23,18 +23,27 @@ public class CommandeService {
     private Statement st;
     private PreparedStatement pst;
     private Connection conn;
+    public static int id;
     
     public CommandeService(){
     conn=DataSource.getInstance().getCnx();
     }
     public void ajouterCommande (Commande c){
+    String generatedColumns[] = { "ID" };
     String req="insert into commande(etat,date,user_id) values (?,?,?)";
      try {
-            pst = conn.prepareStatement(req);
+            pst = conn.prepareStatement(req, generatedColumns);
             pst.setString(1, c.getEtat());
             pst.setDate(2, c.getDate());
             pst.setInt(3, c.getUser_id());
             pst.executeUpdate();
+            ResultSet rs = pst.getGeneratedKeys();
+            if (rs.next()) {
+            id = rs.getInt(1);
+            
+            
+            //System.out.println("Inserted ID -" + id); // display inserted record
+        }
 
         } catch (SQLException ex) {
             Logger.getLogger(CommandeService.class.getName()).log(Level.SEVERE, null, ex);
@@ -59,6 +68,23 @@ public class CommandeService {
         }
     }
     
+    public boolean modifierEtat(Commande c)
+    {
+    String req="update commande set etat= ? where id= ? ";
+    
+     try {
+            pst = conn.prepareStatement(req);
+            pst.setString(1, c.getEtat());
+            pst.setInt(2, c.getId());
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CommandeService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+    
     public void supCommande(Commande c)
     {
     String req="delete  from commande where id= ?";
@@ -76,8 +102,8 @@ public class CommandeService {
     
     
     public List <Commande> afficherCommande(){
-        List <Commande> commandes= new ArrayList<>();
-    String sql="select * from commande";
+    List <Commande> commandes= new ArrayList<>();
+    String sql="select * from commande where etat='non valide'";
     try { pst=conn.prepareStatement(sql);
             ResultSet rs=pst.executeQuery();
     

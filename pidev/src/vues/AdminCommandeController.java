@@ -27,6 +27,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -76,9 +77,18 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
     @FXML
     private Button supprimer;
     @FXML
+    private Label etat_error;
+    @FXML
+    private Label error_date;
+    @FXML
+    private Label error_user;
+    @FXML
     private void handleAddMenu(ActionEvent event)
     {
-        String etat1=etatcombo.getValue();
+        boolean isDateEmpty = validation.DatePickerValidation.isDatePickerNotEmpty(date, error_date, "Choisir un date valide");
+        boolean isUserNumber = validation.TextFieldValidation.isTextFieldTypeNumber(id_user, error_user, "Choisir un nombre valide");
+        if(isDateEmpty && isUserNumber){
+            String etat1=etatcombo.getValue();
         Date Dates=Date.valueOf(date.getValue());
         int user=parseInt(id_user.getText());
         
@@ -87,6 +97,8 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
         
          cs.ajouterCommande(c);
          init();
+        }
+        
     }
     
     @FXML
@@ -131,21 +143,23 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
        public void loadDataFromDataBase(){
         data.clear();
         try {
-            pst = conn.prepareStatement("select * from commande");
+            pst = conn.prepareStatement("select c.id,c.etat,c.date,u.nom as user from commande as c left join user as u on c.user_id=u.id");
             
             rs = pst.executeQuery();
             while (rs.next()){
-                data.add(new Commande(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getInt(4)));
+                System.out.println(rs.getString(4));
+                data.add(new Commande(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminCommandeController.class.getName()).log(Level.SEVERE, null, ex);
         }
         tableid.setItems(data);
+        System.out.println(data);
     }
         public void setCellTable(){
         columnEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         ColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-       Columniduser.setCellValueFactory(new PropertyValueFactory<>("user_id"));
+       Columniduser.setCellValueFactory(new PropertyValueFactory<>("nom"));
        
         
     }

@@ -28,6 +28,12 @@ public class MenuCommande {
         this.menu_id = menu_id;
     }
 
+    public MenuCommande(int command_id, int menu_id) {
+        this.command_id = command_id;
+        this.menu_id = menu_id;
+    }
+    
+
     public int getId() {
         return id;
     }

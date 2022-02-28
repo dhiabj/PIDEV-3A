@@ -6,6 +6,7 @@
 package services;
 
 
+import entities.Menu;
 import entities.MenuCommande;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,12 +26,11 @@ public class MenuCommandeService {
     conn=DataSource.getInstance().getCnx();
     }
     public void ajouterMenuCommande (MenuCommande c){
-    String req="insert into menu_commande (date,command_id,menu_id) values (?,?,?)";
+    String req="insert into menu_commande (command_id,menu_id) values (?,?)";
      try {
             pst = conn.prepareStatement(req);
-            pst.setDate(1, c.getDate());
-            pst.setInt(2, c.getCommand_id());
-            pst.setInt(3, c.getMenu_id());
+            pst.setInt(1, c.getCommand_id());
+            pst.setInt(2, c.getMenu_id());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -68,19 +68,20 @@ public class MenuCommandeService {
             Logger.getLogger(CommandeService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    public List <MenuCommande> afficherMenuCommande(){
-        List <MenuCommande> Menucommandes= new ArrayList<>();
-    String sql="select * from menu_commande";
+    public List <Menu> afficherMenuCommande(){
+        List <Menu> Menucommandes= new ArrayList<>();
+    String sql="select m.id,m.titre,m.ingredients,m.prix,m.image from menu as m left join menu_commande as mc on m.id=mc.menu_id left join commande as c on mc.command_id=c.id Where c.etat='non valide'";
     try { pst=conn.prepareStatement(sql);
             ResultSet rs=pst.executeQuery();
     
     while(rs.next()){
-                MenuCommande c = new MenuCommande();
-                c.setId(rs.getInt("id"));
-                c.setDate(rs.getDate("date"));
-                c.setCommand_id(rs.getInt("command_id"));
-                c.setMenu_id(rs.getInt("menu_id"));
-                Menucommandes.add(c);
+                Menu m = new Menu();
+                m.setId(rs.getInt("id"));
+                m.setTitre(rs.getString("titre"));
+                m.setIngredients(rs.getString("ingredients"));
+                m.setPrix(rs.getFloat("prix"));
+                m.setImage(rs.getString("image"));
+                Menucommandes.add(m);
             }
     }
     
