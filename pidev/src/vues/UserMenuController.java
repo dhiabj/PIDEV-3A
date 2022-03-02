@@ -84,8 +84,8 @@ public class UserMenuController implements Initializable {
     private GridPane grid;
     private Image image;
     private MyListener myListener;
-    private boolean clickedVegan = false;
-    private boolean clickedNormal = false;
+    MenuService ms = new MenuService();
+    ObservableList<Menu> allMenus = FXCollections.observableList(ms.afficherAllMenus());
     
     
     /**
@@ -93,8 +93,8 @@ public class UserMenuController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        chosenMenuCard.setVisible(false);
         //System.out.println(menusVegan);
+        showMenu(allMenus);
         conn = DataSource.getInstance().getCnx();
         }
     
@@ -108,7 +108,7 @@ public class UserMenuController implements Initializable {
         menuImage.setImage(image);
     }
     
-    MenuService ms = new MenuService();
+    
     ObservableList<Menu> menusVegan = FXCollections.observableList(ms.afficherMenuVegan());
     ObservableList<Menu> menusNormal = FXCollections.observableList(ms.afficherMenuNormal());
     
@@ -121,6 +121,11 @@ public class UserMenuController implements Initializable {
                 @Override
                 public void onClickListener(Menu menu) {
                     setChosenMenu(menu);
+                    if("Vegan".equals(menu.getCategorie())){
+                        chosenMenuCard.setStyle("-fx-background-color: 	#228B22; -fx-background-radius: 30;");
+                    }else{
+                        chosenMenuCard.setStyle("-fx-background-color: 	#FF4433; -fx-background-radius: 30;");
+                    }
                 }
             };
         }
@@ -157,23 +162,17 @@ public class UserMenuController implements Initializable {
     
     @FXML
     private void handleVeganButton(ActionEvent event) {
-        chosenMenuCard.setVisible(true);
-        chosenMenuCard.setStyle("-fx-background-color: 	#228B22; -fx-background-radius: 30;");
         grid.getChildren().clear();
         showMenu(menusVegan);
-        clickedVegan=true;
-        clickedNormal=false;
+        chosenMenuCard.setStyle("-fx-background-color: 	#228B22; -fx-background-radius: 30;");
         //System.out.println(menusVegan);
     }
 
     @FXML
     private void handleNormalButton(ActionEvent event) {
-        chosenMenuCard.setVisible(true);
-        chosenMenuCard.setStyle("-fx-background-color: 	#FF4433; -fx-background-radius: 30;");
         grid.getChildren().clear();
         showMenu(menusNormal);
-        clickedNormal=true;
-        clickedVegan=false;
+        chosenMenuCard.setStyle("-fx-background-color: 	#FF4433; -fx-background-radius: 30;");
         //System.out.println(menusNormal);
     }
     
@@ -181,13 +180,9 @@ public class UserMenuController implements Initializable {
     ObservableList<Menu> menusFound = FXCollections.observableList(listMenusFound);
     @FXML
     private void handleSearchButton(ActionEvent event) {
-        if(clickedVegan){
-            if(txt_search.getText().length() == 0){
-                grid.getChildren().clear();
-                showMenu(menusVegan);
-            }else{
+            if(txt_search.getText().length() != 0){
                 menusFound.clear();
-                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%' AND categorie= 'Vegan'";
+                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%'";
                 try {
                     pst = conn.prepareStatement(sql);
                     rs = pst.executeQuery();
@@ -200,27 +195,6 @@ public class UserMenuController implements Initializable {
                     Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
                     }
             }
-        }
-        if(clickedNormal){
-            if(txt_search.getText().length() == 0){
-                grid.getChildren().clear();
-                showMenu(menusNormal);
-            }else{
-                menusFound.clear();
-                String sql = "select * from menu where titre LIKE '%"+txt_search.getText()+"%' AND categorie= 'Normal'";
-                try {
-                    pst = conn.prepareStatement(sql);
-                    rs = pst.executeQuery();
-                    while (rs.next()){
-                    menusFound.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getFloat(4), rs.getString(5), rs.getString(6), rs.getString(7)));
-                }
-                    grid.getChildren().clear();
-                    showMenu(menusFound);
-                }catch (SQLException ex) {
-                    Logger.getLogger(AdminMenuController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-            }
-        }
     }
 
     @FXML
