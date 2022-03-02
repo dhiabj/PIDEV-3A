@@ -133,4 +133,27 @@ public class MenuService {
         return menus;
     }
     
+    public List<Menu> afficherAllMenus(){
+        List<Menu> menus = new ArrayList<>();
+        String sql="select * from menu";
+        try {
+            pst=conn.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            while(rs.next()){
+                Menu m = new Menu();
+                m.setId(rs.getInt("id"));
+                m.setTitre(rs.getString("titre"));
+                m.setDescription(rs.getString("description"));
+                m.setPrix(rs.getFloat("prix"));
+                m.setIngredients(rs.getString("ingredients"));
+                m.setCategorie(rs.getString("categorie"));
+                m.setImage(rs.getString("image"));
+                menus.add(m);
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        
+        return menus;
+    }
 }

@@ -23,7 +23,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         
 
-        Parent root = FXMLLoader.load(getClass().getResource("AdminCommande.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("UserMenu.fxml"));
         //Parent root = FXMLLoader.load(getClass().getResource("UserMenu.fxml"));
        /* Parent root = FXMLLoader.load(getClass().getResource("AdminCommande.fxml"));*/
         Scene scene = new Scene(root);

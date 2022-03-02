@@ -55,6 +55,27 @@ public class MenuCommandeService {
             Logger.getLogger(CommandeService.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     public float sum(MenuCommande c)
+   {
+       int id=c.getCommand_id();
+       String sql="SELECT SUM(m.prix) from menu m,menu_commande mc where mc.menu_id=m.id AND command_id=52";
+   float sum1 = 0;
+    try { pst=conn.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+    
+    while(rs.next()){
+         sum1 =rs.getFloat("1");
+                   return sum1;
+            }
+    }
+    
+    
+    catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }
+   return sum1;
+
+}
     
     public void supCommande(MenuCommande c)
     {
@@ -91,4 +112,5 @@ public class MenuCommandeService {
         }
     return  Menucommandes;
     } 
+  
 }

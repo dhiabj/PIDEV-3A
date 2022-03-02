@@ -20,7 +20,9 @@ public class MenuCommande {
 
     public MenuCommande() {
     }
-
+ public MenuCommande(int command_id) {
+     this.command_id=command_id;
+    }
     public MenuCommande(int id, Date date, int command_id, int menu_id) {
         this.id = id;
         this.date = date;
