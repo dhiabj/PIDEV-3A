@@ -35,6 +35,19 @@ public class Commande {
         this.total = total;
         this.user_id = user_id;
     }
+
+    public Commande(String etat, Date date, int user_id) {
+        this.etat = etat;
+        this.date = date;
+        this.user_id = user_id;
+    }
+
+    public Commande(int id, String etat, float total) {
+        this.id = id;
+        this.etat = etat;
+        this.total = total;
+    }
+    
     public Commande(int id, String etat, Date date,float total, int user_id) {
         this.id = id;
         this.etat = etat;

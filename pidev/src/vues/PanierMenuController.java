@@ -6,7 +6,6 @@
 package vues;
 
 import entities.Menu;
-import entities.MenuCommande;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import static vues.MenuController.CURRENCY;
 
 /**
  * FXML Controller class
@@ -38,9 +36,11 @@ public class PanierMenuController implements Initializable {
     private Text txt_ingredients;
     @FXML
     private Button deleteBtn;
+    private MyListener myListener;
 
     
-    public void setData(Menu menu){
+    public void setData(Menu menu, MyListener myListener){
+        this.myListener = myListener;
         this.menu = menu;
         lb_titre.setText(menu.getTitre());
         lb_prix.setText(String.valueOf(menu.getPrix()) + MenuController.CURRENCY);
@@ -61,7 +61,9 @@ public class PanierMenuController implements Initializable {
 
     @FXML
     private void handleDeleteBtn(ActionEvent event) {
-       
+        myListener.onClickListener(menu);
     }
+
+
     
 }

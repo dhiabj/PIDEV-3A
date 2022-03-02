@@ -7,8 +7,10 @@ package vues;
 
 import entities.Commande;
 import entities.Menu;
+import entities.MenuCommande;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -44,6 +46,9 @@ public class PanierInterfaceController implements Initializable {
     private GridPane grid;
     @FXML
     private Label total;
+    private MyListener myListener;
+    private int mcId;
+    private float totalP;
     
     MenuCommandeService mcs = new MenuCommandeService();
     
@@ -55,19 +60,35 @@ public class PanierInterfaceController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         //System.out.println(panierList);
         grid.getChildren().clear();
-        showPanier(panierList);
+        showPanier(mcs.afficherMenuCommande());
         total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
-        //System.out.println(mcs.afficherTotal());
+        totalP = mcs.afficherTotal();
+        //System.out.println(mcs.afficherMenuCommande());
         // TODO
     }
     
-    
-    
-    ObservableList<Menu> panierList = FXCollections.observableList(mcs.afficherMenuCommande());
-
-    private void showPanier(ObservableList<Menu> menus){
+    private void showPanier(List<Menu> menus){
         //menus.clear();
         //System.out.println(menus.isEmpty());
+        if(menus.size()>0){
+            myListener = new MyListener() {
+                @Override
+                public void onClickListener(Menu menu) {
+                    mcId = menu.getMcId();
+                    MenuCommandeService mcs = new MenuCommandeService();
+                    MenuCommande mc = new MenuCommande(mcId);
+                    //System.out.println(PanierInterfaceController.mcId);
+                    mcs.supCommande(mc);
+                    //grid.getChildren().removeIf(node -> GridPane.getRowIndex(node) == 1);
+                    //showPanier(panierList);
+                    grid.getChildren().clear();
+                    showPanier(mcs.afficherMenuCommande());
+                    total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
+                    totalP = mcs.afficherTotal();
+                    //System.out.println(mcs.afficherMenuCommande());
+                }
+            };
+        }
         int column = 0;
         int row = 1;
         try {
@@ -76,7 +97,7 @@ public class PanierInterfaceController implements Initializable {
             fxmlLoader.setLocation(getClass().getResource("/vues/PanierMenu.fxml"));
             AnchorPane anchorPane = fxmlLoader.load();
             PanierMenuController panierMenuController = fxmlLoader.getController();
-            panierMenuController.setData(menus.get(i));
+            panierMenuController.setData(menus.get(i), myListener);
             
             if(column == 1){
                 column = 0;
@@ -98,18 +119,22 @@ public class PanierInterfaceController implements Initializable {
             }
         //System.out.println(menus);
     }
+    
     CommandeService cs = new CommandeService();
     ObservableList<Commande> commandeList = FXCollections.observableList(cs.afficherCommande());
     Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     @FXML
     private void handleValiderBtn(ActionEvent event) {
         int oldId = commandeList.get(0).getId();
-        Commande c = new Commande(oldId,"valide");
+        Commande c = new Commande(oldId,"valide",totalP);
         if(cs.modifierEtat(c)){
                 alertInfo.setTitle("Info");
                 alertInfo.setHeaderText("Message");
                 alertInfo.setContentText("Panier validé avec succès");
                 alertInfo.showAndWait();
+                grid.getChildren().clear();
+                showPanier(mcs.afficherMenuCommande());
+                total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
         }
         //System.out.println(commandeList );
     }

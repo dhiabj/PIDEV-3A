@@ -94,9 +94,9 @@
             </VBox>
          </center>
          <bottom>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="172.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="135.0">
                      <children>
                         <Label contentDisplay="CENTER" prefHeight="97.0" prefWidth="128.0" text="Total :">
                            <font>
@@ -105,19 +105,25 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox prefHeight="100.0" prefWidth="134.0">
+                  <VBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="125.0">
                      <children>
-                        <Label fx:id="total" contentDisplay="CENTER" prefHeight="97.0" prefWidth="128.0" text="Label">
+                        <Label fx:id="total" contentDisplay="CENTER" prefHeight="120.0" prefWidth="172.0" text="Label">
                            <font>
                               <Font name="Cambria Bold" size="24.0" />
                            </font>
                         </Label>
                      </children>
                   </VBox>
-                  <Button fx:id="Validerbtn" mnemonicParsing="false" onAction="#handleValiderBtn" prefHeight="51.0" prefWidth="203.0" styleClass="Valider-btn" stylesheets="@../css/Style.css" text="Valider">
+                  <Button fx:id="Validerbtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handleValiderBtn" prefHeight="51.0" prefWidth="203.0" styleClass="Valider-btn" stylesheets="@../css/Style.css" text="Valider">
                      <font>
                         <Font name="Cambria" size="24.0" />
                      </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
                   </Button>
                </children>
             </HBox>

@@ -71,12 +71,13 @@ public class CommandeService {
     
     public boolean modifierEtat(Commande c)
     {
-    String req="update commande set etat= ? where id= ? ";
+    String req="update commande set etat= ?, total= ? where id= ? ";
     
      try {
             pst = conn.prepareStatement(req);
             pst.setString(1, c.getEtat());
-            pst.setInt(2, c.getId());
+            pst.setFloat(2, c.getTotal());
+            pst.setInt(3, c.getId());
             pst.executeUpdate();
             return true;
 

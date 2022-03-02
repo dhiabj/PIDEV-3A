@@ -77,21 +77,23 @@ public class MenuCommandeService {
 
 }
     
-    public void supCommande(MenuCommande c)
+    public boolean supCommande(MenuCommande c)
     {
-    String req="delete  from menu_commande where id= ?";
+    String req="delete from menu_commande where id= ?";
     try {
             pst = conn.prepareStatement(req);
             pst.setInt(1, c.getId());
             pst.executeUpdate();
+            return true;
 
         } catch (SQLException ex) {
-            Logger.getLogger(CommandeService.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(MenuCommandeService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
     public List <Menu> afficherMenuCommande(){
         List <Menu> Menucommandes= new ArrayList<>();
-    String sql="select m.id,m.titre,m.ingredients,m.prix,m.image from menu as m left join menu_commande as mc on m.id=mc.menu_id left join commande as c on mc.command_id=c.id Where c.etat='non valide'";
+    String sql="select mc.id as mcId,m.id,m.titre,m.ingredients,m.prix,m.image from menu as m left join menu_commande as mc on m.id=mc.menu_id left join commande as c on mc.command_id=c.id Where c.etat='non valide'";
     try { pst=conn.prepareStatement(sql);
             ResultSet rs=pst.executeQuery();
     
@@ -102,6 +104,7 @@ public class MenuCommandeService {
                 m.setIngredients(rs.getString("ingredients"));
                 m.setPrix(rs.getFloat("prix"));
                 m.setImage(rs.getString("image"));
+                m.setMcId(rs.getInt("mcId"));
                 Menucommandes.add(m);
             }
     }

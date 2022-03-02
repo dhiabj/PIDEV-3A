@@ -16,7 +16,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
@@ -105,8 +104,8 @@ public class UserMenuController implements Initializable {
         showMenu(allMenus);
         conn = DataSource.getInstance().getCnx();
         commandeList = FXCollections.observableList(cs.afficherCommande());
-        MenuCommandeService mcs=new MenuCommandeService();
-        MenuCommande c=new MenuCommande(52);
+        //MenuCommandeService mcs=new MenuCommandeService();
+        //MenuCommande c=new MenuCommande(52);
         //System.out.println(mcs.sum(c));
     
         
@@ -222,14 +221,12 @@ public class UserMenuController implements Initializable {
     
     java.util.Date date=new java.util.Date();
     java.sql.Date sqlDate=new java.sql.Date(date.getTime());
-    private int commandeId;
-    private float total = mcs.afficherTotal();
     Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     @FXML
     private void handleAddCartButton(ActionEvent event)  {
         commandeList = FXCollections.observableList(cs.afficherCommande());
         if(commandeList.size()==0){
-            Commande c = new Commande("non valide",sqlDate,total,1);
+            Commande c = new Commande("non valide",sqlDate,1);
             cs.ajouterCommande(c);
             MenuCommande mcNew = new MenuCommande(CommandeService.id,menuId);
             mcs.ajouterMenuCommande(mcNew);
