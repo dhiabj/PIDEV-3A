@@ -223,12 +223,13 @@ public class UserMenuController implements Initializable {
     java.util.Date date=new java.util.Date();
     java.sql.Date sqlDate=new java.sql.Date(date.getTime());
     private int commandeId;
+    private float total = mcs.afficherTotal();
     Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     @FXML
     private void handleAddCartButton(ActionEvent event)  {
         commandeList = FXCollections.observableList(cs.afficherCommande());
         if(commandeList.size()==0){
-            Commande c = new Commande("non valide",sqlDate,1);
+            Commande c = new Commande("non valide",sqlDate,total,1);
             cs.ajouterCommande(c);
             MenuCommande mcNew = new MenuCommande(CommandeService.id,menuId);
             mcs.ajouterMenuCommande(mcNew);

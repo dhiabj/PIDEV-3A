@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.PanierInterfaceController">
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.PanierInterfaceController">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -94,8 +94,26 @@
             </VBox>
          </center>
          <bottom>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="172.0">
+                     <children>
+                        <Label contentDisplay="CENTER" prefHeight="97.0" prefWidth="128.0" text="Total :">
+                           <font>
+                              <Font name="Cambria Bold" size="40.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="100.0" prefWidth="134.0">
+                     <children>
+                        <Label fx:id="total" contentDisplay="CENTER" prefHeight="97.0" prefWidth="128.0" text="Label">
+                           <font>
+                              <Font name="Cambria Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </VBox>
                   <Button fx:id="Validerbtn" mnemonicParsing="false" onAction="#handleValiderBtn" prefHeight="51.0" prefWidth="203.0" styleClass="Valider-btn" stylesheets="@../css/Style.css" text="Valider">
                      <font>
                         <Font name="Cambria" size="24.0" />

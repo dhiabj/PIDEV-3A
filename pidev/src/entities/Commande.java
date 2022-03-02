@@ -17,6 +17,7 @@ public class Commande {
     private int id;
     private String etat;
     private Date date;
+    private float total;
     private int user_id; 
     private String nom;
 
@@ -27,23 +28,26 @@ public class Commande {
         this.etat = etat;
     }
     
-    public Commande( String etat, Date date, int user_id) {
+    public Commande( String etat, Date date,float total, int user_id) {
         
         this.etat = etat;
         this.date = date;
+        this.total = total;
         this.user_id = user_id;
     }
-    public Commande(int id, String etat, Date date, int user_id) {
+    public Commande(int id, String etat, Date date,float total, int user_id) {
         this.id = id;
         this.etat = etat;
         this.date = date;
+        this.total = total;
         this.user_id = user_id;
     }
     
-    public Commande(int id, String etat, Date date, String nom) {
+    public Commande(int id, String etat, Date date,float total, String nom) {
         this.id = id;
         this.etat = etat;
         this.date = date;
+        this.total = total;
         this.nom = nom;
     }
 
@@ -63,6 +67,14 @@ public class Commande {
 
     public Commande(int id) {
         this.id = id;
+    }
+
+    public float getTotal() {
+        return total;
+    }
+
+    public void setTotal(float total) {
+        this.total = total;
     }
    
     
@@ -101,7 +113,7 @@ public class Commande {
 
     @Override
     public String toString() {
-        return "Commande{" + "id=" + id + ", etat=" + etat + ", date=" + date + ", nom=" + nom + '}';
+        return "Commande{" + "id=" + id + ", etat=" + etat + ", date=" + date +", total="+ total + ", nom=" + nom + '}';
     }
     
     

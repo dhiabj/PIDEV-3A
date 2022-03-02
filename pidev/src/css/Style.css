@@ -154,3 +154,30 @@
     -fx-rotate: 10;
 }
 
+.Supprimer-btn{
+    -fx-background-color: red;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.Supprimer-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+    -fx-text-fill: red;
+    -fx-border-color: red;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.Supprimer-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+    -fx-text-fill: red;
+    -fx-border-color: red;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+

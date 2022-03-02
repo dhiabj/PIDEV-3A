@@ -6,11 +6,14 @@
 package vues;
 
 import entities.Menu;
+import entities.MenuCommande;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -33,6 +36,8 @@ public class PanierMenuController implements Initializable {
     private Menu menu;
     @FXML
     private Text txt_ingredients;
+    @FXML
+    private Button deleteBtn;
 
     
     public void setData(Menu menu){
@@ -44,6 +49,8 @@ public class PanierMenuController implements Initializable {
         Image image = new Image(file.getAbsoluteFile().toURI().toString());
         menuImage.setImage(image);
     }
+    
+    
     /**
      * Initializes the controller class.
      */
@@ -51,5 +58,10 @@ public class PanierMenuController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+
+    @FXML
+    private void handleDeleteBtn(ActionEvent event) {
+       
+    }
     
 }

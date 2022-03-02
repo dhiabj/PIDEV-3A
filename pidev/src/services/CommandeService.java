@@ -30,12 +30,13 @@ public class CommandeService {
     }
     public void ajouterCommande (Commande c){
     String generatedColumns[] = { "ID" };
-    String req="insert into commande(etat,date,user_id) values (?,?,?)";
+    String req="insert into commande(etat,date,total,user_id) values (?,?,?,?)";
      try {
             pst = conn.prepareStatement(req, generatedColumns);
             pst.setString(1, c.getEtat());
             pst.setDate(2, c.getDate());
-            pst.setInt(3, c.getUser_id());
+            pst.setFloat(3, c.getTotal());
+            pst.setInt(4, c.getUser_id());
             pst.executeUpdate();
             ResultSet rs = pst.getGeneratedKeys();
             if (rs.next()) {
@@ -112,6 +113,7 @@ public class CommandeService {
                 c.setId(rs.getInt("id"));
                 c.setEtat(rs.getString("etat"));
                 c.setDate(rs.getDate("date"));
+                c.setTotal(rs.getFloat("total"));
                 c.setUser_id(rs.getInt("user_id"));
                 
                 commandes.add(c);

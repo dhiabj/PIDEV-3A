@@ -111,6 +111,44 @@ public class MenuCommandeService {
            System.out.println(ex.getMessage());
         }
     return  Menucommandes;
-    } 
+    }
+    
+     public List <MenuCommande> afficherMenuCommandeId(){
+        List <MenuCommande> Menucommandes= new ArrayList<>();
+    String sql="select mc.id from menu as m left join menu_commande as mc on m.id=mc.menu_id left join commande as c on mc.command_id=c.id Where c.etat='non valide'";
+    try { pst=conn.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+    
+    while(rs.next()){
+                MenuCommande mc = new MenuCommande();
+                mc.setId(rs.getInt("id"));
+                Menucommandes.add(mc);
+            }
+    }
+    
+    
+    catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }
+    return  Menucommandes;
+    }
+    
+    private float total;
+    public Float afficherTotal(){
+    String sql="select sum(m.prix) as total from menu as m left join menu_commande as mc on m.id=mc.menu_id left join commande as c on mc.command_id=c.id Where c.etat='non valide'";
+    try { pst=conn.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+    
+    while(rs.next()){
+                this.total = rs.getFloat("total");
+            }
+    }
+    
+    
+    catch (SQLException ex) {
+           System.out.println(ex.getMessage());
+        }
+    return  total;
+    }
   
 }

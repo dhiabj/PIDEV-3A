@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -41,7 +42,10 @@ public class PanierInterfaceController implements Initializable {
     private ScrollPane scroll;
     @FXML
     private GridPane grid;
+    @FXML
+    private Label total;
     
+    MenuCommandeService mcs = new MenuCommandeService();
     
     
     /**
@@ -49,14 +53,16 @@ public class PanierInterfaceController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println(panierList);
+        //System.out.println(panierList);
         grid.getChildren().clear();
         showPanier(panierList);
+        total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
+        //System.out.println(mcs.afficherTotal());
         // TODO
     }
     
     
-    MenuCommandeService mcs = new MenuCommandeService();
+    
     ObservableList<Menu> panierList = FXCollections.observableList(mcs.afficherMenuCommande());
 
     private void showPanier(ObservableList<Menu> menus){
