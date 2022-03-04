@@ -86,6 +86,8 @@ public class UserMenuController implements Initializable {
     private MyListener myListener;
     MenuService ms = new MenuService();
     ObservableList<Menu> allMenus = FXCollections.observableList(ms.afficherAllMenus());
+    @FXML
+    private Button btnAll;
     
     
     /**
@@ -176,6 +178,13 @@ public class UserMenuController implements Initializable {
         //System.out.println(menusNormal);
     }
     
+    @FXML
+    private void handleAllButton(ActionEvent event) {
+        grid.getChildren().clear();
+        showMenu(allMenus);
+        chosenMenuCard.setStyle("-fx-background-color: 	#F16C31; -fx-background-radius: 30;");
+    }
+    
     List<Menu> listMenusFound = new ArrayList<>();
     ObservableList<Menu> menusFound = FXCollections.observableList(listMenusFound);
     @FXML
@@ -204,6 +213,8 @@ public class UserMenuController implements Initializable {
     @FXML
     private void handleCartButton(ActionEvent event) {
     }
+
+    
     
     
     
