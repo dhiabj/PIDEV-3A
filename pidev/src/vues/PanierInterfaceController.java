@@ -124,17 +124,15 @@ public class PanierInterfaceController implements Initializable {
     ObservableList<Commande> commandeList = FXCollections.observableList(cs.afficherCommande());
     Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     @FXML
-    private void handleValiderBtn(ActionEvent event) {
+    private void handleValiderBtn(ActionEvent event) throws Exception {
         int oldId = commandeList.get(0).getId();
         Commande c = new Commande(oldId,"valide",totalP);
         if(cs.modifierEtat(c)){
-                alertInfo.setTitle("Info");
-                alertInfo.setHeaderText("Message");
-                alertInfo.setContentText("Panier validé avec succès");
-                alertInfo.showAndWait();
+               
                 grid.getChildren().clear();
                 showPanier(mcs.afficherMenuCommande());
                 total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
+                 SceneChanger.changeToSceneWindow(getClass(), event, "validcommand.fxml");
         }
         //System.out.println(commandeList );
     }

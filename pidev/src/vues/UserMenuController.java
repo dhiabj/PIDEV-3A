@@ -223,7 +223,7 @@ public class UserMenuController implements Initializable {
     java.sql.Date sqlDate=new java.sql.Date(date.getTime());
     Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     @FXML
-    private void handleAddCartButton(ActionEvent event)  {
+    private void handleAddCartButton(ActionEvent event) throws Exception  {
         commandeList = FXCollections.observableList(cs.afficherCommande());
         if(commandeList.size()==0){
             Commande c = new Commande("non valide",sqlDate,1);
@@ -238,11 +238,7 @@ public class UserMenuController implements Initializable {
             //System.out.println(commandeList);
             
         }
-                alertInfo.setTitle("Info");
-                alertInfo.setHeaderText("Message");
-                alertInfo.setContentText("Menu ajouté au panier avec succès");
-                alertInfo.showAndWait();
-        
+                 SceneChanger.changeToSceneWindow(getClass(), event, "validmenu.fxml");
         //System.out.println(commandeList.isEmpty());
             
   

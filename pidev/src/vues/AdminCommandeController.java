@@ -83,6 +83,8 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
     @FXML
     private Label error_user;
     @FXML
+    private TableColumn<?, ?> toltalcol;
+    @FXML
     private void handleAddMenu(ActionEvent event)
     {
         boolean isDateEmpty = validation.DatePickerValidation.isDatePickerNotEmpty(date, error_date, "Choisir un date valide");
@@ -143,12 +145,12 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
        public void loadDataFromDataBase(){
         data.clear();
         try {
-            pst = conn.prepareStatement("select c.id,c.etat,c.date,u.nom as user from commande as c left join user as u on c.user_id=u.id");
+            pst = conn.prepareStatement("select c.id,c.etat,c.date,c.total,u.email as user from commande as c left join user as u on c.user_id=u.id");
             
             rs = pst.executeQuery();
             while (rs.next()){
                 System.out.println(rs.getString(4));
-                data.add(new Commande(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getString(4)));
+                data.add(new Commande(rs.getInt(1),rs.getString(2),rs.getDate(3),rs.getFloat(4),rs.getString(5)));
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminCommandeController.class.getName()).log(Level.SEVERE, null, ex);
@@ -159,6 +161,7 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
         public void setCellTable(){
         columnEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         ColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        toltalcol.setCellValueFactory(new PropertyValueFactory<>("total"));
        Columniduser.setCellValueFactory(new PropertyValueFactory<>("nom"));
        
         
