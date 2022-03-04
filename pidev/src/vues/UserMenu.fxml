@@ -203,7 +203,15 @@
                               </Button>
                            </children>
                         </VBox>
-                        <Pane prefHeight="100.0" prefWidth="69.0" HBox.hgrow="ALWAYS" />
+                        <VBox alignment="CENTER" prefHeight="105.0" prefWidth="370.0">
+                           <children>
+                              <Button fx:id="btnAll" mnemonicParsing="false" onAction="#handleAllButton" prefHeight="50.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="All" textFill="WHITE">
+                                 <font>
+                                    <Font name="System Bold" size="24.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </VBox>
                         <VBox alignment="CENTER" prefHeight="105.0" prefWidth="370.0">
                            <children>
                               <Button fx:id="btnNormal" mnemonicParsing="false" onAction="#handleNormalButton" prefHeight="50.0" prefWidth="270.0" styleClass="normal-btn" stylesheets="@../css/Style.css" text="Normal" textFill="WHITE">

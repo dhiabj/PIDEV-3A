@@ -9,12 +9,15 @@ import entities.Menu;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import org.controlsfx.control.Rating;
 
 /**
  * FXML Controller class
@@ -32,6 +35,10 @@ public class MenuController implements Initializable {
     
     private Menu menu;
     private MyListener myListener;
+    @FXML
+    private Rating rating;
+    @FXML
+    private Label lb_rating;
     
     @FXML
     private void click(MouseEvent mouseEvent){
@@ -54,7 +61,12 @@ public class MenuController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        rating.ratingProperty().addListener(new ChangeListener<Number>(){
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                lb_rating.setText("Rating: "+newValue);
+            }
+        });
     }    
     
 }

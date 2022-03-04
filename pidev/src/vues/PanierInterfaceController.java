@@ -21,15 +21,20 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
 import services.CommandeService;
 import services.MenuCommandeService;
 
@@ -135,6 +140,7 @@ public class PanierInterfaceController implements Initializable {
     Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     @FXML
     private void handleValiderBtn(ActionEvent event) throws Exception {
+        Image img = new Image("/ressources/delivery-truck-copy.png");
         int oldId = commandeList.get(0).getId();
         Commande c = new Commande(oldId,"valide",totalP);
         if(cs.modifierEtat(c)){
@@ -142,7 +148,14 @@ public class PanierInterfaceController implements Initializable {
                 grid.getChildren().clear();
                 showPanier(mcs.afficherMenuCommande());
                 totalNew.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
-                 SceneChanger.changeToSceneWindow(getClass(), event, "validcommand.fxml");
+                //SceneChanger.changeToSceneWindow(getClass(), event, "validcommand.fxml");
+                Notifications notificationBuilder = Notifications.create()
+                        .title("Commande validé")
+                        .text("Commande validé avec succes !")
+                        .graphic(new ImageView(img))
+                        .hideAfter(Duration.seconds(5))
+                        .position(Pos.BOTTOM_RIGHT);
+                notificationBuilder.show();
         }
         //System.out.println(commandeList );
     }

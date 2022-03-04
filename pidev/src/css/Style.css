@@ -74,6 +74,31 @@
     -fx-rotate: 10;
 }
 
+.all-btn{
+    -fx-background-color: #828282;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.all-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.all-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
 .vegan-btn{
     -fx-background-color: #228B22;
     -fx-background-radius: 100;
