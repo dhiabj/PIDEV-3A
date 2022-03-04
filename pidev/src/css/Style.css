@@ -181,3 +181,7 @@
     -fx-rotate: 10;
 }
 
+.old-price{
+    -fx-text-overrun: true;
+}
+

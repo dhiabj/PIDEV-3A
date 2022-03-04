@@ -25,9 +25,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Region;
+import javafx.scene.text.Text;
 import services.CommandeService;
 import services.MenuCommandeService;
 
@@ -45,12 +47,19 @@ public class PanierInterfaceController implements Initializable {
     @FXML
     private GridPane grid;
     @FXML
-    private Label total;
+    private Text total;
     private MyListener myListener;
     private int mcId;
     private float totalP;
     
     MenuCommandeService mcs = new MenuCommandeService();
+    @FXML
+    private TextField txt_code;
+    @FXML
+    private Button btnCode;
+    @FXML
+    private Text totalNew;
+    private boolean b = false;
     
     
     /**
@@ -85,6 +94,7 @@ public class PanierInterfaceController implements Initializable {
                     showPanier(mcs.afficherMenuCommande());
                     total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
                     totalP = mcs.afficherTotal();
+                    b=false;
                     //System.out.println(mcs.afficherMenuCommande());
                 }
             };
@@ -131,10 +141,23 @@ public class PanierInterfaceController implements Initializable {
                
                 grid.getChildren().clear();
                 showPanier(mcs.afficherMenuCommande());
-                total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
+                totalNew.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
                  SceneChanger.changeToSceneWindow(getClass(), event, "validcommand.fxml");
         }
         //System.out.println(commandeList );
+    }
+    
+    String code = "0000";
+    @FXML
+    private void handleCodeButton(ActionEvent event) throws Exception {
+        if(txt_code.getText().equals(code) && b==false){
+            b = true;
+            totalP=totalP*0.75f;
+            total.setStyle("-fx-strikethrough: true");
+            totalNew.setText(String.valueOf(totalP) + MenuController.CURRENCY);
+        }
+        else{
+                SceneChanger.changeToSceneWindow(getClass(), event, "alrtcode.fxml");}
     }
     
 }
