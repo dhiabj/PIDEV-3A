@@ -12,6 +12,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
+
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.LoginFXMLController">
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -27,7 +29,11 @@
    <right>
       <AnchorPane prefHeight="368.0" prefWidth="373.0" BorderPane.alignment="CENTER">
          <children>
+<<<<<<< HEAD
             <TextField fx:id="tfemail" layoutX="57.0" layoutY="136.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" stylesheets="@../css/Style.css">
+=======
+            <TextField fx:id="tfemail" layoutX="57.0" layoutY="136.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
                <font>
                   <Font name="Monospaced Bold" size="14.0" />
                </font>
@@ -36,6 +42,16 @@
                <font>
                   <Font name="Monospaced Bold" size="12.0" />
                </font></PasswordField>
+            <Button fx:id="btconnexion" layoutX="29.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#connexion" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Connexion">
+               <font>
+                  <Font name="Monospaced Regular" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="closeButton" layoutX="196.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#handleCloseButtonAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Fermer">
+               <font>
+                  <Font name="Monospaced Regular" size="12.0" />
+               </font>
+            </Button>
             <Label layoutX="75.0" layoutY="4.0" prefHeight="100.0" prefWidth="224.0" text="Login" textAlignment="CENTER" textFill="#6aa84f">
                <font>
                   <Font name="Monospaced Bold" size="72.0" />

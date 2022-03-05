@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<<<<<<< HEAD
 <?import javafx.scene.control.Label?>
+=======
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.MainClientFXMLController">
    <children>
       <ImageView fitHeight="127.0" fitWidth="147.0" layoutX="256.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+=======
+<AnchorPane id="AnchorPane" prefHeight="475.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.MainClientFXMLController">
+   <children>
+      <Button fx:id="btnEventetReser" layoutX="175.0" layoutY="225.0" mnemonicParsing="false" onAction="#GotoEventetReser" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Evenement et réservation" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btngestLivraison" layoutX="175.0" layoutY="323.0" mnemonicParsing="false" onAction="#GotoGestCommande" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Consulter Commande" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="227.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
          <image>
             <Image url="@../Ressources/Logo.png" />
          </image>
       </ImageView>
+<<<<<<< HEAD
       <Button fx:id="profil" layoutX="184.0" layoutY="139.0" mnemonicParsing="false" onAction="#GotoGestionProfil" prefHeight="25.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Profil" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -59,5 +79,27 @@
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
+=======
+      <Button fx:id="btnprofil" layoutX="175.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#GotoGestionProfil" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Gérer Profil" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btngestLivraison" layoutX="175.0" layoutY="375.0" mnemonicParsing="false" onAction="#GotoGesLivraison" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Consulter Livraison" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btngestReclamation" layoutX="175.0" layoutY="422.0" mnemonicParsing="false" onAction="#GotoGestReclamation" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Réclamation" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btngestMenu" layoutX="175.0" layoutY="274.0" mnemonicParsing="false" onAction="#GotoGestMenu" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Voir Menu" textFill="#363636">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
    </children>
 </AnchorPane>

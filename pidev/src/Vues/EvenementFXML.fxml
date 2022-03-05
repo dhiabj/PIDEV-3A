@@ -17,7 +17,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.EvenementFXMLController">
+=======
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.EvenementFXMLController">
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
    <children>
       <MenuBar fx:id="menu" layoutX="2.0" layoutY="2.0" prefHeight="25.0" prefWidth="1320.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
          <menus>

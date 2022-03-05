@@ -20,7 +20,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1320.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.UserFXMLController">
+=======
+<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1320.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.UserFXMLController">
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
    <children>
       <TextField fx:id="tfrecherche" layoutX="500.0" layoutY="85.0" onKeyReleased="#SearchUser" prefHeight="30.0" prefWidth="200.0" promptText="Recherche" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
@@ -31,6 +35,7 @@
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
+<<<<<<< HEAD
       <TextField fx:id="tfprenom" layoutX="35.0" layoutY="239.0" prefHeight="30.0" prefWidth="250.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
@@ -57,6 +62,34 @@
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
       <ComboBox fx:id="cbrole" layoutX="36.0" layoutY="589.0" prefHeight="30.0" prefWidth="250.0" promptText="Role" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+=======
+      <TextField fx:id="tfprenom" layoutX="34.0" layoutY="240.0" prefHeight="30.0" prefWidth="250.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="tfemail" layoutX="34.0" layoutY="290.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font></TextField>
+      <PasswordField fx:id="tfpassword" layoutX="34.0" layoutY="340.0" prefHeight="30.0" prefWidth="250.0" promptText="Mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font></PasswordField>
+      <PasswordField fx:id="tfconfirmpass" layoutX="35.0" layoutY="390.0" prefHeight="30.0" prefWidth="250.0" promptText="Confirmer mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font></PasswordField>
+      <DatePicker fx:id="date" layoutX="35.0" layoutY="440.0" prefHeight="30.0" prefWidth="250.0" promptText="Date de naissance" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+      <TextField fx:id="tftelephone" layoutX="34.0" layoutY="490.0" prefHeight="30.0" prefWidth="250.0" promptText="Telephone" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font></TextField>
+      <TextField fx:id="tfadresse" layoutX="34.0" layoutY="540.0" prefHeight="30.0" prefWidth="250.0" promptText="Adresse" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+         <font>
+            <Font name="Monospaced Bold" size="12.0" />
+         </font></TextField>
+      <ComboBox fx:id="cbrole" layoutX="35.0" layoutY="590.0" prefHeight="30.0" prefWidth="250.0" promptText="Role" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
          <effect>
             <Blend mode="OVERLAY" />
          </effect></ComboBox>
@@ -154,6 +187,7 @@
             <Font name="Monospaced Bold" size="12.0" />
          </font>
       </Button>
+<<<<<<< HEAD
       <Button fx:id="pdf" layoutX="405.0" layoutY="745.0" mnemonicParsing="false" onAction="#Pdf" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Pdf">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
@@ -174,5 +208,7 @@
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Button>
+=======
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
    </children>
 </AnchorPane>

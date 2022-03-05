@@ -13,6 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.ProfilFXMLController">
    <children>
       <AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="754.0" style="-fx-background-color: #a9a9a9 , white , white;">
@@ -148,6 +149,134 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Button>
+=======
+<AnchorPane id="AnchorPane" prefHeight="753.0" prefWidth="1224.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.ProfilFXMLController">
+   <children>
+      <MenuBar fx:id="menu" layoutX="-2.0" layoutY="-1.0" prefHeight="27.0" prefWidth="1235.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+         <menus>
+            <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Edit">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+               </items>
+            </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+      <TextField fx:id="tfnom" layoutX="511.0" layoutY="297.0" prefHeight="30.0" prefWidth="300.0" promptText="Nom" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></TextField>
+      <TextField fx:id="tfprenom" layoutX="510.0" layoutY="368.0" prefHeight="30.0" prefWidth="300.0" promptText="Prenom" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></TextField>
+      <TextField fx:id="tfadresse" layoutX="510.0" layoutY="437.0" prefHeight="30.0" prefWidth="300.0" promptText="Adresse" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></TextField>
+      <Button fx:id="btnmodif" layoutX="610.0" layoutY="538.0" mnemonicParsing="false" onAction="#ModifUser" prefHeight="30.0" prefWidth="116.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Modifier">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font></Button>
+      <ImageView fx:id="imageviewlogo" fitHeight="198.0" fitWidth="205.0" layoutX="563.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/Logo.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="upload" layoutX="993.0" layoutY="365.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="upload">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Button>
+      <ImageView fx:id="UserImg" fitHeight="198.0" fitWidth="233.0" layoutX="926.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="ImageName" layoutX="926.0" layoutY="310.0" prefHeight="39.0" prefWidth="233.0">
+         <font>
+            <Font name="Monospaced Regular" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnReturnMenu" layoutX="977.0" layoutY="688.0" mnemonicParsing="false" onAction="#handleReturnMenuAdmin" prefHeight="37.0" prefWidth="220.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Retourner au menu">
+         <font>
+            <Font name="Monospaced Bold" size="18.0" />
+         </font>
+      </Button>
+      <AnchorPane layoutX="6.0" layoutY="11.0" minHeight="0.0" minWidth="0.0" prefHeight="753.0" prefWidth="336.0">
+         <children>
+            <ImageView fx:id="ImageUserLogedIn" fitHeight="114.0" fitWidth="149.0" layoutX="13.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="UserName" layoutX="47.0" layoutY="226.0" prefHeight="28.0" prefWidth="263.0">
+               <font>
+                  <Font name="Monospaced Bold" size="24.0" />
+               </font></Label>
+            <Text fill="#6aa84f" layoutX="128.0" layoutY="315.0" onMouseClicked="#UpdateProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Profil">
+               <font>
+                  <Font name="Monospaced Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#6aa84f" layoutX="98.0" layoutY="434.0" onMouseClicked="#ResetPassword" strokeType="OUTSIDE" strokeWidth="0.0" text="Modifier Mot de passe">
+               <font>
+                  <Font name="Monospaced Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#6aa84f" layoutX="105.0" layoutY="539.0" onMouseClicked="#DeleteAccount" strokeType="OUTSIDE" strokeWidth="0.0" text="Supprimer le compte">
+               <font>
+                  <Font name="Monospaced Bold" size="18.0" />
+               </font>
+            </Text>
+            <Text fill="#6aa84f" layoutX="126.0" layoutY="640.0" onMouseClicked="#Logout" strokeType="OUTSIDE" strokeWidth="0.0" text="Se deconnecter">
+               <font>
+                  <Font name="Monospaced Bold" size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="25.0" layoutY="284.0">
+               <image>
+                  <Image url="@../Ressources/utilisateur.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="22.0" layoutY="387.0">
+               <image>
+                  <Image url="@../Ressources/password.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="22.0" layoutY="506.0">
+               <image>
+                  <Image url="@../Ressources/delete.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="30.0" layoutY="607.0">
+               <image>
+                  <Image url="@../Ressources/logout.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="ImageUserLogedIn1" fitHeight="158.0" fitWidth="183.0" layoutX="77.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true" />
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
          </children>
       </AnchorPane>
    </children>

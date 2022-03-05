@@ -50,7 +50,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+<<<<<<< HEAD
 <VBox prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.ReservationFXMLController">
+=======
+<VBox prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.ReservationFXMLController">
+>>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #a9a9a9 , white , white;" VBox.vgrow="ALWAYS">
          <children>

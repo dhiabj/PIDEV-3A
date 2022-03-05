@@ -27,7 +27,6 @@ public class Pidev extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         Parent root = FXMLLoader.load(getClass().getResource("/vues/LoginFXML.fxml"));
         Scene scene = new Scene(root);
         primaryStage.setTitle("FORU");
