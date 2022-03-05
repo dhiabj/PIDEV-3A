@@ -93,7 +93,7 @@ public class ResetPasswordAdminController implements Initializable {
             stage.setScene(new Scene(root1));
             stage.show();
         } catch (IOException ex) {
-            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ResetPasswordAdminController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -114,7 +114,7 @@ public class ResetPasswordAdminController implements Initializable {
                 try {
                     Parent root = LOADER.load();
                     Scene sc = new Scene(root);
-                    LoginFXMLController cntr = LOADER.getController();
+                    ResetPasswordAdminController cntr = LOADER.getController();
                     Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
                     window.setScene(sc);
@@ -145,7 +145,7 @@ public class ResetPasswordAdminController implements Initializable {
             try {
                 Parent root = LOADER.load();
                 Scene sc = new Scene(root);
-                LoginFXMLController cntr = LOADER.getController();
+                ResetPasswordAdminController cntr = LOADER.getController();
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
                 window.setScene(sc);
@@ -188,7 +188,7 @@ public class ResetPasswordAdminController implements Initializable {
 
     @FXML
     private void backbtnmenu(MouseEvent event) {
-        GotoFXML("MainClientFXML", "ForU", event);
+        GotoFXML("MainFXML", "ForU", event);
     }
 
 }
