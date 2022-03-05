@@ -3,22 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package LoginSessionVues;
-
-import Vues.MainFXMLController;
+package Vues;
+import services.UserService;
 import entities.user;
+import static pidev.Pidev.Userconnected;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
@@ -27,7 +25,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import services.UserService;
+import javafx.event.Event;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+
+
 
 /**
  * FXML Controller class
@@ -37,27 +39,44 @@ import services.UserService;
 public class LoginFXMLController implements Initializable {
 
     @FXML
-    private Button btconnexion;
-    @FXML
     private ImageView imageview;
-    @FXML
-    private Label mdpoublie;
-
-    /**
-     * Initializes the controller class.
-     */
-    UserService us = new UserService();
     @FXML
     private TextField tfemail;
     @FXML
     private PasswordField pfpassword;
     @FXML
-    private CheckBox chkbvoirmdp;
+    private Button btconnexion;
     @FXML
     private Button closeButton;
+    @FXML
+    private CheckBox chkbvoirmdp;
+    @FXML
+    private Label mdpoublie;
+    @FXML
+    private Label newaccout;
+
+    /**
+     * Initializes the controller class.
+     */
+    UserService us = new UserService();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // TODO
+    }
+
+    private void GotoFXML(String vue, String title,Event aEvent) {
+        try {
+            Event event;
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage =(Stage)((Node) aEvent.getSource()).getScene().getWindow() ;
+            stage.setTitle(title);
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void AlertWindow(String title, String contenu, Alert.AlertType type) {
@@ -68,30 +87,20 @@ public class LoginFXMLController implements Initializable {
         alert.showAndWait();
     }
 
-    private void GotoFXML(String vue, String title) {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Vues/"+vue+".fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage = new Stage();
-            stage.setTitle(title);
-            stage.setScene(new Scene(root1));
-            stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     @FXML
-    private void connexion(ActionEvent event) throws IOException {
+    private void connexion(MouseEvent event) throws IOException {
         String email = tfemail.getText();
         String mdp = pfpassword.getText();
-        user u = us.getUserbyEmailPass(email, mdp);
-        if (u.getId() != 0) {
-            AlertWindow("Connexion avec succées", "Bonjour " + u.getNom() + ",\nInterface " + u.getRole(), Alert.AlertType.INFORMATION);
-            if ("Admin".equals(u.getRole())) {
-                GotoFXML("MainFXML", "Dashbord Admin");
+        Userconnected = us.getUserbyEmailPass(email, mdp);
+        if (Userconnected.getId() != 0) {
+            Userconnected.setId(Userconnected.getId());
+            Userconnected.setEmail(Userconnected.getEmail());
+            Userconnected.setPassword(Userconnected.getPassword());
+            AlertWindow("Connexion avec succées", "Je vous souhaite la bienvenue Mr/Mme " + Userconnected.getNom() + ",\nInterface " + Userconnected.getRole(), Alert.AlertType.INFORMATION);
+            if ("Admin".equals(Userconnected.getRole())) {
+                GotoFXML("MainFXML", "Dashbord Admin",event);
             } else {
-                GotoFXML("LivraisonFXML", "Gestion de livraison");
+                GotoFXML("MainClientFXML", "ForU",event);
             }
         } else {
             AlertWindow("Connexion echouée", "Email ou mot de pass invalid!!", Alert.AlertType.ERROR);
@@ -103,4 +112,14 @@ public class LoginFXMLController implements Initializable {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
+
+    @FXML
+    private void MdpOublie(MouseEvent event) {
+    }
+
+    @FXML
+    private void gotoREGISTER(MouseEvent event) {
+        GotoFXML("RegisterFXML", "Bienvenue",event);
+    }
+
 }

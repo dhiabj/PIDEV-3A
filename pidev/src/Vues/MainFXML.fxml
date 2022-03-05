@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.MainFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="545.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.MainFXMLController">
    <children>
-      <Button fx:id="btngestUser" layoutX="148.0" layoutY="216.0" mnemonicParsing="false" onAction="#GotoGestUser" prefHeight="30.0" prefWidth="250.0" text="Gestion Utilisateur" textFill="#363636">
+      <Button fx:id="btngestUser" layoutX="148.0" layoutY="216.0" mnemonicParsing="false" onAction="#GotoGestUser" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Utilisateur">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Monospaced Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btngestLivraison" layoutX="148.0" layoutY="314.0" mnemonicParsing="false" onAction="#GotoGestLivraison" prefHeight="30.0" prefWidth="250.0" text="Gestion Livraison" textFill="#363636">
+      <Button fx:id="btngestLivraison" layoutX="148.0" layoutY="314.0" mnemonicParsing="false" onAction="#GotoGestLivraison" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Livraison">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Monospaced Bold" size="14.0" />
          </font>
       </Button>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -23,24 +23,24 @@
             <Image url="@../Ressources/Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnprofil" layoutX="148.0" layoutY="171.0" mnemonicParsing="false" onAction="#GotoGestionProfil" prefHeight="30.0" prefWidth="250.0" text="Gérer Profil" textFill="#363636">
+      <Button fx:id="btnprofil" layoutX="148.0" layoutY="171.0" mnemonicParsing="false" onAction="#GotoGestionProfil" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Gérer Profil">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Monospaced Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btngestEvenement" layoutX="148.0" layoutY="366.0" mnemonicParsing="false" onAction="#GotoGestEvenement" prefHeight="30.0" prefWidth="250.0" text="Gestion Evenement" textFill="#363636">
+      <Button fx:id="btngestEvenement" layoutX="148.0" layoutY="366.0" mnemonicParsing="false" onAction="#GotoGestEvenement" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Evénement et Réservation">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Monospaced Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btngestReclamation" layoutX="148.0" layoutY="418.0" mnemonicParsing="false" onAction="#GotoGestReclamation" prefHeight="30.0" prefWidth="250.0" text="Gestion Réclamation" textFill="#363636">
+      <Button fx:id="btngestReclamation" layoutX="148.0" layoutY="412.0" mnemonicParsing="false" onAction="#GotoGestReclamation" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Réclamation">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Monospaced Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btngestMenu" layoutX="148.0" layoutY="265.0" mnemonicParsing="false" onAction="#GotoGestMenu" prefHeight="30.0" prefWidth="250.0" text="Gestion Menu" textFill="#363636">
+      <Button fx:id="btngestMenu" layoutX="148.0" layoutY="265.0" mnemonicParsing="false" onAction="#GotoGestMenu" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Menu">
          <font>
-            <Font name="System Bold" size="14.0" />
+            <Font name="Monospaced Bold" size="14.0" />
          </font>
       </Button>
    </children>

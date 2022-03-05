@@ -6,17 +6,25 @@
 package Vues;
 
 import entities.user;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -32,7 +40,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import services.UserService;
+import validation.ChoiceBoxValidation;
+import validation.TextFieldValidation;
 
 /**
  * FXML Controller class
@@ -108,6 +119,8 @@ public class UserFXMLController implements Initializable {
      * Initializes the controller class.
      */
     UserService us = new UserService();
+    @FXML
+    private Button btnReturnMenu;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -157,6 +170,8 @@ public class UserFXMLController implements Initializable {
 
     @FXML
     private void CreateUser(ActionEvent event) {
+        
+        
         String nom = tfnom.getText();
         String prenom = tfprenom.getText();
         String email = tfemail.getText();
@@ -246,7 +261,19 @@ public class UserFXMLController implements Initializable {
         }
         init();
     }
-
+private void GotoFXML(String vue, String title,Event aEvent) {
+           try {
+               Event event;
+               FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
+               Parent root1 = (Parent) fxmlLoader.load();
+               Stage stage =(Stage)((Node) aEvent.getSource()).getScene().getWindow() ;
+               stage.setTitle(title);
+               stage.setScene(new Scene(root1));
+               stage.show();
+           } catch (IOException ex) {
+               Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+           }
+       }
     @FXML
     private void DeleteUser(ActionEvent event) {
         user u = tableuser.getSelectionModel().getSelectedItem();
@@ -300,5 +327,11 @@ public class UserFXMLController implements Initializable {
         colrole.setCellValueFactory(new PropertyValueFactory<>("role"));
         tableuser.setItems(users);
     }
+
+    @FXML
+    private void handleReturnMenuAdmin(ActionEvent event) {
+        GotoFXML("MainFXML", "ForU",event);
+    }
+
 
 }

@@ -5,32 +5,33 @@
  */
 package pidev;
 
+import entities.user;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
 /**
  *
  * @author Nayrouz
  */
-public class Pidev extends Application{
+public class Pidev extends Application {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static user Userconnected = new user();
+
     public static void main(String[] args) {
-         launch(args); 
+        launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-         Parent root = FXMLLoader.load(getClass().getResource("/LoginSessionVues/LoginFXML.fxml"));
-         Scene scene = new Scene(root);
-         primaryStage.setTitle("FORU");
-         primaryStage.setScene(scene);
-         primaryStage.show();
+
+        Parent root = FXMLLoader.load(getClass().getResource("/Vues/LoginFXML.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("FORU");
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
-    
-    
+
 }

@@ -21,9 +21,17 @@ public class user {
     private int num_tel;
     private String email;
     private String password;
+    private String image;
     private String role;
 
     public user() {
+    }
+     public user(int id, String nom, String prenom,/*String password,*/String adresse) {
+        this.id = id;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        //this.password = password;
     }
 
     public user(int id, String nom, String prenom, String email, String password, Date date, int num_tel, String adresse,String role) {
@@ -35,8 +43,10 @@ public class user {
         this.num_tel = num_tel;
         this.email = email;
         this.password = password;
+        this.image = image;
         this.role = role;
     }
+    
 
     public user(String nom, String prenom, String email, String password, Date date, int num_tel, String adresse, String role) {//id auto increment
         this.nom = nom;
@@ -46,8 +56,10 @@ public class user {
         this.num_tel = num_tel;
         this.email = email;
         this.password = password;
+        this.image = image;
         this.role = role;
     }
+    
 
     public int getId() {
         return id;
@@ -119,6 +131,14 @@ public class user {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     
