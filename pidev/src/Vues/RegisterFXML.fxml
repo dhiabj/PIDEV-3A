@@ -12,58 +12,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="722.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.RegisterFXMLController">
-=======
-<AnchorPane id="AnchorPane" prefHeight="549.0" prefWidth="872.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.RegisterFXMLController">
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
     <stylesheets>
         <URL value="@registerfxml.css" />
     </stylesheets>
    <children>
       <AnchorPane layoutX="-7.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
-<<<<<<< HEAD
       <AnchorPane layoutX="292.0" prefHeight="537.0" prefWidth="426.0" style="-fx-background-color: #a9a9a9 , white , white;">
          <children>
             <Label layoutX="15.0" prefHeight="100.0" prefWidth="398.0" text="Bienvenue" textAlignment="CENTER" textFill="#6aa84f">
-=======
-      <AnchorPane layoutX="364.0" prefHeight="549.0" prefWidth="508.0" style="-fx-background-color: #a9a9a9 , white , white;">
-         <children>
-            <Button fx:id="btcreation" layoutX="96.0" layoutY="505.0" mnemonicParsing="false" onAction="#ajout" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Créer">
-               <font>
-                  <Font name="Monospaced Regular" size="12.0" />
-               </font>
-            </Button>
-            <Button fx:id="closeButton" layoutX="263.0" layoutY="505.0" mnemonicParsing="false" onMouseClicked="#handleCloseButtonAction" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Fermer">
-               <font>
-                  <Font name="Monospaced Regular" size="12.0" />
-               </font>
-            </Button>
-            <Label layoutX="59.0" prefHeight="100.0" prefWidth="398.0" text="Bienvenue" textAlignment="CENTER" textFill="#6aa84f">
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
                <font>
                   <Font name="Monospaced Bold" size="72.0" />
                </font>
             </Label>
-<<<<<<< HEAD
             <TextField fx:id="tfnom" layoutX="98.0" layoutY="94.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
-=======
-            <TextField fx:id="tfnom" layoutX="130.0" layoutY="100.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
                <font>
                   <Font name="Monospaced Regular" size="12.0" />
                </font>
             </TextField>
-<<<<<<< HEAD
             <TextField fx:id="tfprenom" layoutX="97.0" layoutY="138.0" prefHeight="30.0" prefWidth="250.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
-=======
-            <TextField fx:id="tfprenom" layoutX="129.0" layoutY="150.0" prefHeight="30.0" prefWidth="250.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
                <font>
                   <Font name="Monospaced Regular" size="12.0" />
                </font>
             </TextField>
-<<<<<<< HEAD
             <TextField fx:id="tfemail" layoutX="97.0" layoutY="183.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
                <font>
                   <Font name="Monospaced Regular" size="12.0" />
@@ -74,18 +45,6 @@
             <TextField fx:id="tftelephone" layoutX="97.0" layoutY="367.0" prefHeight="30.0" prefWidth="250.0" promptText="Telephone" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
             <TextField fx:id="tfadresse" layoutX="98.0" layoutY="414.0" prefHeight="30.0" prefWidth="250.0" promptText="Adresse" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
             <Label fx:id="newaccout" layoutX="137.0" layoutY="453.0" onDragDetected="#gotoLogin" onMouseClicked="#gotoLogin" text="vous déja avez un compte" textFill="#6aa84f">
-=======
-            <TextField fx:id="tfemail" layoutX="129.0" layoutY="200.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
-               <font>
-                  <Font name="Monospaced Regular" size="12.0" />
-               </font></TextField>
-            <PasswordField fx:id="tfpassword" layoutX="129.0" layoutY="250.0" prefHeight="30.0" prefWidth="250.0" promptText="Mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-            <PasswordField fx:id="tfconfirmpass" layoutX="130.0" layoutY="300.0" prefHeight="30.0" prefWidth="250.0" promptText="Confirmer mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-            <DatePicker fx:id="date" layoutX="130.0" layoutY="350.0" prefHeight="30.0" prefWidth="250.0" promptText="Date de naissance" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-            <TextField fx:id="tftelephone" layoutX="129.0" layoutY="400.0" prefHeight="30.0" prefWidth="250.0" promptText="Telephone" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-            <TextField fx:id="tfadresse" layoutX="130.0" layoutY="448.0" prefHeight="30.0" prefWidth="250.0" promptText="Adresse" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-            <Label fx:id="newaccout" layoutX="176.0" layoutY="484.0" onDragDetected="#gotoLogin" onMouseClicked="#gotoLogin" text="vous déja avez un compte" textFill="#6aa84f">
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
                <font>
                   <Font name="Monospaced Bold" size="12.0" />
                </font>
@@ -93,7 +52,6 @@
                   <Cursor fx:constant="OPEN_HAND" />
                </cursor>
             </Label>
-<<<<<<< HEAD
             <Label fx:id="error_numtel" layoutX="98.0" layoutY="397.0" prefHeight="17.0" prefWidth="250.0" />
             <Button fx:id="connexion" layoutX="52.0" layoutY="476.0" mnemonicParsing="false" onAction="#ajout" prefHeight="15.0" prefWidth="170.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Créer" textFill="WHITE">
                <font>
@@ -108,11 +66,6 @@
          </children>
       </AnchorPane>
       <ImageView fitHeight="276.0" fitWidth="241.0" layoutX="27.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
-=======
-         </children>
-      </AnchorPane>
-      <ImageView fitHeight="300.0" fitWidth="300.0" layoutX="46.0" layoutY="125.0" pickOnBounds="true" preserveRatio="true">
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
          <image>
             <Image url="@../Ressources/Logo.png" />
          </image>

@@ -5,14 +5,13 @@
  */
 package vues;
 import services.UserService;
-import services.UserService;
-import entities.user;
 import static pidev.Pidev.Userconnected;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -29,6 +28,7 @@ import javafx.stage.Stage;
 import javafx.event.Event;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import utils.Utils;
 
 
 /**
@@ -45,10 +45,6 @@ public class LoginFXMLController implements Initializable {
     @FXML
     private PasswordField pfpassword;
     @FXML
-    private Button btconnexion;
-    @FXML
-    private Button closeButton;
-    @FXML
     private CheckBox chkbvoirmdp;
     @FXML
     private Label mdpoublie;
@@ -59,12 +55,10 @@ public class LoginFXMLController implements Initializable {
      * Initializes the controller class.
      */
     UserService us = new UserService();
-
     @FXML
     private Button connexion;
     @FXML
     private Button fermer;
-
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -102,10 +96,10 @@ public class LoginFXMLController implements Initializable {
     private void gotoREGISTER(MouseEvent event) {
         GotoFXML("RegisterFXML", "Bienvenue",event);
     }
-         
+
     @FXML
-    private void connexion(MouseEvent event) throws IOException {
-        String email = tfemail.getText();
+    private void connexion(ActionEvent event) {
+         String email = tfemail.getText();
         String mdp = pfpassword.getText();
         Userconnected = us.getUserbyEmailPass(email, mdp);
         if (Userconnected.getId() != 0) {
@@ -128,4 +122,5 @@ public class LoginFXMLController implements Initializable {
      Stage stage = (Stage) fermer.getScene().getWindow();
          stage.close();
     }
+
 }

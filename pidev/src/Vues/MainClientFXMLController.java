@@ -5,7 +5,6 @@
  */
 package vues;
 
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
@@ -21,13 +20,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.image.ImageView;
-import static pidev.Pidev.Userconnected;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import static pidev.Pidev.Userconnected;
 
 /**
  * FXML Controller class
@@ -35,7 +34,6 @@ import javafx.stage.Stage;
  * @author Nayrouz
  */
 public class MainClientFXMLController implements Initializable {
-
     @FXML
     private ImageView logout;
     @FXML
@@ -54,17 +52,6 @@ public class MainClientFXMLController implements Initializable {
     private Label UserName;
     @FXML
     private Label Role;
-
-    @FXML
-    private Button btnEventetReser;
-    @FXML
-    private Button btngestLivraison;
-    @FXML
-    private Button btnprofil;
-    @FXML
-    private Button btngestReclamation;
-    @FXML
-    private Button btngestMenu;
 
     /**
      * Initializes the controller class.
@@ -91,8 +78,8 @@ public class MainClientFXMLController implements Initializable {
     @FXML
     private void GotoEventetReser(ActionEvent event) {
         GotoFXML("ReservationFXML", "ForU",event);
-    }  
-
+    }
+    
     @FXML
     private void GotoGesLivraison(ActionEvent event) {
     }
@@ -140,21 +127,5 @@ public class MainClientFXMLController implements Initializable {
             window.show();
         } catch (IOException ex) {
     }}}
-    
-
-    @FXML
-    private void GotoGestionProfil(MouseEvent event) {
-         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProfilFXML.fxml"));
-            Parent root1 = (Parent) fxmlLoader.load();
-            Stage window =(Stage)((Node) event.getSource()).getScene().getWindow() ;
-            window.setTitle("ForU");
-            window.setScene(new Scene(root1));
-            window.show();
-        } catch (IOException ex) {
-            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     
 }

@@ -7,30 +7,13 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<<<<<<< HEAD
 <AnchorPane id="AnchorPane" prefHeight="572.0" prefWidth="633.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.MainFXMLController">
    <children>
       <ImageView fitHeight="127.0" fitWidth="147.0" layoutX="266.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-=======
-<AnchorPane id="AnchorPane" prefHeight="457.0" prefWidth="545.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Vues.MainFXMLController">
-   <children>
-      <Button fx:id="btngestUser" layoutX="148.0" layoutY="216.0" mnemonicParsing="false" onAction="#GotoGestUser" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Utilisateur">
-         <font>
-            <Font name="Monospaced Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btngestLivraison" layoutX="148.0" layoutY="314.0" mnemonicParsing="false" onAction="#GotoGestLivraison" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Livraison">
-         <font>
-            <Font name="Monospaced Bold" size="14.0" />
-         </font>
-      </Button>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="200.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
          <image>
             <Image url="@../Ressources/Logo.png" />
          </image>
       </ImageView>
-<<<<<<< HEAD
       <Button fx:id="profil" layoutX="194.0" layoutY="141.0" mnemonicParsing="false" onAction="#GotoGestionProfil" prefHeight="25.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Profil" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
@@ -79,26 +62,6 @@
       <Button fx:id="utilisateur" layoutX="194.0" layoutY="512.0" mnemonicParsing="false" onAction="#gotousers" prefHeight="25.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Utilisateur" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
-=======
-      <Button fx:id="btnprofil" layoutX="148.0" layoutY="171.0" mnemonicParsing="false" onAction="#GotoGestionProfil" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Gérer Profil">
-         <font>
-            <Font name="Monospaced Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btngestEvenement" layoutX="148.0" layoutY="366.0" mnemonicParsing="false" onAction="#GotoGestEvenement" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Evénement et Réservation">
-         <font>
-            <Font name="Monospaced Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btngestReclamation" layoutX="148.0" layoutY="412.0" mnemonicParsing="false" onAction="#GotoGestReclamation" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Réclamation">
-         <font>
-            <Font name="Monospaced Bold" size="14.0" />
-         </font>
-      </Button>
-      <Button fx:id="btngestMenu" layoutX="148.0" layoutY="265.0" mnemonicParsing="false" onAction="#GotoGestMenu" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Menu">
-         <font>
-            <Font name="Monospaced Bold" size="14.0" />
->>>>>>> 0657d3e061e0bf22ce283ade2fa089521c0714d5
          </font>
       </Button>
    </children>

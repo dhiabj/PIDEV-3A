@@ -6,6 +6,7 @@
 package services;
 
 import entities.MD5Utils;
+import entities.livraison;
 import entities.user;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -188,7 +189,6 @@ public class UserService {
         }
         return list;
     }
-
         public ObservableList<String> GetNamesClient() {
         String req = "SELECT concat(nom,' ',prenom) as full_name from user where role='Client'";
 
