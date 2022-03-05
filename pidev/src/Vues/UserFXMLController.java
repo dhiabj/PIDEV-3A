@@ -3,20 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Vues;
+package vues;
 
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
 import entities.user;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
+import javafx.print.PageOrientation;
+import javafx.print.Paper;
+import javafx.print.Printer;
+import javafx.print.PrinterJob;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -29,9 +48,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+import javax.swing.JFileChooser;
 import services.UserService;
 
 /**
@@ -103,6 +126,12 @@ public class UserFXMLController implements Initializable {
     private ToggleGroup role;
     @FXML
     private RadioButton radclient;
+    @FXML
+    private Button btnReturnMenu;
+    @FXML
+    private Button pdf;
+    @FXML
+    private Button stat;
 
     /**
      * Initializes the controller class.
@@ -157,6 +186,7 @@ public class UserFXMLController implements Initializable {
 
     @FXML
     private void CreateUser(ActionEvent event) {
+
         String nom = tfnom.getText();
         String prenom = tfprenom.getText();
         String email = tfemail.getText();
@@ -247,6 +277,20 @@ public class UserFXMLController implements Initializable {
         init();
     }
 
+    private void GotoFXML(String vue, String title, Event aEvent) {
+        try {
+            Event event;
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = (Stage) ((Node) aEvent.getSource()).getScene().getWindow();
+            stage.setTitle(title);
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     @FXML
     private void DeleteUser(ActionEvent event) {
         user u = tableuser.getSelectionModel().getSelectedItem();
@@ -299,6 +343,104 @@ public class UserFXMLController implements Initializable {
         coladresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
         colrole.setCellValueFactory(new PropertyValueFactory<>("role"));
         tableuser.setItems(users);
+    }
+
+    @FXML
+    private void handleReturnMenuAdmin(ActionEvent event) {
+        GotoFXML("MainFXML", "ForU", event);
+    }
+
+    @FXML
+    private void Pdf(ActionEvent event) {
+        String path = "";
+
+        JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int x = j.showSaveDialog(j);
+        if (x == JFileChooser.APPROVE_OPTION) {
+            path = j.getSelectedFile().getPath();
+
+        }
+
+        Document doc = new Document();
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream(path + "/User.pdf"));
+            doc.open();
+
+            PdfPTable table = new PdfPTable(8);
+            table.addCell("NOM");
+            table.addCell("PRENOM");
+            table.addCell("EMAIL");
+            table.addCell("PASSWORD");
+            table.addCell("DATE");
+            table.addCell("NUM TELEPHONE");
+            table.addCell("ADRESSE");
+            table.addCell("ROLE");
+
+            UserService u = new UserService();
+            for (int i = 0; i < u.rowUSER(); i++) {
+
+                String Nom = tableuser.getColumns().get(0).getCellObservableValue(i).getValue().toString();
+                String Prenom = tableuser.getColumns().get(1).getCellObservableValue(i).getValue().toString();
+                String email = tableuser.getColumns().get(2).getCellObservableValue(i).getValue().toString();
+                String password = tableuser.getColumns().get(3).getCellObservableValue(i).getValue().toString();
+                String Date = tableuser.getColumns().get(4).getCellObservableValue(i).getValue().toString();
+                String num_tel = tableuser.getColumns().get(5).getCellObservableValue(i).getValue().toString();
+                String Adresse = tableuser.getColumns().get(6).getCellObservableValue(i).getValue().toString();
+                String role = tableuser.getColumns().get(7).getCellObservableValue(i).getValue().toString();
+
+                table.addCell(Nom);
+                table.addCell(Prenom);
+                table.addCell(email);
+                table.addCell(password);
+                table.addCell(Date);
+                table.addCell(num_tel);
+                table.addCell(Adresse);
+                table.addCell(role);
+
+            }
+
+            doc.add(table);
+
+        } catch (FileNotFoundException | DocumentException ex) {
+
+        }
+
+        doc.close();
+    }
+
+    @FXML
+    private void OnClickedPrint(ActionEvent event) {
+         PrinterJob job = PrinterJob.createPrinterJob();
+
+        Node root = this.tableuser;
+
+        if (job != null) {
+            job.showPrintDialog(root.getScene().getWindow()); // Window must be your main Stage
+            Printer printer = job.getPrinter();
+            PageLayout pageLayout = printer.createPageLayout(Paper.A3, PageOrientation.LANDSCAPE, Printer.MarginType.HARDWARE_MINIMUM);
+            boolean success = job.printPage(pageLayout, root);
+            if (success) {
+                job.endJob();
+            }
+        }
+    }
+
+    @FXML
+    private void OnClickedStatistique(ActionEvent event) {
+          try {
+
+            Parent parent = FXMLLoader.load(getClass().getResource("Piechart.fxml"));
+            Scene scene = new Scene(parent);
+
+            Stage stage = new Stage();
+            stage.getIcons().add(new Image("\\Ressources\\Logo.png"));
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UTILITY);
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(UserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

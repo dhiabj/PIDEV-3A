@@ -170,6 +170,43 @@ public class UserService {
         }
         return list;
     }
+    
+    public ObservableList<String> GetNamesLivreur() {
+        String req = "SELECT concat(nom,' ',prenom) as full_name from user where role='Livreur'";
+
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                list.add(rs.getString("full_name"));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
+        public ObservableList<String> GetNamesClient() {
+        String req = "SELECT concat(nom,' ',prenom) as full_name from user where role='Client'";
+
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                list.add(rs.getString("full_name"));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 
     public ObservableList<user> recherche(String searchby, String value) {
         String req = "select * from user where " + searchby + " like '%" + value + "%'";
@@ -228,10 +265,6 @@ public class UserService {
         return list;
     }
 
-    public ObservableList<livraison> readLivraison() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public boolean MailExiste(String mail) {
         try {
             ResultSet res = ste.executeQuery("Select * from user where email='" + mail + "';");
@@ -243,14 +276,110 @@ public class UserService {
 
     }
 
-    public boolean EmailExiste(String mail) {
+    public int GetIdUser(String value) {
+        String req = "select id from user where CONCAT(nom,' ',prenom) = '" + value + "';";
+
+        int id = 0;
         try {
-            ResultSet res = ste.executeQuery("Select * from user where email='" + mail + "';");
-            return res.next();
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                id = rs.getInt("id");
+
+            }
+
         } catch (SQLException ex) {
-            System.out.println(ex);
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        return id;
+    }
+
+    public String GetNomutilisateurbyId(int id) {
+        String req = "select nom from user where id ='" + id + "'";
+        String nom = null;
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                nom = rs.getString("nom");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return nom;
+    }
+
+    public boolean ResetPassword(String pass, int id) throws SQLException {
+        String sql = "UPDATE user SET password=? WHERE id=?";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, MD5Utils.cryptage(pass));
+            pst.setInt(2, id);
+
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
 
     }
+
+    public boolean update(user t){
+        String sql = "UPDATE user SET nom = ? , prenom = ? , adresse = ? WHERE id = ?";
+        try {
+            pst = conn.prepareStatement(sql);
+            System.out.println(t);
+            pst.setString(1, t.getNom());
+            pst.setString(2, t.getPrenom());
+            pst.setString(3, t.getAdresse());
+
+            pst.setInt(4, t.getId());
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+public int rowUSER(){
+        ObservableList<user> liste = FXCollections.observableArrayList();
+        String req = "SELECT * FROM user";
+        int i=0;
+        
+        try {
+            conn = DataSource.getInstance().getCnx();
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            user user1;
+            while (rs.next()){
+               i=i+1;
+            }
+            
+           
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }finally {
+    if (rs != null) {
+        try {
+            rs.close();
+        } catch (SQLException e) { /* Ignored */}
+    }
+    if (ste != null) {
+        try {
+            ste.close();
+        } catch (SQLException e) { /* Ignored */}
+    }
+    }
+        return i;
+        
+}
 }

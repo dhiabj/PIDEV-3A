@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="800.0" prefWidth="1300.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.ReservationFXMLController">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="800.0" prefWidth="1300.0" style="-fx-background-color: #a9a9a9 , white , white;" VBox.vgrow="ALWAYS">
+         <children>
+          <MenuBar fx:id="menur" prefHeight="25.0" prefWidth="1300.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+            <menus>
+              <Menu mnemonicParsing="false" text="File">
+                <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Open…" />
+                  <Menu mnemonicParsing="false" text="Open Recent" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Close" />
+                  <MenuItem mnemonicParsing="false" text="Save" />
+                  <MenuItem mnemonicParsing="false" text="Save As…" />
+                  <MenuItem mnemonicParsing="false" text="Revert" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Preferences…" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Quit" />
+                </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Edit">
+                <items>
+                  <MenuItem mnemonicParsing="false" text="Undo" />
+                  <MenuItem mnemonicParsing="false" text="Redo" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Cut" />
+                  <MenuItem mnemonicParsing="false" text="Copy" />
+                  <MenuItem mnemonicParsing="false" text="Paste" />
+                  <MenuItem mnemonicParsing="false" text="Delete" />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+                  <MenuItem mnemonicParsing="false" text="Select All" />
+                  <MenuItem mnemonicParsing="false" text="Unselect All" />
+                </items>
+              </Menu>
+              <Menu mnemonicParsing="false" text="Help">
+                <items>
+                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+                </items>
+              </Menu>
+            </menus>
+          </MenuBar>
+            <TextField fx:id="tfnom" layoutX="22.0" layoutY="297.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom de réservation " style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font></TextField>
+            <Button fx:id="btncreate" layoutX="80.0" layoutY="440.0" mnemonicParsing="false" onAction="#CreateReser" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Ajouter">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="btnmodif" layoutX="80.0" layoutY="485.0" mnemonicParsing="false" onAction="#ModifReser" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Modifier">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font></Button>
+            <Button fx:id="btndel" layoutX="80.0" layoutY="529.0" mnemonicParsing="false" onAction="#DeleteReser" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Supprimer">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font></Button>
+            <TableView fx:id="tablereserv" layoutX="479.0" layoutY="613.0" onMouseClicked="#preModSuppReser" prefHeight="166.0" prefWidth="594.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+               <columns>
+                  <TableColumn fx:id="colnomreser" prefWidth="175.0" text="Nom" />
+                  <TableColumn fx:id="colidclient" prefWidth="218.0" text="L'identifiant du client " />
+                  <TableColumn fx:id="colidevent" maxWidth="203.0" prefWidth="203.0" text="L'identifiant de l'evenement" />
+               </columns>
+            </TableView>
+            <ComboBox fx:id="cbev" layoutX="21.0" layoutY="355.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom de l'evenement" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" />
+            <RadioButton fx:id="radtous" layoutX="313.0" layoutY="33.0" mnemonicParsing="false" onAction="#updateTable" selected="true" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Tous">
+               <toggleGroup>
+                  <ToggleGroup fx:id="role" />
+               </toggleGroup>
+            </RadioButton>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="57.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Ressources/Logo.png" />
+               </image>
+            </ImageView>
+            <TableView fx:id="tableevent" layoutX="289.0" layoutY="62.0" prefHeight="530.0" prefWidth="974.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+               <columns>
+                  <TableColumn fx:id="colnom" prefWidth="147.0" text="Nom" />
+                  <TableColumn fx:id="coldate" prefWidth="162.0" text="Date de l'evenement" />
+                  <TableColumn fx:id="colpers" prefWidth="178.0" text="Nombres de personnes" />
+                  <TableColumn fx:id="colcatego" prefWidth="170.0" text="Categorie" />
+                  <TableColumn fx:id="coldescrip" maxWidth="406.0" prefWidth="316.0" text="Description" />
+               </columns>
+            </TableView>
+            <Button fx:id="btnpremodsupp" layoutX="97.0" layoutY="696.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Valider">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font></Button>
+            <ComboBox fx:id="cbnomreservation" layoutX="22.0" layoutY="648.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom Réservation" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" />
+            <Button fx:id="btnReturnMenu" layoutX="1116.0" layoutY="708.0" mnemonicParsing="false" onAction="#handleReturnMenuAdmin" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Retourner au menu">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font></Button>
+            <Label fx:id="UserName" layoutX="21.0" layoutY="248.0" prefHeight="28.0" prefWidth="250.0">
+               <font>
+                  <Font name="Monospaced Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

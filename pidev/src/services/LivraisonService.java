@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
 import utils.DataSource;
 
 /**
@@ -37,7 +38,7 @@ public class LivraisonService {
 
     }
 
-    public void ajouterLivraisonPst(livraison l) {
+    public Boolean ajouterLivraisonPst(livraison l) {
         String req = "insert into livraison (user_id,livreur_id,commande_id,nom,etat) values (?,?,?,?,?)";
 
         try {
@@ -48,9 +49,11 @@ public class LivraisonService {
             pst.setString(4, l.getNom());
             pst.setString(5, l.getEtat());
             pst.executeUpdate();
+             return true;
 
         } catch (SQLException ex) {
             Logger.getLogger(LivraisonService.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
 
     }
@@ -86,6 +89,26 @@ public class LivraisonService {
             Logger.getLogger(LivraisonService.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+    }
+    
+    
+    public ObservableList<livraison> filterEtat(String value) {
+        String req = "select * from livraison where etat = '" + value + "'";
+
+        ObservableList<livraison> list = FXCollections.observableArrayList();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                list.add(new livraison(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("livreur_id"), rs.getInt("commande_id") ,rs.getString("nom"), rs.getString("etat")));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
     
     public ObservableList<livraison> readLivraison() {
