@@ -136,7 +136,7 @@ public class AdminMenuController implements Initializable {
         (txt_description, error_description, "La description doit être une chaine de caractères");
         boolean isPrixNumber = validation.TextFieldValidation.isTextFieldTypeNumber
         (txt_prix, error_prix, "Le prix doit être un nombre");
-        boolean isIngredientsString = validation.TextFieldValidation.isTextFieldTypeString
+        boolean isIngredientsString = validation.TextFieldValidation.isTextFieldIngredients
         (txt_ingredients, error_ingredients, "Les ingredients doit être une chaine de caractères");
         boolean isCategorieEmpty = validation.ComboBoxValidation.isComboBoxNotEmpty
         (txt_categorie, error_categorie, "La catégorie est requis");
@@ -175,7 +175,7 @@ public class AdminMenuController implements Initializable {
         (txt_description, error_description, "La description doit être une chaine de caractères");
         boolean isPrixNumber = validation.TextFieldValidation.isTextFieldTypeNumber
         (txt_prix, error_prix, "Le prix doit être un nombre");
-        boolean isIngredientsString = validation.TextFieldValidation.isTextFieldTypeString
+        boolean isIngredientsString = validation.TextFieldValidation.isTextFieldIngredients
         (txt_ingredients, error_ingredients, "Les ingredients doit être une chaine de caractères");
         boolean isCategorieEmpty = validation.ComboBoxValidation.isComboBoxNotEmpty
         (txt_categorie, error_categorie, "La catégorie est requis");

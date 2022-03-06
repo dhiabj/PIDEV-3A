@@ -16,7 +16,7 @@ public class TextFieldValidation {
     
     public static boolean isTextFieldTypeString(TextField tf){
         boolean b = false;
-        if(tf.getText().matches("^[a-zA-ZÀ-Ÿ, ]*$") && (tf.getText().length() != 0 || !tf.getText().isEmpty()))
+        if(tf.getText().matches("^[a-zA-ZÀ-Ÿ ]*$") && (tf.getText().length() != 0 || !tf.getText().isEmpty()))
             b = true;
         return b;
     }
@@ -27,6 +27,28 @@ public class TextFieldValidation {
         tf.getStyleClass().remove("error-tf");
         lb.getStyleClass().remove("error-lb");
         if(!isTextFieldTypeString(tf)){
+            b=false;
+            msg = errorMessage;
+            tf.getStyleClass().add("error-tf");
+            lb.getStyleClass().add("error-lb");
+        }
+        lb.setText(msg);
+        return b;
+    }
+    
+    public static boolean isTextFieldIngredients(TextField tf){
+        boolean b = false;
+        if(tf.getText().matches("^[a-zA-ZÀ-Ÿ, ]*$") && (tf.getText().length() != 0 || !tf.getText().isEmpty()))
+            b = true;
+        return b;
+    }
+    
+    public static boolean isTextFieldIngredients(TextField tf, Label lb, String errorMessage){
+        boolean b = true;
+        String msg= null;
+        tf.getStyleClass().remove("error-tf");
+        lb.getStyleClass().remove("error-lb");
+        if(!isTextFieldIngredients(tf)){
             b=false;
             msg = errorMessage;
             tf.getStyleClass().add("error-tf");
