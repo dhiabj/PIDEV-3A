@@ -119,15 +119,11 @@ public class UserFXMLController implements Initializable {
     @FXML
     private ImageView imageviewlogo;
     @FXML
-    private MenuBar menu;
-    @FXML
     private RadioButton radadmin;
     @FXML
     private ToggleGroup role;
     @FXML
     private RadioButton radclient;
-    @FXML
-    private Button btnReturnMenu;
     @FXML
     private Button pdf;
     @FXML
@@ -137,6 +133,8 @@ public class UserFXMLController implements Initializable {
      * Initializes the controller class.
      */
     UserService us = new UserService();
+    @FXML
+    private ImageView bqckbtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -346,11 +344,6 @@ public class UserFXMLController implements Initializable {
     }
 
     @FXML
-    private void handleReturnMenuAdmin(ActionEvent event) {
-        GotoFXML("MainFXML", "ForU", event);
-    }
-
-    @FXML
     private void Pdf(ActionEvent event) {
         String path = "";
 
@@ -441,6 +434,11 @@ public class UserFXMLController implements Initializable {
         } catch (IOException ex) {
             Logger.getLogger(UserFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @FXML
+    private void backbtnmenu(MouseEvent event) {
+        GotoFXML("MainFXML", "ForU", event);
     }
 
 }

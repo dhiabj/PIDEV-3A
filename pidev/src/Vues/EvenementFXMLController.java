@@ -57,8 +57,6 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 public class EvenementFXMLController implements Initializable {
 
     @FXML
-    private MenuBar menu;
-    @FXML
     private TableColumn<evenement, String> colnom;
     @FXML
     private TableColumn<evenement, Date> coldate;
@@ -102,7 +100,7 @@ public class EvenementFXMLController implements Initializable {
     @FXML
     private ToggleGroup groupby;
     @FXML
-    private Button btnReturnMenu;
+    private ImageView bqckbtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -218,8 +216,8 @@ public class EvenementFXMLController implements Initializable {
     }
 
     @FXML
-    private void handleReturnMenuAdmin(ActionEvent event) {
-        GotoFXML("MainFXML", "ForU",event);
+    private void backbtnmenu(MouseEvent event) {
+         GotoFXML("MainFXML", "ForU",event);
     }
     
 

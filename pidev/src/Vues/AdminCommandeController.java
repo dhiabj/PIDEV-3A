@@ -14,6 +14,7 @@ import entities.Commande;
 import entities.Menu;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.sql.Connection;
@@ -27,8 +28,13 @@ import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
@@ -38,7 +44,10 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import javax.swing.JFileChooser;
 import services.CommandeService;
 import services.MenuCommandeService;
@@ -105,6 +114,10 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
     private Button menubut;
     @FXML
     private Button Reçubtn;
+    @FXML
+    private ImageView imageviewlogo;
+    @FXML
+    private ImageView bqckbtn;
     @FXML
     private void handleAddMenu(ActionEvent event)
     {
@@ -287,6 +300,25 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
         }
 
         doc.close();
+    }
+
+ private void GotoFXML(String vue, String title,Event aEvent) {
+        try {
+            Event event;
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage =(Stage)((Node) aEvent.getSource()).getScene().getWindow() ;
+            stage.setTitle(title);
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @FXML
+    private void backbtnmenu(MouseEvent event) {
+        GotoFXML("MainFXML", "ForU",event);
     }
 
    

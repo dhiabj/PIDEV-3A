@@ -52,8 +52,6 @@ import static pidev.Pidev.Userconnected;
 public class ReservationFXMLController implements Initializable {
 
     @FXML
-    private MenuBar menur;
-    @FXML
     private TextField tfnom;
     @FXML
     private Button btncreate;
@@ -100,13 +98,9 @@ public class ReservationFXMLController implements Initializable {
     EvenementService ev = new EvenementService();
     UserService uv = new UserService();
     @FXML
-    private Button btnpremodsupp;
-    @FXML
-    private ComboBox<String> cbnomreservation;
-    @FXML
-    private Button btnReturnMenu;
-    @FXML
     private Label UserName;
+    @FXML
+    private ImageView bqckbtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -115,7 +109,6 @@ public class ReservationFXMLController implements Initializable {
         this.nomREservation = rv.GetNamesReservation();
         cbev.setItems(nomevent);
         UserName.setText(Userconnected.getPrenom()+" "+Userconnected.getNom());
-        cbnomreservation.setItems(nomREservation);
         updateTable();
     }
     private void GotoFXML(String vue, String title,Event aEvent) {
@@ -229,9 +222,10 @@ public class ReservationFXMLController implements Initializable {
     }
 
     @FXML
-    private void handleReturnMenuAdmin(ActionEvent event) {
-        GotoFXML("MainClientFXML", "ForU",event);
+    private void backbtnmenu(MouseEvent event) {
+          GotoFXML("MainClientFXML", "ForU",event);
     }
+
 
 
 

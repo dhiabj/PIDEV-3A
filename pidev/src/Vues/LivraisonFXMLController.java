@@ -62,8 +62,6 @@ public class LivraisonFXMLController implements Initializable {
     @FXML
     private ComboBox<String> cbrechpar;
     @FXML
-    private MenuBar menu;
-    @FXML
     private ImageView imageviewlogo;
     @FXML
     private ComboBox<String> cbuserid;
@@ -87,8 +85,6 @@ public class LivraisonFXMLController implements Initializable {
     private TableColumn<livraison, Integer> collivreurid;
 
     @FXML
-    private Button btnReturnMenu;
-    @FXML
     private RadioButton radencours;
     @FXML
     private RadioButton radtous;
@@ -108,6 +104,8 @@ public class LivraisonFXMLController implements Initializable {
     ObservableList<String> UsersName;
     ObservableList<String> Livs;
     ObservableList<String> nomclient;
+    @FXML
+    private ImageView bqckbtn;
 
     /**
      * Initializes the controller class.
@@ -242,11 +240,6 @@ public class LivraisonFXMLController implements Initializable {
     }
 
     @FXML
-    private void handleReturnMenuAdmin(ActionEvent event) {
-        GotoFXML("MainFXML", "ForU", event);
-    }
-
-    @FXML
     private void getEncours(ActionEvent event) {
         ObservableList<livraison> livraison = ls.filterEtat("En cours");
         coluserid.setCellValueFactory(new PropertyValueFactory<>("user_id"));
@@ -278,6 +271,11 @@ public class LivraisonFXMLController implements Initializable {
         colnomlivraison.setCellValueFactory(new PropertyValueFactory<>("nom"));
         coletat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         tablelivraison.setItems(livraison);
+    }
+
+    @FXML
+    private void backbtnmenu(MouseEvent event) {
+        GotoFXML("MainFXML", "ForU", event);
     }
 
 }

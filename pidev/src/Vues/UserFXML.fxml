@@ -4,12 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -20,75 +16,75 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="800.0" prefWidth="1320.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.UserFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="950.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.UserFXMLController">
    <children>
-      <TextField fx:id="tfrecherche" layoutX="500.0" layoutY="85.0" onKeyReleased="#SearchUser" prefHeight="30.0" prefWidth="200.0" promptText="Recherche" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfrecherche" layoutX="420.0" layoutY="19.0" onKeyReleased="#SearchUser" prefHeight="30.0" prefWidth="150.0" promptText="Recherche" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <ComboBox fx:id="cbtri" layoutX="750.0" layoutY="85.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-      <TextField fx:id="tfnom" layoutX="35.0" layoutY="190.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <ComboBox fx:id="cbtri" layoutX="610.0" layoutY="19.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+      <TextField fx:id="tfnom" layoutX="47.0" layoutY="198.0" prefHeight="30.0" prefWidth="165.0" promptText="Nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <TextField fx:id="tfprenom" layoutX="35.0" layoutY="239.0" prefHeight="30.0" prefWidth="250.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfprenom" layoutX="47.0" layoutY="247.0" prefHeight="30.0" prefWidth="165.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <TextField fx:id="tfemail" layoutX="35.0" layoutY="289.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfemail" layoutX="47.0" layoutY="297.0" prefHeight="30.0" prefWidth="165.0" promptText="Email" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <PasswordField fx:id="tfpassword" layoutX="35.0" layoutY="339.0" prefHeight="30.0" prefWidth="250.0" promptText="Mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <PasswordField fx:id="tfpassword" layoutX="47.0" layoutY="347.0" prefHeight="30.0" prefWidth="165.0" promptText="Mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></PasswordField>
-      <PasswordField fx:id="tfconfirmpass" layoutX="36.0" layoutY="389.0" prefHeight="30.0" prefWidth="250.0" promptText="Confirmer mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <PasswordField fx:id="tfconfirmpass" layoutX="48.0" layoutY="397.0" prefHeight="30.0" prefWidth="165.0" promptText="Confirmer mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></PasswordField>
-      <DatePicker fx:id="date" layoutX="36.0" layoutY="439.0" prefHeight="30.0" prefWidth="250.0" promptText="Date de naissance" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-      <TextField fx:id="tftelephone" layoutX="35.0" layoutY="489.0" prefHeight="30.0" prefWidth="250.0" promptText="Telephone" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <DatePicker fx:id="date" layoutX="48.0" layoutY="447.0" prefHeight="30.0" prefWidth="165.0" promptText="Date de naissance" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+      <TextField fx:id="tftelephone" layoutX="47.0" layoutY="497.0" prefHeight="30.0" prefWidth="165.0" promptText="Telephone" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <TextField fx:id="tfadresse" layoutX="35.0" layoutY="539.0" prefHeight="30.0" prefWidth="250.0" promptText="Adresse" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfadresse" layoutX="47.0" layoutY="547.0" prefHeight="30.0" prefWidth="165.0" promptText="Adresse" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <ComboBox fx:id="cbrole" layoutX="36.0" layoutY="589.0" prefHeight="30.0" prefWidth="250.0" promptText="Role" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <ComboBox fx:id="cbrole" layoutX="48.0" layoutY="597.0" prefHeight="30.0" prefWidth="165.0" promptText="Role" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
          <effect>
             <Blend mode="OVERLAY" />
          </effect></ComboBox>
-      <Button fx:id="btncreate" layoutX="110.0" layoutY="640.0" mnemonicParsing="false" onAction="#CreateUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Ajouter">
+      <Button fx:id="btncreate" layoutX="262.0" layoutY="597.0" mnemonicParsing="false" onAction="#CreateUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Ajouter">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <TableView fx:id="tableuser" layoutX="330.0" layoutY="145.0" onMouseClicked="#preModSupp" prefHeight="581.0" prefWidth="962.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white; -fx-background-radius: 7px 7px 0px 0px; -fx-background-insets: 0 11px 0 0; -fx-padding: 0 0 5px 0;" styleClass="ba">
+      <TableView fx:id="tableuser" layoutX="255.0" layoutY="63.0" onMouseClicked="#preModSupp" prefHeight="475.0" prefWidth="667.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white; -fx-background-radius: 7px 7px 0px 0px; -fx-background-insets: 0 11px 0 0; -fx-padding: 0 0 5px 0;" styleClass="ba">
         <columns>
-          <TableColumn fx:id="colnom" prefWidth="120.0" text="Nom" />
-          <TableColumn fx:id="colprenom" prefWidth="120.0" text="Prenom" />
-            <TableColumn fx:id="colemail" prefWidth="120.0" text="Email" />
-            <TableColumn fx:id="colpassword" prefWidth="120.0" text="Password" />
-            <TableColumn fx:id="coldate" prefWidth="120.0" text="Date naissance" />
-            <TableColumn fx:id="coltelephone" prefWidth="120.0" text="Telephone" />
-            <TableColumn fx:id="coladresse" prefWidth="120.0" text="Adresse" />
-            <TableColumn fx:id="colrole" prefWidth="120.0" text="Role" />
+          <TableColumn fx:id="colnom" prefWidth="79.0" text="Nom" />
+          <TableColumn fx:id="colprenom" prefWidth="76.0" text="Prenom" />
+            <TableColumn fx:id="colemail" prefWidth="83.0" text="Email" />
+            <TableColumn fx:id="colpassword" prefWidth="90.0" text="Password" />
+            <TableColumn fx:id="coldate" prefWidth="117.0" text="Date naissance" />
+            <TableColumn fx:id="coltelephone" prefWidth="96.0" text="Telephone" />
+            <TableColumn fx:id="coladresse" prefWidth="69.0" text="Adresse" />
+            <TableColumn fx:id="colrole" prefWidth="59.0" text="Role" />
         </columns>
       </TableView>
-      <Button fx:id="btnmodif" layoutX="109.0" layoutY="683.0" mnemonicParsing="false" onAction="#ModifUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Modifier">
+      <Button fx:id="btnmodif" layoutX="402.0" layoutY="597.0" mnemonicParsing="false" onAction="#ModifUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Modifier">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btndel" layoutX="110.0" layoutY="727.0" mnemonicParsing="false" onAction="#DeleteUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Supprimer">
+      <Button fx:id="btndel" layoutX="520.0" layoutY="597.0" mnemonicParsing="false" onAction="#DeleteUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Supprimer">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btntri" layoutX="920.0" layoutY="86.0" mnemonicParsing="false" onAction="#TriUsers" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Tri">
+      <Button fx:id="btntri" layoutX="771.0" layoutY="19.0" mnemonicParsing="false" onAction="#TriUsers" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Tri">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <RadioButton fx:id="radadmin" layoutX="1150.0" layoutY="92.0" mnemonicParsing="false" onAction="#getAdmins" style="-fx-background-color: #a9a9a9 , white , white;" text="Admin">
+      <RadioButton fx:id="radadmin" layoutX="324.0" layoutY="554.0" mnemonicParsing="false" onAction="#getAdmins" style="-fx-background-color: #a9a9a9 , white , white;" text="Admin">
          <toggleGroup>
             <ToggleGroup fx:id="role" />
          </toggleGroup>
@@ -96,69 +92,25 @@
             <Font name="Monospaced Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radclient" layoutX="1228.0" layoutY="92.0" mnemonicParsing="false" onAction="#getClients" style="-fx-background-color: #a9a9a9 , white , white;" text="Client" toggleGroup="$role">
+      <RadioButton fx:id="radclient" layoutX="402.0" layoutY="554.0" mnemonicParsing="false" onAction="#getClients" style="-fx-background-color: #a9a9a9 , white , white;" text="Client" toggleGroup="$role">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></RadioButton>
-      <RadioButton fx:id="radtous" layoutX="1078.0" layoutY="92.0" mnemonicParsing="false" onAction="#updateTable" selected="true" style="-fx-background-color: #a9a9a9 , white , white;" text="Tous" toggleGroup="$role">
+      <RadioButton fx:id="radtous" layoutX="252.0" layoutY="554.0" mnemonicParsing="false" onAction="#updateTable" selected="true" style="-fx-background-color: #a9a9a9 , white , white;" text="Tous" toggleGroup="$role">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></RadioButton>
-      <ComboBox fx:id="cbrechpar" layoutX="330.0" layoutY="85.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-      <MenuBar fx:id="menu" layoutY="2.0" prefHeight="25.0" prefWidth="1320.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
-         <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Open…" />
-                  <Menu mnemonicParsing="false" text="Open Recent" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save" />
-                  <MenuItem mnemonicParsing="false" text="Save As…" />
-                  <MenuItem mnemonicParsing="false" text="Revert" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Preferences…" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Quit" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Undo" />
-                  <MenuItem mnemonicParsing="false" text="Redo" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Cut" />
-                  <MenuItem mnemonicParsing="false" text="Copy" />
-                  <MenuItem mnemonicParsing="false" text="Paste" />
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-                  <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem mnemonicParsing="false" text="Select All" />
-                  <MenuItem mnemonicParsing="false" text="Unselect All" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Help">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-               </items>
-            </Menu>
-         </menus>
-      </MenuBar>
-      <ImageView fx:id="imageviewlogo" fitHeight="150.0" fitWidth="200.0" layoutX="87.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+      <ComboBox fx:id="cbrechpar" layoutX="255.0" layoutY="19.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+      <ImageView fx:id="imageviewlogo" fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Ressources/Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="btnReturnMenu" layoutX="1145.0" layoutY="739.0" mnemonicParsing="false" onAction="#handleReturnMenuAdmin" prefHeight="36.0" prefWidth="147.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Retourner au menu">
-         <font>
-            <Font name="Monospaced Bold" size="12.0" />
-         </font>
-      </Button>
-      <Button fx:id="pdf" layoutX="405.0" layoutY="745.0" mnemonicParsing="false" onAction="#Pdf" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Pdf">
+      <Button fx:id="pdf" layoutX="479.0" layoutY="547.0" mnemonicParsing="false" onAction="#Pdf" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Pdf">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="733.0" layoutY="745.0" mnemonicParsing="false" onAction="#OnClickedPrint" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="imprimer">
+      <Button layoutX="792.0" layoutY="547.0" mnemonicParsing="false" onAction="#OnClickedPrint" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="imprimer">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font>
@@ -166,7 +118,7 @@
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Button>
-      <Button fx:id="stat" layoutX="570.0" layoutY="745.0" mnemonicParsing="false" onAction="#OnClickedStatistique" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Statistiques">
+      <Button fx:id="stat" layoutX="641.0" layoutY="547.0" mnemonicParsing="false" onAction="#OnClickedStatistique" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Statistiques">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font>
@@ -174,5 +126,10 @@
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Button>
+      <ImageView fx:id="bqckbtn" fitHeight="62.0" fitWidth="88.0" layoutX="7.0" layoutY="7.0" onMouseClicked="#backbtnmenu" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/back.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

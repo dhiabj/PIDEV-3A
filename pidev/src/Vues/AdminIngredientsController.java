@@ -31,6 +31,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import services.IngredientsService;
 import utils.DataSource;
@@ -61,8 +63,6 @@ public class AdminIngredientsController implements Initializable {
     @FXML
     private Button btn_deleteIngredient;
     @FXML
-    private Button btnReturnMenu;
-    @FXML
     private Button btnCancel;
     @FXML
     private TextField txt_nom;
@@ -79,6 +79,10 @@ public class AdminIngredientsController implements Initializable {
     Alert alertError = new Alert(AlertType.ERROR);
     Alert alertInfo = new Alert(AlertType.INFORMATION);
     Alert alertCon = new Alert(AlertType.CONFIRMATION);
+    @FXML
+    private ImageView imageviewlogo;
+    @FXML
+    private ImageView bqckbtn;
     
     /**
      * Initializes the controller class.
@@ -172,11 +176,6 @@ public class AdminIngredientsController implements Initializable {
     }
 
     @FXML
-    private void handleReturnMenu(ActionEvent event) throws Exception {
-        SceneChanger.changeToScene(getClass(), event, "AdminInterface.fxml");
-    }
-
-    @FXML
     private void handleCancelButton(ActionEvent event) {
         init();
     }
@@ -246,6 +245,11 @@ public class AdminIngredientsController implements Initializable {
         txt_nom.clear();
         valueFactory.setValue(1);
         
+    }
+
+    @FXML
+    private void backbtnmenu(MouseEvent event) throws Exception {
+        SceneChanger.changeToScene(getClass(), event, "AdminInterface.fxml");
     }
     
 }

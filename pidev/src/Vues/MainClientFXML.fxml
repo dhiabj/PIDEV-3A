@@ -9,37 +9,32 @@
 
 <AnchorPane id="AnchorPane" prefHeight="519.0" prefWidth="637.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.MainClientFXMLController">
    <children>
-      <ImageView fitHeight="127.0" fitWidth="147.0" layoutX="256.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="127.0" fitWidth="147.0" layoutX="256.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Ressources/Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="profil" layoutX="184.0" layoutY="139.0" mnemonicParsing="false" onAction="#GotoGestionProfil" prefHeight="25.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Profil" textFill="WHITE">
+      <Button fx:id="profil" layoutX="184.0" layoutY="160.0" mnemonicParsing="false" onAction="#GotoGestionProfil" prefHeight="25.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Profil" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="event" layoutX="184.0" layoutY="199.0" mnemonicParsing="false" onAction="#GotoEventetReser" prefHeight="44.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Evenement " textFill="WHITE">
+      <Button fx:id="event" layoutX="184.0" layoutY="231.0" mnemonicParsing="false" onAction="#GotoEventetReser" prefHeight="44.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Evenement " textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="menu" layoutX="184.0" layoutY="263.0" mnemonicParsing="false" onAction="#GotoGestMenu" prefHeight="44.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Menu" textFill="WHITE">
+      <Button fx:id="menu" layoutX="184.0" layoutY="305.0" mnemonicParsing="false" onAction="#GotoGestMenu" prefHeight="44.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Menu" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="livraison" layoutX="184.0" layoutY="390.0" mnemonicParsing="false" onAction="#GotoGestCommande" prefHeight="31.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Commande" textFill="WHITE">
+      <Button fx:id="commande" layoutX="184.0" layoutY="378.0" mnemonicParsing="false" onAction="#GotoGesLivraison" prefHeight="42.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Livraison" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Button>
-      <Button fx:id="commande" layoutX="184.0" layoutY="325.0" mnemonicParsing="false" onAction="#GotoGesLivraison" prefHeight="42.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Livraison" textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font>
-      </Button>
-      <Button fx:id="reclamation" layoutX="184.0" layoutY="454.0" mnemonicParsing="false" onAction="#GotoGestReclamation" prefHeight="5.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Réclamation" textFill="WHITE">
+      <Button fx:id="reclamation" layoutX="184.0" layoutY="449.0" mnemonicParsing="false" onAction="#GotoGestReclamation" prefHeight="5.0" prefWidth="270.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Réclamation" textFill="WHITE">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

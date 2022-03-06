@@ -32,6 +32,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -87,10 +88,6 @@ public class AdminMenuController implements Initializable {
     @FXML
     private Button btn_updateMenu;
     @FXML
-    private Button btn_deleteMenu;
-    @FXML
-    private Button btnReturnMenu;
-    @FXML
     private Button btnCancel;
     @FXML
     private Button btnBrowser;
@@ -110,7 +107,13 @@ public class AdminMenuController implements Initializable {
     Alert alertInfo = new Alert(Alert.AlertType.INFORMATION);
     Alert alertCon = new Alert(Alert.AlertType.CONFIRMATION);
     
-     
+     @FXML
+    private ImageView imageviewlogo;
+    @FXML
+    private ImageView bqckbtn;
+    @FXML
+    private Button btn_deleteMenu;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         conn = DataSource.getInstance().getCnx();
@@ -331,11 +334,6 @@ public class AdminMenuController implements Initializable {
     }
 
     @FXML
-    private void handleReturnMenu(ActionEvent event) throws Exception {
-        SceneChanger.changeToScene(getClass(), event, "MainFXML.fxml");
-    }
-
-    @FXML
     private void handleCancelButton(ActionEvent event) {
         init();
     }
@@ -348,9 +346,13 @@ public class AdminMenuController implements Initializable {
             //System.out.println(getFilePath());
             image = new Image(file.getAbsoluteFile().toURI().toString(),
                     imageView.getFitWidth(), imageView.getFitHeight(), true, true);
-            imageView.setImage(image);
-            imageView.setPreserveRatio(true);
+            imageView.setImage(image); 
+            imageView.setPreserveRatio(true);}
         }
+
+    @FXML
+    private void backbtnmenu(MouseEvent event) throws Exception {
+        SceneChanger.changeToScene(getClass(), event, "MainFXML.fxml");    
     }
     
 

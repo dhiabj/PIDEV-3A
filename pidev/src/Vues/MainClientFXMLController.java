@@ -43,8 +43,6 @@ public class MainClientFXMLController implements Initializable {
     @FXML
     private Button menu;
     @FXML
-    private Button livraison;
-    @FXML
     private Button commande;
     @FXML
     private Button reclamation;
@@ -93,9 +91,6 @@ public class MainClientFXMLController implements Initializable {
     GotoFXML("UserMenu", "ForU",event);
     }
     
-    @FXML
-    private void GotoGestCommande(ActionEvent event) {
-    }
 
     @FXML
     private void GotoGestionProfil(ActionEvent event) {
