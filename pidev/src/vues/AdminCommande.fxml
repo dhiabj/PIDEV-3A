@@ -25,7 +25,7 @@
       <Accordion layoutX="62.0" layoutY="72.0" />
       <Label layoutX="12.0" layoutY="121.0" text="Date :" />
       <DatePicker fx:id="date" layoutX="95.0" layoutY="117.0" />
-      <Label layoutX="14.0" layoutY="176.0" text="id-Utilisateur" />
+      <Label layoutX="2.0" layoutY="176.0" text="num Utilisateur" />
       <ComboBox fx:id="etatcombo" layoutX="95.0" layoutY="66.0" prefHeight="25.0" prefWidth="174.0" />
       <Button fx:id="ajout" layoutX="49.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleAddMenu" text="Ajouter" />
       <Button fx:id="modifier" layoutX="136.0" layoutY="250.0" mnemonicParsing="false" onAction="#handleModiferCommande" text="Modifier" />
