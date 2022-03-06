@@ -4,10 +4,16 @@
  * and open the template in the editor.
  */
 package vues;
-
+import com.lowagie.text.Document;
+import com.lowagie.text.DocumentException;
+import com.lowagie.text.pdf.PdfPTable;
+import com.lowagie.text.pdf.PdfWriter;
 import static com.sun.media.jfxmediaimpl.MediaUtils.error;
 import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import entities.Commande;
+import entities.Menu;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import static java.lang.Integer.parseInt;
 import java.net.URL;
 import java.sql.Connection;
@@ -33,7 +39,10 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javax.swing.JFileChooser;
 import services.CommandeService;
+import services.MenuCommandeService;
+import services.MenuService;
 import utils.DataSource;
 
 /**
@@ -45,8 +54,10 @@ public class AdminCommandeController implements Initializable {
 private Connection conn;
 private  PreparedStatement pst;
 private ResultSet rs;
+private  PreparedStatement pst1;
+private ResultSet rs1;
 private ObservableList<Commande> data;
-
+private ObservableList<Menu> data1;
  
 
     @FXML
@@ -84,6 +95,16 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
     private Label error_user;
     @FXML
     private TableColumn<?, ?> toltalcol;
+    @FXML
+    private TableView<Menu> tablemenu;
+    @FXML
+    private TableColumn<?, ?> titremenucol;
+    @FXML
+    private TableColumn<?, ?> prixcol;
+    @FXML
+    private Button menubut;
+    @FXML
+    private Button Reçubtn;
     @FXML
     private void handleAddMenu(ActionEvent event)
     {
@@ -127,9 +148,11 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
     public void initialize(URL url, ResourceBundle rb) {
     conn=DataSource.getInstance().getCnx();
     data=FXCollections.observableArrayList();
+    data1=FXCollections.observableArrayList();
        loadDataFromDataBase();
        
         setCellTable();
+        
         
         etatcombo.setValue("en attente");
         etatcombo.setItems(etatlist);
@@ -158,7 +181,7 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
         tableid.setItems(data);
         System.out.println(data);
     }
-        public void setCellTable(){
+               public void setCellTable(){
         columnEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         ColumnDate.setCellValueFactory(new PropertyValueFactory<>("date"));
         toltalcol.setCellValueFactory(new PropertyValueFactory<>("total"));
@@ -166,6 +189,32 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
        
         
     }
+        public void loadDataFromDataBase2(){
+       data1.clear();
+        try {
+            Commande c = tableid.getSelectionModel().getSelectedItem();
+            int id = c.getId();
+            System.out.println(id);
+           pst = conn.prepareStatement("select m.titre,m.prix from menu as m left join menu_commande as mc on m.id=mc.menu_id left join commande as c on mc.command_id=c.id Where c.id="+id);
+            rs = pst.executeQuery();
+            while (rs.next()){
+               
+                data1.add(new Menu(rs.getString(1),rs.getFloat(2)));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCommandeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        tablemenu.setItems(data1);
+        System.out.println(data1);
+    }
+               public void setCellTable2(){
+        titremenucol.setCellValueFactory(new PropertyValueFactory<>("titre"));
+         prixcol.setCellValueFactory(new PropertyValueFactory<>("prix"));
+        
+       
+        
+    }
+
         public void init(){
             
         setCellTable();
@@ -180,6 +229,56 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
         Commande cd=new Commande(id);
         cs.supCommande(cd);
         init();
+    }
+
+    @FXML
+    private void menushow(ActionEvent event) {
+        loadDataFromDataBase2();
+       
+        setCellTable2();
+    }
+
+    @FXML
+    private void pdf(ActionEvent event) {
+                String path = "";
+
+        JFileChooser j = new JFileChooser();
+        j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int x = j.showSaveDialog(j);
+        if (x == JFileChooser.APPROVE_OPTION) {
+            path = j.getSelectedFile().getPath();
+
+        }
+
+        Document doc = new Document();
+        try {
+            PdfWriter.getInstance(doc, new FileOutputStream(path + "/Reçu.pdf"));
+            doc.open();
+
+            PdfPTable table = new PdfPTable(2);
+            table.addCell("Menu");
+            table.addCell("Prix");
+           
+         int s=tablemenu.getItems().size();
+            MenuService u = new MenuService();
+            for (int i = 0; i < s; i++) {
+
+                String Menu = tablemenu.getColumns().get(0).getCellObservableValue(i).getValue().toString();
+                String Prix = tablemenu.getColumns().get(1).getCellObservableValue(i).getValue().toString();
+                
+
+                table.addCell(Menu);
+                table.addCell(Prix);
+                
+            }
+
+            doc.add(table);
+
+        } catch (FileNotFoundException | DocumentException ex) {
+
+        }
+
+        doc.close();
     }
 
    
