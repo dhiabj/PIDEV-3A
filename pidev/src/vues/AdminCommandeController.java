@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 package vues;
+import com.itextpdf.text.Phrase;
 import com.lowagie.text.Document;
 import com.lowagie.text.DocumentException;
+import com.lowagie.text.Element;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
 import static com.sun.media.jfxmediaimpl.MediaUtils.error;
@@ -15,6 +17,7 @@ import entities.Menu;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import static java.lang.Integer.parseInt;
+import static java.lang.String.valueOf;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Date;
@@ -241,7 +244,8 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
     @FXML
     private void pdf(ActionEvent event) {
                 String path = "";
-
+             Commande c = tableid.getSelectionModel().getSelectedItem();
+             Float total=c.getTotal();
         JFileChooser j = new JFileChooser();
         j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int x = j.showSaveDialog(j);
@@ -258,6 +262,7 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
             PdfPTable table = new PdfPTable(2);
             table.addCell("Menu");
             table.addCell("Prix");
+            
            
          int s=tablemenu.getItems().size();
             MenuService u = new MenuService();
@@ -271,8 +276,14 @@ ObservableList<String> etatlist = FXCollections.observableArrayList("en attente"
                 table.addCell(Prix);
                 
             }
-
+      PdfPTable table1 = new PdfPTable(1);
+      String Total=String.valueOf(total);
+            table1.addCell(" Le prix Total de la Commande est donc :                          "+Total+"Dinars");
+           
+          
             doc.add(table);
+            doc.add(table1);
+            
 
         } catch (FileNotFoundException | DocumentException ex) {
 
