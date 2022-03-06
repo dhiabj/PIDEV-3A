@@ -6,18 +6,27 @@
 package Vues;
 
 import entities.evenement;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Date;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableArray;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -31,7 +40,14 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import services.EvenementService;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 
 /**
  * FXML Controller class
@@ -70,21 +86,23 @@ public class EvenementFXMLController implements Initializable {
     private ComboBox<String> cbcatego;
     @FXML
     private TextField tfdescrip;
-
-    
     @FXML
     private ImageView imageviewlogo;
-    
-    @FXML
-    private ToggleGroup Categorie;
     @FXML
     private RadioButton radvegan;
     @FXML
     private RadioButton radtous;
+    
+    
     /**
      * Initializes the controller class.
      */
+    
     EvenementService ev = new EvenementService();
+    @FXML
+    private ToggleGroup groupby;
+    @FXML
+    private Button btnReturnMenu;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -117,6 +135,7 @@ public class EvenementFXMLController implements Initializable {
 
     @FXML
     private void CreateEvent(ActionEvent event) {
+        
         String nom = tfnom.getText();
         Date d = Date.valueOf(datecb.getValue());
         Integer nb_personne = cbnbper.getSelectionModel().getSelectedItem();
@@ -124,6 +143,8 @@ public class EvenementFXMLController implements Initializable {
         String description = tfdescrip.getText();
 
         evenement e1 = new evenement(nom, d, nb_personne, categorie, description);
+        String path =ev.QR(nom);
+        System.out.println(path);
         ev.ajouterEventPst(e1);
         init();
     }
@@ -182,5 +203,24 @@ public class EvenementFXMLController implements Initializable {
         coldescrip.setCellValueFactory(new PropertyValueFactory<>("description"));
         tableevent.setItems(Events);
     }
+    private void GotoFXML(String vue, String title,Event aEvent) {
+        try {
+            Event event;
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage =(Stage)((Node) aEvent.getSource()).getScene().getWindow() ;
+            stage.setTitle(title);
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (IOException ex) {
+            Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void handleReturnMenuAdmin(ActionEvent event) {
+        GotoFXML("MainFXML", "ForU",event);
+    }
+    
 
 }
