@@ -67,6 +67,20 @@ public class RegisterFXMLController implements Initializable {
     private Button connexion;
     @FXML
     private Button fermer;
+    @FXML
+    private Label error_datenaissance;
+    @FXML
+    private Label error_confirpasswoed;
+    @FXML
+    private Label error_password;
+    @FXML
+    private Label error_adresse;
+    @FXML
+    private Label error_email;
+    @FXML
+    private Label error_prenom;
+    @FXML
+    private Label error_nom;
 
     /**
      * Initializes the controller class.
@@ -106,8 +120,17 @@ public class RegisterFXMLController implements Initializable {
 
     @FXML
     private void ajout(ActionEvent event) throws Exception {
-
-        String nom = tfnom.getText();
+        boolean isPhoneNumber = validation.TextFieldValidation.isTextFieldPhoneNumber(tftelephone, error_numtel , "Numéro doit contenir 8 chiffres!!");
+        boolean isNomString = validation.TextFieldValidation.isTextFieldTypeString(tfnom, error_nom , "Le nom doit etre de type String!!!");
+        boolean isPrenomString = validation.TextFieldValidation.isTextFieldTypeString(tfprenom, error_prenom , "Le prenom doit etre de type String!!!");
+        boolean isEmail = validation.TextFieldValidation.isTextFieldEmail(tfemail, error_email , "L'email doit contenir @gmail.com!!!");
+        boolean isPasswordEmpty = validation.TextFieldValidation.isTextFieldEmpty(tfpassword, error_password , "Ne doit pas etre vide!!!");
+        boolean isAdresseEmpty = validation.TextFieldValidation.isTextFieldTypeString(tfadresse, error_adresse , "L'adresse doit etre de type String!!!");
+        boolean isDatePicker = validation.DatePickerValidation.isDatePickerNotEmpty(date, error_datenaissance,"Date de naissance ne doit pas etre vide!!!");
+        
+        
+        if(isPhoneNumber&&isNomString&&isPrenomString&&isEmail&&isPasswordEmpty&&isAdresseEmpty&&isDatePicker){
+             String nom = tfnom.getText();
         String prenom = tfprenom.getText();
         String email = tfemail.getText();
         String password = tfpassword.getText();
@@ -116,8 +139,7 @@ public class RegisterFXMLController implements Initializable {
         int tel = Integer.valueOf(tftelephone.getText());
         String adresse = tfadresse.getText();
         String role = "Client";
-        if (whenMatchesTenDigitsNumber_thenCorrect(tftelephone.getText())) {
-            user u = new user(nom, prenom, email, password, d, tel, adresse, role);
+        user u = new user(nom, prenom, email, password, d, tel, adresse, role);
             if (us.ajouterUserPst(u)) {
                 utils.Mailing.sendMail(u);
                 AlertWindow("ForU", "Bienvenu " + prenom, Alert.AlertType.INFORMATION);
@@ -127,9 +149,7 @@ public class RegisterFXMLController implements Initializable {
             Stage stage = (Stage) fermer.getScene().getWindow();
             stage.close();
             GotoFXML("LoginFXML", "ForU", event);
-             }else{System.out.println("number is wrong!!!");}
-//        }else{System.out.println("number is wrong!!!");}
-        //error_numtel
+        }
     }
 
     @FXML

@@ -27,11 +27,30 @@
                <children>
                   <HBox alignment="CENTER" prefHeight="110.0" prefWidth="200.0">
                      <children>
-                        <Label text="Menus">
-                           <font>
-                              <Font name="Cambria Bold" size="40.0" />
-                           </font>
-                        </Label>
+                        <VBox prefHeight="110.0" prefWidth="201.0">
+                           <children>
+                              <ImageView fx:id="bqckbtn" fitHeight="62.0" fitWidth="88.0" onMouseClicked="#backbtnmenu" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../ressources/back.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox alignment="TOP_CENTER" prefHeight="110.0" prefWidth="773.0">
+                           <children>
+                              <Label text="Menus">
+                                 <font>
+                                    <Font name="Cambria Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets right="30.0" />
+                           </padding>
+                        </VBox>
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" prefHeight="65.0" prefWidth="200.0" stylesheets="@../css/Style.css">
@@ -192,7 +211,7 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <VBox alignment="CENTER" prefHeight="105.0" prefWidth="370.0">
                            <children>
@@ -245,11 +264,6 @@
                         </ScrollPane>
                      </children>
                   </HBox>
-                  <ImageView fx:id="bqckbtn" fitHeight="62.0" fitWidth="88.0" onMouseClicked="#backbtnmenu" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../ressources/back.png" />
-                     </image>
-                  </ImageView>
                </children>
             </VBox>
          </center>

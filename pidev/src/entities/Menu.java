@@ -10,6 +10,7 @@ package entities;
  * @author Dhia
  */
 public class Menu {
+
     private int id;
     private String titre;
     private String description;
@@ -18,34 +19,41 @@ public class Menu {
     private String categorie;
     private String image;
     private int mcId;
-    
-    public Menu (){
-        
+
+    public Menu() {
+
     }
-    
-    public Menu (int id){
-        this.id=id;
+
+    public Menu(String titre, float prix) {
+        this.titre = titre;
+
+        this.prix = prix;
+
     }
-    
-    public Menu (String titre, String description, float prix, String ingredients, String categorie, String image){
-        this.titre=titre;
-        this.description=description;
-        this.prix=prix;
-        this.ingredients=ingredients;
-        this.categorie=categorie;
-        this.image=image;
-        
+
+    public Menu(int id) {
+        this.id = id;
     }
-    
-    public Menu (int id, String titre, String description, float prix, String ingredients, String categorie, String image){
-        this.id=id;
-        this.titre=titre;
-        this.description=description;
-        this.prix=prix;
-        this.ingredients=ingredients;
-        this.categorie=categorie;
-        this.image=image;
-        
+
+    public Menu(String titre, String description, float prix, String ingredients, String categorie, String image) {
+        this.titre = titre;
+        this.description = description;
+        this.prix = prix;
+        this.ingredients = ingredients;
+        this.categorie = categorie;
+        this.image = image;
+
+    }
+
+    public Menu(int id, String titre, String description, float prix, String ingredients, String categorie, String image) {
+        this.id = id;
+        this.titre = titre;
+        this.description = description;
+        this.prix = prix;
+        this.ingredients = ingredients;
+        this.categorie = categorie;
+        this.image = image;
+
     }
 
     public Menu(int id, String titre, String description, float prix, String ingredients, String categorie, String image, int mcId) {
@@ -66,7 +74,7 @@ public class Menu {
     public void setMcId(int mcId) {
         this.mcId = mcId;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -106,7 +114,7 @@ public class Menu {
     public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
-    
+
     public String getImage() {
         return image;
     }
@@ -127,9 +135,5 @@ public class Menu {
     public String toString() {
         return "Menu{" + "id=" + id + ", titre=" + titre + ", description=" + description + ", prix=" + prix + ", ingredients=" + ingredients + ", categorie=" + categorie + ", image=" + image + ", mcId=" + mcId + '}';
     }
-
-    
-    
-    
 
 }

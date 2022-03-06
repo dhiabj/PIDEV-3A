@@ -99,6 +99,8 @@ public class PanierInterfaceController implements Initializable {
                     showPanier(mcs.afficherMenuCommande());
                     total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
                     totalP = mcs.afficherTotal();
+                    total.setStyle("-fx-strikethrough: false");
+                    totalNew.setText(null);
                     b=false;
                     //System.out.println(mcs.afficherMenuCommande());
                 }
@@ -147,7 +149,7 @@ public class PanierInterfaceController implements Initializable {
                
                 grid.getChildren().clear();
                 showPanier(mcs.afficherMenuCommande());
-                totalNew.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
+                //total.setText(String.valueOf(mcs.afficherTotal()) + MenuController.CURRENCY);
                 //SceneChanger.changeToSceneWindow(getClass(), event, "validcommand.fxml");
                 Notifications notificationBuilder = Notifications.create()
                         .title("Commande validé")
@@ -156,6 +158,7 @@ public class PanierInterfaceController implements Initializable {
                         .hideAfter(Duration.seconds(5))
                         .position(Pos.BOTTOM_RIGHT);
                 notificationBuilder.show();
+                
         }
         //System.out.println(commandeList );
     }

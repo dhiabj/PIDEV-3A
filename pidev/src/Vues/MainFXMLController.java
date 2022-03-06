@@ -100,6 +100,7 @@ public class MainFXMLController implements Initializable {
 
     @FXML
     private void GotoGestCommande(ActionEvent event) {
+         GotoFXML("AdminCommande", "ForU",event);
     }
 
     @FXML

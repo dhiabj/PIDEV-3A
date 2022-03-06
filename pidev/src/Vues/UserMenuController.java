@@ -49,6 +49,7 @@ import services.CommandeService;
 import services.MenuCommandeService;
 import services.MenuService;
 import utils.DataSource;
+import static pidev.Pidev.Userconnected;
 
 /**
  * FXML Controller class
@@ -114,6 +115,7 @@ public class UserMenuController implements Initializable {
         showMenu(allMenus);
         conn = DataSource.getInstance().getCnx();
         commandeList = FXCollections.observableList(cs.afficherCommande());
+        System.out.println(Userconnected.getId());
         //MenuCommandeService mcs=new MenuCommandeService();
         //MenuCommande c=new MenuCommande(52);
         //System.out.println(mcs.sum(c));
@@ -243,7 +245,7 @@ public class UserMenuController implements Initializable {
     private void handleAddCartButton(ActionEvent event) throws Exception  {
         commandeList = FXCollections.observableList(cs.afficherCommande());
         if(commandeList.size()==0){
-            Commande c = new Commande("non valide",sqlDate,1);
+            Commande c = new Commande("non valide",sqlDate,Userconnected.getId());
             cs.ajouterCommande(c);
             MenuCommande mcNew = new MenuCommande(CommandeService.id,menuId);
             mcs.ajouterMenuCommande(mcNew);
