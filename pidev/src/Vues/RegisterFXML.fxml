@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="537.0" prefWidth="722.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.RegisterFXMLController">
+    <stylesheets>
+        <URL value="@registerfxml.css" />
+    </stylesheets>
+   <children>
+      <AnchorPane layoutX="-7.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0" />
+      <AnchorPane layoutX="292.0" prefHeight="537.0" prefWidth="426.0" style="-fx-background-color: #a9a9a9 , white , white;">
+         <children>
+            <Label layoutX="15.0" prefHeight="100.0" prefWidth="398.0" text="Bienvenue" textAlignment="CENTER" textFill="#6aa84f">
+               <font>
+                  <Font name="Monospaced Bold" size="72.0" />
+               </font>
+            </Label>
+            <TextField fx:id="tfnom" layoutX="98.0" layoutY="94.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+               <font>
+                  <Font name="Monospaced Regular" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="tfprenom" layoutX="97.0" layoutY="138.0" prefHeight="30.0" prefWidth="250.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+               <font>
+                  <Font name="Monospaced Regular" size="12.0" />
+               </font>
+            </TextField>
+            <TextField fx:id="tfemail" layoutX="97.0" layoutY="183.0" prefHeight="30.0" prefWidth="250.0" promptText="Email" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+               <font>
+                  <Font name="Monospaced Regular" size="12.0" />
+               </font></TextField>
+            <PasswordField fx:id="tfpassword" layoutX="97.0" layoutY="226.0" prefHeight="30.0" prefWidth="250.0" promptText="Mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+            <PasswordField fx:id="tfconfirmpass" layoutX="98.0" layoutY="272.0" prefHeight="30.0" prefWidth="250.0" promptText="Confirmer mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+            <DatePicker fx:id="date" layoutX="98.0" layoutY="319.0" prefHeight="30.0" prefWidth="250.0" promptText="Date de naissance" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+            <TextField fx:id="tftelephone" layoutX="97.0" layoutY="367.0" prefHeight="30.0" prefWidth="250.0" promptText="Telephone" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+            <TextField fx:id="tfadresse" layoutX="98.0" layoutY="414.0" prefHeight="30.0" prefWidth="250.0" promptText="Adresse" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+            <Label fx:id="newaccout" layoutX="137.0" layoutY="453.0" onDragDetected="#gotoLogin" onMouseClicked="#gotoLogin" text="vous déja avez un compte" textFill="#6aa84f">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Label>
+            <Label fx:id="error_numtel" layoutX="98.0" layoutY="397.0" prefHeight="17.0" prefWidth="250.0" />
+            <Button fx:id="connexion" layoutX="52.0" layoutY="476.0" mnemonicParsing="false" onAction="#ajout" prefHeight="15.0" prefWidth="170.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Créer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="fermer" layoutX="235.0" layoutY="476.0" mnemonicParsing="false" onAction="#handleCloseButtonAction" prefHeight="25.0" prefWidth="170.0" styleClass="normal-btn" stylesheets="@../css/Style.css" text="Fermer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="276.0" fitWidth="241.0" layoutX="27.0" layoutY="151.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Ressources/Logo.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

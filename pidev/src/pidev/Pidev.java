@@ -5,20 +5,34 @@
  */
 package pidev;
 
-import utils.DataSource;
+import entities.user;
+import javafx.application.Application;
+import static javafx.application.Application.launch;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 /**
  *
- * @author Dhia
+ * @author Nayrouz
  */
-public class Pidev {
+public class Pidev extends Application {
 
-    /**
-     * @param args the command line arguments
-     */
+    public static user Userconnected = new user();
+
     public static void main(String[] args) {
-        // TODO code application logic here
-        DataSource ds1 = DataSource.getInstance();
+        launch(args);
     }
-    
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+        Parent root = FXMLLoader.load(getClass().getResource("/vues/LoginFXML.fxml"));
+        Scene scene = new Scene(root);
+        primaryStage.setTitle("FORU");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
 }

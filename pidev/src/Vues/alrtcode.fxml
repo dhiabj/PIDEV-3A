@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="167.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AlrtcodeController">
+   <children>
+      <Label layoutX="48.0" layoutY="57.0" text="Code non valide !!">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="114.0" fitWidth="118.0" layoutX="272.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../ressources/cancel.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="dac_but" layoutX="121.0" layoutY="116.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="37.0" prefWidth="121.0" styleClass="Supprimer-btn" stylesheets="@../css/Style.css" text="D'accord">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

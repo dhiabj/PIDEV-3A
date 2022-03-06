@@ -1,0 +1,212 @@
+.error-lb{
+    -fx-text-fill: red;
+}
+.error-tf{
+    -fx-background-color: #fce4e4;
+    -fx-border-color: red;
+}
+
+.right-bar{
+    -fx-background-color: #D3D3D3;
+}
+
+.search-box{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+}
+
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+}
+
+.search-button{
+    -fx-background-color: #828282;
+    -fx-background-radius: 30;
+    -fx-text-fill: white;
+}
+
+.search-button:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 28;
+    -fx-border-width: 3;
+}
+
+.search-button:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 28;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.shadow{
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.chosen-menu-card{
+    -fx-background-radius: 30;
+    -fx-background-color:#F16C31;
+}
+
+.add-btn{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 100;
+    -fx-text-fill: #828282;
+}
+
+.add-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #36454F;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+}
+
+.add-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #36454F;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10.0, 0.0, 0.0, 10.0);
+    -fx-rotate: 10;
+}
+
+.all-btn{
+    -fx-background-color: #828282;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.all-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.all-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #828282;
+    -fx-border-color: #828282;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.vegan-btn{
+    -fx-background-color: #228B22;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.vegan-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #228B22;
+    -fx-border-color: #228B22;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.vegan-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #228B22;
+    -fx-border-color: #228B22;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.normal-btn{
+    -fx-background-color: #FF4433;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.normal-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #FF4433;
+    -fx-border-color: #FF4433;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.normal-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #FF4433;
+    -fx-border-color: #FF4433;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.menu-item{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 30;
+}
+
+.Valider-btn{
+    -fx-background-color: #088F8F;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.Valider-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #088F8F;
+    -fx-border-color: #088F8F;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.Valider-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: #088F8F;
+    -fx-border-color: #088F8F;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.Supprimer-btn{
+    -fx-background-color: red;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+}
+
+.Supprimer-btn:hover{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+    -fx-text-fill: red;
+    -fx-border-color: red;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+}
+
+.Supprimer-btn:pressed{
+    -fx-background-color: white;
+    -fx-background-radius: 100;
+    -fx-text-fill: white;
+    -fx-text-fill: red;
+    -fx-border-color: red;
+    -fx-border-radius: 98;
+    -fx-border-width: 3;
+    -fx-rotate: 10;
+}
+
+.old-price{
+    -fx-text-overrun: true;
+}
+
