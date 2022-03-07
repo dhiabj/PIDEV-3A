@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,11 +22,10 @@
         </columns>
       </TableView>
       <Label layoutX="74.0" layoutY="299.0" text="Etat :" />
-      <TextField fx:id="id_user" layoutX="155.0" layoutY="401.0" prefHeight="25.0" prefWidth="174.0" />
       <Accordion layoutX="62.0" layoutY="72.0" />
       <Label layoutX="72.0" layoutY="350.0" text="Date :" />
       <DatePicker fx:id="date" layoutX="155.0" layoutY="346.0" />
-      <Label layoutX="62.0" layoutY="405.0" text="num Utilisateur" />
+      <Label layoutX="62.0" layoutY="405.0" text="Email Utilisateur" />
       <ComboBox fx:id="etatcombo" layoutX="155.0" layoutY="304.0" prefHeight="25.0" prefWidth="174.0" />
       <Button fx:id="ajout" layoutX="109.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleAddMenu" text="Ajouter" />
       <Button fx:id="modifier" layoutX="196.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleModiferCommande" text="Modifier" />
@@ -53,5 +51,6 @@
             <Image url="@../ressources/back.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="cbemail" layoutX="174.0" layoutY="401.0" prefWidth="150.0" />
    </children>
 </AnchorPane>

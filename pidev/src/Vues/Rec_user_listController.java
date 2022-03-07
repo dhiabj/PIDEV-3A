@@ -39,6 +39,7 @@ import services.AdminService;
 import services.UserRecService;
 import services.UserService;
 import utils.DataSource;
+import static pidev.Pidev.Userconnected;
 
 /**
  * FXML Controller class
@@ -108,7 +109,7 @@ public class Rec_user_listController implements Initializable {
         UserRecService us = new UserRecService();
         AdminService as = new AdminService();
         //pisteDao = new PisteDao();
-        list = us.readAll();
+        list = us.readAllbyiduser(Userconnected.getId());
         list1 = as.readAlls();
         //list = panierDao.displayAll(Panier_itemsController.searched);
         

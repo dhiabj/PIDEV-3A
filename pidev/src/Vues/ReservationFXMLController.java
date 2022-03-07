@@ -65,16 +65,9 @@ public class ReservationFXMLController implements Initializable {
     @FXML
     private TableColumn<reservation, String> colnomreser;
     @FXML
-    private TableColumn<reservation, String> colidclient;
-    @FXML
-    private TableColumn<reservation, String> colidevent;
-    @FXML
     private ComboBox<String> cbev;
 
-    @FXML
     private RadioButton radtous;
-    @FXML
-    private ToggleGroup role;
     @FXML
     private TableView<evenement> tableevent;
     @FXML
@@ -124,19 +117,14 @@ public class ReservationFXMLController implements Initializable {
             Logger.getLogger(MainFXMLController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    @FXML
     public void updateTable() {
-        radtous.setSelected(true);
-        ObservableList<reservation> Reser = rv.readReservation();
+        ObservableList<reservation> Reser = rv.readReservationbyidclient(Userconnected.getId());
         colnomreser.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        colidclient.setCellValueFactory(new PropertyValueFactory<>("user_id"));
-        colidevent.setCellValueFactory(new PropertyValueFactory<>("event_id"));
         tablereserv.setItems(Reser);
         updateTableEvent();
     }
 
     public void updateTableEvent() {
-        radtous.setSelected(true);
         ObservableList<evenement> Events = ev.readEvent();
         colnom.setCellValueFactory(new PropertyValueFactory<>("nom"));
         coldate.setCellValueFactory(new PropertyValueFactory<>("date"));

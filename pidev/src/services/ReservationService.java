@@ -106,6 +106,23 @@ public class ReservationService {
         return list;
 
     }
+    public ObservableList<reservation> readReservationbyidclient(int id) {
+        String req = "select * from reservation  where user_id= '" + id + "'";
+
+        ObservableList<reservation> list = FXCollections.observableArrayList();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                list.add(new reservation(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("event_id"), rs.getString("nom")));
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ReservationService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+
+    }
 
     public reservation recherche(String value) {
         String req = "select * from reservation where nom = '" + value + "'";

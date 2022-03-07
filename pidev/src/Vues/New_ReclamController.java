@@ -79,6 +79,7 @@ public class New_ReclamController implements Initializable {
     @FXML
     private void add_rec(ActionEvent event) {
         int s = 0 ;
+        
         if ( sujet.getText().length()== 0 )
         {
             sujet.setStyle("-fx-border-color:yellow ; -fx-border-width : 2px ; ");
@@ -127,30 +128,26 @@ public class New_ReclamController implements Initializable {
             tray.setMessage(message);
             tray.setNotificationType(NotificationType.SUCCESS);
             tray.showAndDismiss(Duration.millis(5000));
-         }
-        
-        String titre = sujet.getText();
-        String text = reclamation.getText();
-        int user_id = Userconnected.getId();
-
-        Reclamation_user rec = new Reclamation_user( titre, text,user_id);
-        UserRecService ui = new UserRecService();
-        ui.ajouterReclamation(rec);
-        AdminService as = new AdminService();
+            String titre = sujet.getText();
+            String text = reclamation.getText();
+            int user_id = Userconnected.getId();
+            Reclamation_user rec = new Reclamation_user( titre, text,user_id);
+            UserRecService ui = new UserRecService();
+            ui.ajouterReclamation(rec);
+            AdminService as = new AdminService();
         //System.out.println("aaaaaaaa");
         //System.out.println(as.latestId());
         
-        Reclamation_admin ra = new Reclamation_admin(as.latestId());
-        as.ajouterRep(ra);
-        try {
-            root = FXMLLoader.load(getClass().getResource("rec_user_list.fxml"));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException ex) {
-            System.out.println("e");
-        }
+            Reclamation_admin ra = new Reclamation_admin(as.latestId());
+            as.ajouterRep(ra);
+         }
+        
+        
+        //System.out.println("aaaaaaaa");
+        //System.out.println(as.latestId());
+        
+        
+       
         
         
 //        gui= new GUIutils() ;

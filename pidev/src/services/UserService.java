@@ -207,6 +207,25 @@ public class UserService {
         }
         return list;
     }
+        
+         public ObservableList<String> GetEmails() {
+        String req = "SELECT email from user";
+
+        ObservableList<String> list = FXCollections.observableArrayList();
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                list.add(rs.getString("email"));
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
 
     public ObservableList<user> recherche(String searchby, String value) {
         String req = "select * from user where " + searchby + " like '%" + value + "%'";

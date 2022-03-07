@@ -106,6 +106,26 @@ public class UserRecService  {
         }
         return list;
     }
+             public List <Reclamation_user> readAllbyiduser(int id)  {
+        String req="select * from reclamation_user  where user_id= '" + id + "'";
+        List<Reclamation_user> list= new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            rs=st.executeQuery(req);
+            while(rs.next()){
+                Reclamation_user ru=new Reclamation_user();
+                ru.setId(rs.getInt("id"));
+                ru.setIdr(rs.getInt("idr"));
+                ru.setTexte(rs.getString("texte"));
+                ru.setTitre(rs.getString("titre"));
+                list.add(ru);
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(Reclamation_user.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
+    }
         
     
         

@@ -31,11 +31,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -62,19 +60,12 @@
                <font>
                   <Font name="Monospaced Bold" size="12.0" />
                </font></Button>
-            <TableView fx:id="tablereserv" layoutX="437.0" layoutY="485.0" onMouseClicked="#preModSuppReser" prefHeight="166.0" prefWidth="594.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+            <TableView fx:id="tablereserv" layoutX="611.0" layoutY="476.0" onMouseClicked="#preModSuppReser" prefHeight="166.0" prefWidth="199.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
                <columns>
-                  <TableColumn fx:id="colnomreser" prefWidth="175.0" text="Nom" />
-                  <TableColumn fx:id="colidclient" prefWidth="218.0" text="L'identifiant du client " />
-                  <TableColumn fx:id="colidevent" maxWidth="203.0" prefWidth="203.0" text="L'identifiant de l'evenement" />
+                  <TableColumn fx:id="colnomreser" prefWidth="197.0" text="Nom" />
                </columns>
             </TableView>
             <ComboBox fx:id="cbev" layoutX="21.0" layoutY="355.0" prefHeight="30.0" prefWidth="250.0" promptText="Nom de l'evenement" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" />
-            <RadioButton fx:id="radtous" layoutX="313.0" layoutY="33.0" mnemonicParsing="false" onAction="#updateTable" selected="true" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Tous">
-               <toggleGroup>
-                  <ToggleGroup fx:id="role" />
-               </toggleGroup>
-            </RadioButton>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="73.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../Ressources/Logo.png" />
