@@ -86,6 +86,7 @@ public class MainFXMLController implements Initializable {
 
     @FXML
     private void GotoGestReclamation(ActionEvent event) {
+         GotoFXML("rec_admin_list","ForU",event);
     }
 
     @FXML

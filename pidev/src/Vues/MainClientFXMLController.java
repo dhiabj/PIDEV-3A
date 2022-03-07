@@ -80,10 +80,12 @@ public class MainClientFXMLController implements Initializable {
     
     @FXML
     private void GotoGesLivraison(ActionEvent event) {
+        GotoFXML("LivraisonClient", "ForU",event);
     }
 
     @FXML
     private void GotoGestReclamation(ActionEvent event) {
+        GotoFXML("rec_user_list","ForU",event);
     }
 
     @FXML

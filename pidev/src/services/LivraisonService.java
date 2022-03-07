@@ -26,7 +26,7 @@ import utils.DataSource;
  * @author Nayrouz
  */
 public class LivraisonService {
-    
+
     private Statement ste;
     private PreparedStatement pst;
     private ResultSet rs;
@@ -49,7 +49,7 @@ public class LivraisonService {
             pst.setString(4, l.getNom());
             pst.setString(5, l.getEtat());
             pst.executeUpdate();
-             return true;
+            return true;
 
         } catch (SQLException ex) {
             Logger.getLogger(LivraisonService.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,7 +57,7 @@ public class LivraisonService {
         }
 
     }
-    
+
     public void modifierLivraisonPst(livraison l) {
         String req = "update livraison set user_id = ? , livreur_id = ? , commande_id= ? , nom= ? , etat = ?  where id = ?";
 
@@ -76,7 +76,7 @@ public class LivraisonService {
         }
 
     }
-    
+
     public void suppLivraisonPst(livraison l) {
         String req = "delete from livraison where id = ?";
 
@@ -90,8 +90,7 @@ public class LivraisonService {
         }
 
     }
-    
-    
+
     public ObservableList<livraison> filterEtat(String value) {
         String req = "select * from livraison where etat = '" + value + "'";
 
@@ -100,7 +99,7 @@ public class LivraisonService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new livraison(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("livreur_id"), rs.getInt("commande_id") ,rs.getString("nom"), rs.getString("etat")));
+                list.add(new livraison(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("livreur_id"), rs.getInt("commande_id"), rs.getString("nom"), rs.getString("etat")));
 
             }
 
@@ -110,7 +109,7 @@ public class LivraisonService {
         }
         return list;
     }
-    
+
     public ObservableList<livraison> readLivraison() {
         String req = "select * from livraison";
 
@@ -119,13 +118,49 @@ public class LivraisonService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new livraison(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("livreur_id"), rs.getInt("commande_id") ,rs.getString("nom"), rs.getString("etat")));
+                list.add(new livraison(rs.getInt("id"), rs.getInt("user_id"), rs.getInt("livreur_id"), rs.getInt("commande_id"), rs.getString("nom"), rs.getString("etat")));
             }
 
         } catch (SQLException ex) {
             Logger.getLogger(LivraisonService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return list;
-        
+
+    }
+
+    public String GetNomLivraisionbyId(int id) {
+        String req = "select nom from livraison where user_id ='" + id + "'";
+        String nom = null;
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                nom = rs.getString("nom");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return nom;
+    }
+
+    public int GetIDLIVREURbyId(int id) {
+        String req = "select livreur_id	 from livraison where user_id ='" + id + "'";
+        int id_livreur = 0;
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                id_livreur = rs.getInt("livreur_id");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return id_livreur;
     }
 }

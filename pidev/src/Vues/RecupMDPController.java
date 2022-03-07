@@ -4,68 +4,64 @@
  * and open the template in the editor.
  */
 package vues;
-import services.UserService;
-import static pidev.Pidev.Userconnected;
+
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.event.Event;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import utils.Utils;
-
+import static pidev.Pidev.Userconnected;
+import services.UserService;
 
 /**
  * FXML Controller class
  *
  * @author Nayrouz
  */
-public class LoginFXMLController implements Initializable {
+public class RecupMDPController implements Initializable {
 
     @FXML
     private ImageView imageview;
     @FXML
-    private TextField tfemail;
+    private Label backlogin;
     @FXML
-    private PasswordField pfpassword;
+    private Button envoyMailcode;
     @FXML
-    private CheckBox chkbvoirmdp;
+    private Button fermer;
     @FXML
-    private Label mdpoublie;
+    private Label error_email;
     @FXML
-    private Label newaccout;
+    private TextField pass2;
+    @FXML
+    private TextField pass3;
 
+    UserService us = new UserService(); 
     /**
      * Initializes the controller class.
      */
-    UserService us = new UserService();
-    @FXML
-    private Button connexion;
-    @FXML
-    private Button fermer;
-
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
-
-    private void GotoFXML(String vue, String title,Event aEvent) {
+    }    
+    
+     private void GotoFXML(String vue, String title,Event aEvent) {
         try {
             Event event;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
@@ -87,41 +83,26 @@ public class LoginFXMLController implements Initializable {
         alert.showAndWait();
     }
 
-
     @FXML
-    private void MdpOublie(MouseEvent event) {
-        GotoFXML("GimmeEmailFXML", "Bienvenue",event);
+    private void gotologin(MouseEvent event) {
+        GotoFXML("LoginFXML", "Bienvenue",event);
     }
 
-    @FXML
-    private void gotoREGISTER(MouseEvent event) {
-        GotoFXML("RegisterFXML", "Bienvenue",event);
-    }
-
-    @FXML
-    private void connexion(ActionEvent event) {
-         String email = tfemail.getText();
-        String mdp = pfpassword.getText();
-        Userconnected = us.getUserbyEmailPass(email, mdp);
-        if (Userconnected.getId() != 0) {
-            Userconnected.setId(Userconnected.getId());
-            Userconnected.setEmail(Userconnected.getEmail());
-            Userconnected.setPassword(Userconnected.getPassword());
-            AlertWindow("Connexion avec succées", "Je vous souhaite la bienvenue Mr/Mme " + Userconnected.getNom() + ",\nInterface " + Userconnected.getRole(), Alert.AlertType.INFORMATION);
-            if ("Admin".equals(Userconnected.getRole())) {
-                GotoFXML("MainFXML", "Dashbord Admin",event);
-            } else {
-                GotoFXML("MainClientFXML", "ForU",event);
-            }
-        } else {
-            AlertWindow("Connexion echouée", "Email ou mot de pass invalid!!", Alert.AlertType.ERROR);
-        }
-    }
 
     @FXML
     private void handleCloseButtonAction(MouseEvent event) {
-     Stage stage = (Stage) fermer.getScene().getWindow();
+        Stage stage = (Stage) fermer.getScene().getWindow();
          stage.close();
     }
 
+    @FXML
+    private void gotologinapresChangement(ActionEvent event) throws SQLException {
+      if (pass2.getText().equals(pass3.getText())) {
+                if (us.ResetPassword(pass2.getText(),14)) {
+                    AlertWindow("Vous devez connecter une autre fois ", "Le changement de mot de passe a été fait avec succées", Alert.AlertType.INFORMATION);
+                    GotoFXML("LoginFXML", "Bienvenue",event);
+    }   else  AlertWindow("Essayer une autre fois","L'une des deux mot de passe est incorrecte", Alert.AlertType.NONE);
+    }}
+       
+    
 }

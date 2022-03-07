@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.CodeValideController">
+   <left>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fx:id="imageview" fitHeight="400.0" fitWidth="327.0" layoutY="-4.0">
+               <image>
+                  <Image url="@../Ressources/background.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="368.0" prefWidth="373.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="backlogin" layoutX="64.0" layoutY="286.0" onMouseClicked="#gotologin" text="Retour pour essayer une autre fois" textFill="#6aa84f">
+               <font>
+                  <Font name="Monospaced Bold" size="12.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="OPEN_HAND" />
+               </cursor>
+            </Label>
+            <Button fx:id="envoyMailcode" layoutX="23.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotomdp" prefHeight="30.0" prefWidth="160.0" styleClass="all-btn" stylesheets="@../css/Style.css" text="Confirmer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button fx:id="fermer" layoutX="198.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#handleCloseButtonAction" prefHeight="30.0" prefWidth="160.0" styleClass="normal-btn" stylesheets="@../css/Style.css" text="Fermer" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="48.0" layoutY="14.0" prefHeight="37.0" prefWidth="301.0" text="Récupération de mot " textAlignment="CENTER" textFill="#6aa84f">
+               <font>
+                  <Font name="Monospaced Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="122.0" layoutY="51.0" prefHeight="37.0" prefWidth="122.0" text="de passe" textAlignment="CENTER" textFill="#6aa84f">
+               <font>
+                  <Font name="Monospaced Bold" size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="error_email" layoutX="58.0" layoutY="153.0" prefHeight="17.0" prefWidth="250.0" stylesheets="@../css/Style.css" />
+            <Label layoutX="75.0" layoutY="136.0" text="Code :" textFill="WHITE">
+               <font>
+                  <Font name="Monospaced Bold" size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="code" layoutX="70.0" layoutY="171.0" prefHeight="26.0" prefWidth="227.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+               <font>
+                  <Font name="Monospaced Bold" size="24.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>

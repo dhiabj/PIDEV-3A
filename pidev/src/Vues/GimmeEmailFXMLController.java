@@ -4,68 +4,61 @@
  * and open the template in the editor.
  */
 package vues;
-import services.UserService;
-import static pidev.Pidev.Userconnected;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.event.Event;
-import javafx.scene.Node;
-import javafx.scene.control.Alert;
-import utils.Utils;
-
+import services.UserService;
 
 /**
  * FXML Controller class
  *
  * @author Nayrouz
  */
-public class LoginFXMLController implements Initializable {
+public class GimmeEmailFXMLController implements Initializable {
 
     @FXML
     private ImageView imageview;
     @FXML
     private TextField tfemail;
     @FXML
-    private PasswordField pfpassword;
+    private Button envoyMailcode;
     @FXML
-    private CheckBox chkbvoirmdp;
+    private Button fermer;
     @FXML
-    private Label mdpoublie;
-    @FXML
-    private Label newaccout;
+    private Label backlogin;
 
     /**
      * Initializes the controller class.
      */
-    UserService us = new UserService();
+    
+     UserService us = new UserService(); 
     @FXML
-    private Button connexion;
-    @FXML
-    private Button fermer;
-
+    private Label error_email;
+     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }
+    }    
 
-    private void GotoFXML(String vue, String title,Event aEvent) {
+     private void GotoFXML(String vue, String title,Event aEvent) {
         try {
             Event event;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
@@ -87,41 +80,30 @@ public class LoginFXMLController implements Initializable {
         alert.showAndWait();
     }
 
-
+    
     @FXML
-    private void MdpOublie(MouseEvent event) {
-        GotoFXML("GimmeEmailFXML", "Bienvenue",event);
+    private void gotologin(MouseEvent event) {
+        GotoFXML("LoginFXML", "Bienvenue",event);
+        
     }
 
     @FXML
-    private void gotoREGISTER(MouseEvent event) {
-        GotoFXML("RegisterFXML", "Bienvenue",event);
-    }
-
-    @FXML
-    private void connexion(ActionEvent event) {
-         String email = tfemail.getText();
-        String mdp = pfpassword.getText();
-        Userconnected = us.getUserbyEmailPass(email, mdp);
-        if (Userconnected.getId() != 0) {
-            Userconnected.setId(Userconnected.getId());
-            Userconnected.setEmail(Userconnected.getEmail());
-            Userconnected.setPassword(Userconnected.getPassword());
-            AlertWindow("Connexion avec succées", "Je vous souhaite la bienvenue Mr/Mme " + Userconnected.getNom() + ",\nInterface " + Userconnected.getRole(), Alert.AlertType.INFORMATION);
-            if ("Admin".equals(Userconnected.getRole())) {
-                GotoFXML("MainFXML", "Dashbord Admin",event);
-            } else {
-                GotoFXML("MainClientFXML", "ForU",event);
-            }
-        } else {
-            AlertWindow("Connexion echouée", "Email ou mot de pass invalid!!", Alert.AlertType.ERROR);
+    private void envoyMailcode(ActionEvent event) throws Exception {
+        boolean isEmailEmpty = validation.TextFieldValidation.isTextFieldEmpty(tfemail, error_email , "Ne doit pas etre vide!!!");
+        if(isEmailEmpty) {
+        String email = tfemail.getText();
+        int id_client = us.GetIdUserbyEmail(email);
+        System.out.println(id_client);
+        utils.MailingCode.sendMail(email);
+        AlertWindow("Succès de l'envoie de Code","Vérifier votre boite Email Stp !", Alert.AlertType.INFORMATION);
+        GotoFXML("CodeValide", "Bienvenue",event);
         }
     }
 
     @FXML
     private void handleCloseButtonAction(MouseEvent event) {
-     Stage stage = (Stage) fermer.getScene().getWindow();
+         Stage stage = (Stage) fermer.getScene().getWindow();
          stage.close();
     }
-
+    
 }

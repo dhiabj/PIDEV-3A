@@ -130,7 +130,7 @@ public class RegisterFXMLController implements Initializable {
         
         
         if(isPhoneNumber&&isNomString&&isPrenomString&&isEmail&&isPasswordEmpty&&isAdresseEmpty&&isDatePicker){
-             String nom = tfnom.getText();
+        String nom = tfnom.getText();
         String prenom = tfprenom.getText();
         String email = tfemail.getText();
         String password = tfpassword.getText();

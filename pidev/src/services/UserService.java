@@ -312,6 +312,26 @@ public class UserService {
         }
         return nom;
     }
+    
+    
+    
+    public String GetlivrbyId(int id) {
+        String req = "SELECT concat(nom,' ',prenom) as full_name from user where id ='" + id + "'";
+        String nom = null;
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                nom = rs.getString("full_name");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return nom;
+    }
 
     public boolean ResetPassword(String pass, int id) throws SQLException {
         String sql = "UPDATE user SET password=? WHERE id=?";
@@ -382,4 +402,23 @@ public int rowUSER(){
         return i;
         
 }
+
+    public int GetIdUserbyEmail(String value) {
+        String req = "select id from user where email = '" + value + "';";
+
+        int id = 0;
+        try {
+            ste = conn.createStatement();
+            rs = ste.executeQuery(req);
+            while (rs.next()) {//parcourir le resultset
+                id = rs.getInt("id");
+
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+        }
+        return id;
+    }
 }
