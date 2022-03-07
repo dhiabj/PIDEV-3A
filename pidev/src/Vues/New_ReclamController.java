@@ -107,6 +107,7 @@ public class New_ReclamController implements Initializable {
         if (rs.getnbRec(Userconnected.getId()) >= 5) {
             System.out.println("you are banned");
             AlertWindow("Banned", "Malheureusement Mme/M Tu es banni à cause de Spam, Essayer de connecter aprés 10 jours !!", Alert.AlertType.WARNING);
+            utils.MailBanClient.sendMail(Userconnected.getEmail(), Userconnected.getPrenom());
             Userconnected.setEtat("banned");
             us.BanUser(Userconnected);
             Userconnected=null;
