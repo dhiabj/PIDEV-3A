@@ -44,8 +44,6 @@ import services.UserService;
 public class ResetPasswordAdminController implements Initializable {
 
     @FXML
-    private MenuBar menu;
-    @FXML
     private ImageView ImageUserLogedIn;
     @FXML
     private TextField pass1;

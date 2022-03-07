@@ -50,8 +50,6 @@ public class ProfilAdminFXMLController implements Initializable {
 
     private String Imguser;
     @FXML
-    private MenuBar menu;
-    @FXML
     private TextField tfnom;
     @FXML
     private TextField tfprenom;

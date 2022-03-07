@@ -16,51 +16,51 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="950.0" style="-fx-background-color: #a9a9a9 , white , white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.UserFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="950.0" stylesheets="@darkwhite.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.UserFXMLController">
    <children>
-      <TextField fx:id="tfrecherche" layoutX="420.0" layoutY="19.0" onKeyReleased="#SearchUser" prefHeight="30.0" prefWidth="150.0" promptText="Recherche" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfrecherche" layoutX="420.0" layoutY="19.0" onKeyReleased="#SearchUser" prefHeight="30.0" prefWidth="150.0" promptText="Recherche" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <ComboBox fx:id="cbtri" layoutX="610.0" layoutY="19.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-      <TextField fx:id="tfnom" layoutX="47.0" layoutY="198.0" prefHeight="30.0" prefWidth="165.0" promptText="Nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <ComboBox fx:id="cbtri" layoutX="610.0" layoutY="19.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f;" />
+      <TextField fx:id="tfnom" layoutX="47.0" layoutY="198.0" prefHeight="30.0" prefWidth="165.0" promptText="Nom" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <TextField fx:id="tfprenom" layoutX="47.0" layoutY="247.0" prefHeight="30.0" prefWidth="165.0" promptText="Prenom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfprenom" layoutX="47.0" layoutY="247.0" prefHeight="30.0" prefWidth="165.0" promptText="Prenom" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <TextField fx:id="tfemail" layoutX="47.0" layoutY="297.0" prefHeight="30.0" prefWidth="165.0" promptText="Email" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfemail" layoutX="47.0" layoutY="297.0" prefHeight="30.0" prefWidth="165.0" promptText="Email" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <PasswordField fx:id="tfpassword" layoutX="47.0" layoutY="347.0" prefHeight="30.0" prefWidth="165.0" promptText="Mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <PasswordField fx:id="tfpassword" layoutX="47.0" layoutY="347.0" prefHeight="30.0" prefWidth="165.0" promptText="Mot de passe" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></PasswordField>
-      <PasswordField fx:id="tfconfirmpass" layoutX="48.0" layoutY="397.0" prefHeight="30.0" prefWidth="165.0" promptText="Confirmer mot de passe" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <PasswordField fx:id="tfconfirmpass" layoutX="48.0" layoutY="397.0" prefHeight="30.0" prefWidth="165.0" promptText="Confirmer mot de passe" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></PasswordField>
-      <DatePicker fx:id="date" layoutX="48.0" layoutY="447.0" prefHeight="30.0" prefWidth="165.0" promptText="Date de naissance" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
-      <TextField fx:id="tftelephone" layoutX="47.0" layoutY="497.0" prefHeight="30.0" prefWidth="165.0" promptText="Telephone" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <DatePicker fx:id="date" layoutX="48.0" layoutY="447.0" prefHeight="30.0" prefWidth="165.0" promptText="Date de naissance" style="-fx-border-color: #6aa84f;" />
+      <TextField fx:id="tftelephone" layoutX="47.0" layoutY="497.0" prefHeight="30.0" prefWidth="165.0" promptText="Telephone" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <TextField fx:id="tfadresse" layoutX="47.0" layoutY="547.0" prefHeight="30.0" prefWidth="165.0" promptText="Adresse" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <TextField fx:id="tfadresse" layoutX="47.0" layoutY="547.0" prefHeight="30.0" prefWidth="165.0" promptText="Adresse" style="-fx-border-color: #6aa84f;">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></TextField>
-      <ComboBox fx:id="cbrole" layoutX="48.0" layoutY="597.0" prefHeight="30.0" prefWidth="165.0" promptText="Role" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
+      <ComboBox fx:id="cbrole" layoutX="48.0" layoutY="597.0" prefHeight="30.0" prefWidth="165.0" promptText="Role" style="-fx-border-color: #6aa84f;">
          <effect>
             <Blend mode="OVERLAY" />
          </effect></ComboBox>
-      <Button fx:id="btncreate" layoutX="262.0" layoutY="597.0" mnemonicParsing="false" onAction="#CreateUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Ajouter">
+      <Button fx:id="btncreate" layoutX="262.0" layoutY="597.0" mnemonicParsing="false" onAction="#CreateUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f;" text="Ajouter">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <TableView fx:id="tableuser" layoutX="255.0" layoutY="63.0" onMouseClicked="#preModSupp" prefHeight="475.0" prefWidth="667.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white; -fx-background-radius: 7px 7px 0px 0px; -fx-background-insets: 0 11px 0 0; -fx-padding: 0 0 5px 0;" styleClass="ba">
+      <TableView fx:id="tableuser" layoutX="255.0" layoutY="63.0" onMouseClicked="#preModSupp" prefHeight="475.0" prefWidth="667.0" style="-fx-border-color: #6aa84f; -fx-background-radius: 7px 7px 0px 0px; -fx-background-insets: 0 11px 0 0; -fx-padding: 0 0 5px 0;" styleClass="ba">
         <columns>
           <TableColumn fx:id="colnom" prefWidth="79.0" text="Nom" />
           <TableColumn fx:id="colprenom" prefWidth="76.0" text="Prenom" />
@@ -72,19 +72,19 @@
             <TableColumn fx:id="colrole" prefWidth="59.0" text="Role" />
         </columns>
       </TableView>
-      <Button fx:id="btnmodif" layoutX="402.0" layoutY="597.0" mnemonicParsing="false" onAction="#ModifUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Modifier">
+      <Button fx:id="btnmodif" layoutX="402.0" layoutY="597.0" mnemonicParsing="false" onAction="#ModifUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f;" text="Modifier">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btndel" layoutX="520.0" layoutY="597.0" mnemonicParsing="false" onAction="#DeleteUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Supprimer">
+      <Button fx:id="btndel" layoutX="520.0" layoutY="597.0" mnemonicParsing="false" onAction="#DeleteUser" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f;" text="Supprimer">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <Button fx:id="btntri" layoutX="771.0" layoutY="19.0" mnemonicParsing="false" onAction="#TriUsers" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Tri">
+      <Button fx:id="btntri" layoutX="771.0" layoutY="19.0" mnemonicParsing="false" onAction="#TriUsers" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: #6aa84f;" text="Tri">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <RadioButton fx:id="radadmin" layoutX="324.0" layoutY="554.0" mnemonicParsing="false" onAction="#getAdmins" style="-fx-background-color: #a9a9a9 , white , white;" text="Admin">
+      <RadioButton fx:id="radadmin" layoutX="324.0" layoutY="554.0" mnemonicParsing="false" onAction="#getAdmins" text="Admin">
          <toggleGroup>
             <ToggleGroup fx:id="role" />
          </toggleGroup>
@@ -92,25 +92,25 @@
             <Font name="Monospaced Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="radclient" layoutX="402.0" layoutY="554.0" mnemonicParsing="false" onAction="#getClients" style="-fx-background-color: #a9a9a9 , white , white;" text="Client" toggleGroup="$role">
+      <RadioButton fx:id="radclient" layoutX="402.0" layoutY="554.0" mnemonicParsing="false" onAction="#getClients" text="Client" toggleGroup="$role">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></RadioButton>
-      <RadioButton fx:id="radtous" layoutX="252.0" layoutY="554.0" mnemonicParsing="false" onAction="#updateTable" selected="true" style="-fx-background-color: #a9a9a9 , white , white;" text="Tous" toggleGroup="$role">
+      <RadioButton fx:id="radtous" layoutX="252.0" layoutY="554.0" mnemonicParsing="false" onAction="#updateTable" selected="true" text="Tous" toggleGroup="$role">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></RadioButton>
-      <ComboBox fx:id="cbrechpar" layoutX="255.0" layoutY="19.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" />
+      <ComboBox fx:id="cbrechpar" layoutX="255.0" layoutY="19.0" prefHeight="30.0" prefWidth="150.0" promptText="nom" style="-fx-border-color: #6aa84f;" />
       <ImageView fx:id="imageviewlogo" fitHeight="150.0" fitWidth="200.0" layoutX="56.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Ressources/Logo.png" />
          </image>
       </ImageView>
-      <Button fx:id="pdf" layoutX="479.0" layoutY="547.0" mnemonicParsing="false" onAction="#Pdf" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;" text="Pdf">
+      <Button fx:id="pdf" layoutX="479.0" layoutY="547.0" mnemonicParsing="false" onAction="#Pdf" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #6aa84f;" text="Pdf">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font></Button>
-      <Button layoutX="792.0" layoutY="547.0" mnemonicParsing="false" onAction="#OnClickedPrint" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="imprimer">
+      <Button layoutX="792.0" layoutY="547.0" mnemonicParsing="false" onAction="#OnClickedPrint" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #6aa84f;" text="imprimer">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font>
@@ -118,7 +118,7 @@
             <Cursor fx:constant="V_RESIZE" />
          </cursor>
       </Button>
-      <Button fx:id="stat" layoutX="641.0" layoutY="547.0" mnemonicParsing="false" onAction="#OnClickedStatistique" prefHeight="30.0" prefWidth="130.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="Statistiques">
+      <Button fx:id="stat" layoutX="641.0" layoutY="547.0" mnemonicParsing="false" onAction="#OnClickedStatistique" prefHeight="30.0" prefWidth="130.0" style="-fx-border-color: #6aa84f;" text="Statistiques">
          <font>
             <Font name="Monospaced Bold" size="12.0" />
          </font>

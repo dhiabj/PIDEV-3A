@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="950.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminCommandeController">
+<AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminCommandeController">
    <children>
       <TableView fx:id="tableid" layoutX="418.0" layoutY="14.0" prefHeight="403.0" prefWidth="514.0">
         <columns>
@@ -53,4 +54,8 @@
       </ImageView>
       <ComboBox fx:id="cbemail" layoutX="174.0" layoutY="401.0" prefWidth="150.0" />
    </children>
+   <stylesheets>
+      <URL value="@../css/Style.css" />
+      <URL value="@darkwhite.css" />
+   </stylesheets>
 </AnchorPane>

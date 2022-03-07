@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -11,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="650.0" prefWidth="950.0" stylesheets="@../css/Style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminMenuController">
+<AnchorPane id="AnchorPane" fx:id="anchorPane" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.AdminMenuController">
    <children>
       <TextField fx:id="txt_titre" layoutX="126.0" layoutY="219.0" prefHeight="36.0" prefWidth="150.0" />
       <TextField fx:id="txt_description" layoutX="126.0" layoutY="272.0" prefHeight="36.0" prefWidth="150.0" />
@@ -30,21 +31,21 @@
             <TableColumn fx:id="column_ingredients" prefWidth="172.0" text="Ingredients" />
         </columns>
       </TableView>
-      <Label fx:id="error_titre" layoutX="52.0" layoutY="255.0" prefHeight="17.0" prefWidth="264.0" />
-      <Label fx:id="error_description" layoutX="52.0" layoutY="305.0" prefHeight="17.0" prefWidth="264.0" />
-      <Label fx:id="error_prix" layoutX="52.0" layoutY="353.0" prefHeight="17.0" prefWidth="264.0" />
-      <Label fx:id="error_categorie" layoutX="52.0" layoutY="452.0" prefHeight="17.0" prefWidth="264.0" />
+      <Label fx:id="error_titre" layoutX="52.0" layoutY="255.0" prefHeight="17.0" prefWidth="264.0" stylesheets="@../css/Style.css" />
+      <Label fx:id="error_description" layoutX="52.0" layoutY="305.0" prefHeight="17.0" prefWidth="264.0" stylesheets="@../css/Style.css" />
+      <Label fx:id="error_prix" layoutX="52.0" layoutY="353.0" prefHeight="17.0" prefWidth="264.0" stylesheets="@../css/Style.css" />
+      <Label fx:id="error_categorie" layoutX="52.0" layoutY="452.0" prefHeight="17.0" prefWidth="264.0" stylesheets="@../css/Style.css" />
       <Button fx:id="btn_updateMenu" layoutX="569.0" layoutY="491.0" mnemonicParsing="false" onAction="#handleUpdateMenu" prefHeight="36.0" prefWidth="110.0" text="Modifier Menu" />
       <Button fx:id="btn_deleteMenu" layoutX="694.0" layoutY="491.0" mnemonicParsing="false" onAction="#handleDeleteMenu" prefHeight="36.0" prefWidth="110.0" text="Supprimer Menu" />
       <Text fill="RED" layoutX="610.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sélectionner une ligne à modifier ou à supprimer du tableau." />
       <Button fx:id="btnCancel" layoutX="694.0" layoutY="554.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="36.0" prefWidth="110.0" text="Annuler" />
       <Button fx:id="btnBrowser" layoutX="293.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleBtnBrowser" prefHeight="36.0" prefWidth="110.0" text="Browse" />
       <ImageView fx:id="imageView" fitHeight="163.0" fitWidth="213.0" layoutX="52.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="error_image" layoutX="27.0" layoutY="619.0" prefHeight="17.0" prefWidth="245.0" />
+      <Label fx:id="error_image" layoutX="27.0" layoutY="619.0" prefHeight="17.0" prefWidth="245.0" stylesheets="@../css/Style.css" />
       <TextField fx:id="txt_search" layoutX="610.0" layoutY="411.0" prefHeight="36.0" prefWidth="219.0" promptText="Rechercher Menu" />
       <TextField fx:id="txt_ingredients" layoutX="126.0" layoutY="369.0" prefHeight="36.0" prefWidth="150.0" />
       <Label layoutX="35.0" layoutY="379.0" text="Ingredients" />
-      <Label fx:id="error_ingredients" layoutX="52.0" layoutY="407.0" prefHeight="17.0" prefWidth="264.0" />
+      <Label fx:id="error_ingredients" layoutX="52.0" layoutY="407.0" prefHeight="17.0" prefWidth="264.0" stylesheets="@../css/Style.css" />
       <ComboBox fx:id="txt_categorie" layoutX="126.0" layoutY="425.0" prefWidth="150.0" />
       <ImageView fx:id="imageviewlogo" fitHeight="150.0" fitWidth="200.0" layoutX="76.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -57,4 +58,8 @@
          </image>
       </ImageView>
    </children>
+   <stylesheets>
+      <URL value="@../css/Style.css" />
+      <URL value="@darkwhite.css" />
+   </stylesheets>
 </AnchorPane>

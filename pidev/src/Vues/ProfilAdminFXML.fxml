@@ -2,10 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,61 +9,21 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="771.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="vues.ProfilAdminFXMLController">
+<AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="771.0" stylesheets="@darkwhite.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.ProfilAdminFXMLController">
    <children>
-      <AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="754.0" style="-fx-background-color: #a9a9a9 , white , white;">
+      <AnchorPane id="AnchorPane" prefHeight="747.0" prefWidth="754.0">
          <children>
-            <MenuBar fx:id="menu" prefHeight="27.0" prefWidth="778.0" style="-fx-border-color: #6aa84f; -fx-background-color: #a9a9a9 , white , white;">
-               <menus>
-                  <Menu mnemonicParsing="false" text="File">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="New" />
-                        <MenuItem mnemonicParsing="false" text="Open…" />
-                        <Menu mnemonicParsing="false" text="Open Recent" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Close" />
-                        <MenuItem mnemonicParsing="false" text="Save" />
-                        <MenuItem mnemonicParsing="false" text="Save As…" />
-                        <MenuItem mnemonicParsing="false" text="Revert" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Preferences…" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Quit" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Edit">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Undo" />
-                        <MenuItem mnemonicParsing="false" text="Redo" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Cut" />
-                        <MenuItem mnemonicParsing="false" text="Copy" />
-                        <MenuItem mnemonicParsing="false" text="Paste" />
-                        <MenuItem mnemonicParsing="false" text="Delete" />
-                        <SeparatorMenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" text="Select All" />
-                        <MenuItem mnemonicParsing="false" text="Unselect All" />
-                     </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="Help">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-                     </items>
-                  </Menu>
-               </menus>
-            </MenuBar>
-            <TextField fx:id="tfnom" layoutX="421.0" layoutY="298.0" prefHeight="30.0" prefWidth="300.0" promptText="Nom" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+            <TextField fx:id="tfnom" layoutX="421.0" layoutY="298.0" prefHeight="30.0" prefWidth="300.0" promptText="Nom" style="-fx-border-color: #6aa84f;">
                <font>
                   <Font name="Monospaced Bold" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfprenom" layoutX="420.0" layoutY="369.0" prefHeight="30.0" prefWidth="300.0" promptText="Prenom" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+            <TextField fx:id="tfprenom" layoutX="420.0" layoutY="369.0" prefHeight="30.0" prefWidth="300.0" promptText="Prenom" style="-fx-border-color: #6aa84f;">
                <font>
                   <Font name="Monospaced Bold" size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfadresse" layoutX="420.0" layoutY="438.0" prefHeight="30.0" prefWidth="300.0" promptText="Adresse" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;">
+            <TextField fx:id="tfadresse" layoutX="420.0" layoutY="438.0" prefHeight="30.0" prefWidth="300.0" promptText="Adresse" style="-fx-border-color: #6aa84f;">
                <font>
                   <Font name="Monospaced Bold" size="18.0" />
                </font>
@@ -77,7 +33,7 @@
                   <Image url="@../Ressources/Logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="upload" layoutX="604.0" layoutY="548.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="39.0" prefWidth="100.0" style="-fx-background-color: #a9a9a9 , white , white; -fx-border-color: #6aa84f;" text="upload">
+            <Button fx:id="upload" layoutX="604.0" layoutY="548.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="39.0" prefWidth="100.0" text="upload">
                <font>
                   <Font name="Monospaced Bold" size="18.0" />
                </font>
@@ -137,7 +93,7 @@
                      </image>
                   </ImageView>
                   <ImageView fx:id="ImageUserLogedIn1" fitHeight="158.0" fitWidth="183.0" layoutX="82.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true" />
-                  <ImageView fx:id="bqckbtn" fitHeight="62.0" fitWidth="88.0" layoutX="13.0" layoutY="49.0" onMouseClicked="#backbtnmenu" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="bqckbtn" fitHeight="62.0" fitWidth="88.0" layoutX="14.0" layoutY="26.0" onMouseClicked="#backbtnmenu" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../ressources/back.png" />
                      </image>

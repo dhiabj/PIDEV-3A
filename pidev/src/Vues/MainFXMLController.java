@@ -11,6 +11,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -25,6 +28,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import static pidev.Pidev.Userconnected;
 
@@ -55,12 +59,35 @@ public class MainFXMLController implements Initializable {
     private Label Role;
     @FXML
     private Button utilisateur;
+    @FXML
+    private AnchorPane paneMain;
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ToggleSwitch button = new ToggleSwitch();
+        SimpleBooleanProperty isOn = button.switchOnProperty();
+        isOn.addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue) {
+                      button.getScene().getRoot().getStylesheets().remove(MainFXMLController.this.getClass().getResource("darkwhite.css").toString());
+                    System.out.println("changing css");
+                }else {
+                 
+                     button.getScene().getRoot().getStylesheets().add(MainFXMLController.this.getClass().getResource("darkwhite.css").toString());
+                    System.out.println("changing css");
+                }
+                
+                }
+            
+        });
+        
+        
+        
+        paneMain.getChildren().add(button);
         
          UserName.setText(Userconnected.getPrenom()+" "+Userconnected.getNom());
         // TODO
