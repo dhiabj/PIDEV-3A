@@ -126,12 +126,19 @@ public class Rec_user_listController implements Initializable {
         Label desc = new Label();
         
         ImageView img = new ImageView();
-        img.setFitHeight(50);
-        img.setFitWidth(80);
-        del.setPrefSize(20, 20);
-        del.setLayoutX(550);
+        //img.setFitHeight(50);
+        //img.setFitWidth(80);
+        del.setStyle("-fx-background-color: red;\n" +
+"    -fx-background-radius: 100;\n" +
+"    -fx-text-fill: white;");
+        del.setText("Supprimer");
+        del.setPrefSize(100, 30);
+        del.setLayoutX(700);
         del.setLayoutY(140 + (100 * i));
-        desc.setLayoutX(50);
+        desc.setLayoutX(200);
+        desc.setStyle("-fx-font-family: initial;\n" +
+"    -fx-background-color: #fcc200;\n" +
+"    -fx-font-weight: bold;");
         desc.setLayoutY(140 + (100 * i));
         desc.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
             if (event.getClickCount() == 2) {
@@ -162,8 +169,12 @@ public class Rec_user_listController implements Initializable {
         desc.setTextFill(Color.BLACK);
         desc.setText( "Sujet : " + ru.getTitre());
         
-        plus.setPrefSize(20, 20);
-        plus.setLayoutX(550);
+        plus.setStyle("-fx-background-color: #228B22;\n" +
+"    -fx-background-radius: 100;\n" +
+"    -fx-text-fill: white;");
+        plus.setText("Inspecter");
+        plus.setPrefSize(100, 30);
+        plus.setLayoutX(700);
         plus.setLayoutY(140 + 30 + (100 * i));
         
         
