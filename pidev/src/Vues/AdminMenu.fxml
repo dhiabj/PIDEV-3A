@@ -21,7 +21,7 @@
       <Label layoutX="27.0" layoutY="282.0" text="Description" />
       <Label layoutX="48.0" layoutY="330.0" text="Prix" />
       <Label layoutX="39.0" layoutY="429.0" text="Categorie" />
-      <TableView fx:id="tableMenu" layoutX="302.0" layoutY="58.0" prefHeight="336.0" prefWidth="624.0">
+      <TableView fx:id="tableMenu" layoutX="316.0" layoutY="58.0" prefHeight="336.0" prefWidth="624.0">
         <columns>
           <TableColumn fx:id="column_titre" prefWidth="116.0" text="Titre" />
             <TableColumn fx:id="column_description" minWidth="3.0" prefWidth="154.0" text="Description" />
@@ -30,21 +30,21 @@
             <TableColumn fx:id="column_ingredients" prefWidth="172.0" text="Ingredients" />
         </columns>
       </TableView>
-      <Label fx:id="error_titre" layoutX="206.0" layoutY="161.0" />
-      <Label fx:id="error_description" layoutX="206.0" layoutY="228.0" />
-      <Label fx:id="error_prix" layoutX="206.0" layoutY="290.0" />
-      <Label fx:id="error_categorie" layoutX="205.0" layoutY="411.0" />
+      <Label fx:id="error_titre" layoutX="52.0" layoutY="255.0" prefHeight="17.0" prefWidth="264.0" />
+      <Label fx:id="error_description" layoutX="52.0" layoutY="305.0" prefHeight="17.0" prefWidth="264.0" />
+      <Label fx:id="error_prix" layoutX="52.0" layoutY="353.0" prefHeight="17.0" prefWidth="264.0" />
+      <Label fx:id="error_categorie" layoutX="52.0" layoutY="452.0" prefHeight="17.0" prefWidth="264.0" />
       <Button fx:id="btn_updateMenu" layoutX="569.0" layoutY="491.0" mnemonicParsing="false" onAction="#handleUpdateMenu" prefHeight="36.0" prefWidth="110.0" text="Modifier Menu" />
       <Button fx:id="btn_deleteMenu" layoutX="694.0" layoutY="491.0" mnemonicParsing="false" onAction="#handleDeleteMenu" prefHeight="36.0" prefWidth="110.0" text="Supprimer Menu" />
       <Text fill="RED" layoutX="610.0" layoutY="473.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sélectionner une ligne à modifier ou à supprimer du tableau." />
       <Button fx:id="btnCancel" layoutX="694.0" layoutY="554.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="36.0" prefWidth="110.0" text="Annuler" />
       <Button fx:id="btnBrowser" layoutX="293.0" layoutY="536.0" mnemonicParsing="false" onAction="#handleBtnBrowser" prefHeight="36.0" prefWidth="110.0" text="Browse" />
       <ImageView fx:id="imageView" fitHeight="163.0" fitWidth="213.0" layoutX="52.0" layoutY="473.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="error_image" layoutX="113.0" layoutY="599.0" />
+      <Label fx:id="error_image" layoutX="27.0" layoutY="619.0" prefHeight="17.0" prefWidth="245.0" />
       <TextField fx:id="txt_search" layoutX="610.0" layoutY="411.0" prefHeight="36.0" prefWidth="219.0" promptText="Rechercher Menu" />
       <TextField fx:id="txt_ingredients" layoutX="126.0" layoutY="369.0" prefHeight="36.0" prefWidth="150.0" />
       <Label layoutX="35.0" layoutY="379.0" text="Ingredients" />
-      <Label fx:id="error_ingredients" layoutX="205.0" layoutY="352.0" />
+      <Label fx:id="error_ingredients" layoutX="52.0" layoutY="407.0" prefHeight="17.0" prefWidth="264.0" />
       <ComboBox fx:id="txt_categorie" layoutX="126.0" layoutY="425.0" prefWidth="150.0" />
       <ImageView fx:id="imageviewlogo" fitHeight="150.0" fitWidth="200.0" layoutX="76.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
          <image>

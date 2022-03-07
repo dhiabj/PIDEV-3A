@@ -35,10 +35,8 @@ public class AdminService {
         try {
             pst = conn.prepareStatement(req);
             pst.setInt(1, r.getId());
-            pst.setString(2," ");
-            
-            
-          
+            pst.setString(2, " ");
+
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -63,11 +61,11 @@ public class AdminService {
     }
 
     public void suppRep(Reclamation_admin rep) {
-        String req = "delete from reclamation_admin where idr = ?";
+        String req = "delete from reclamation_admin where id = ?";
 
         try {
             pst = conn.prepareStatement(req);
-            pst.setInt(1, rep.getIdr());
+            pst.setInt(1, rep.getId());
             pst.executeUpdate();
 
         } catch (SQLException ex) {
@@ -76,6 +74,27 @@ public class AdminService {
 
         }
 
+    }
+
+    public List<Reclamation_admin> readAlls() {
+        String req = "select * from reclamation_admin";
+        List<Reclamation_admin> list = new ArrayList<>();
+        try {
+            Statement st = conn.createStatement();
+            rs = st.executeQuery(req);
+            while (rs.next()) {
+                Reclamation_admin ru = new Reclamation_admin();
+                ru.setId(rs.getInt("id"));
+                ru.setIdr(rs.getInt("idr"));
+                ru.setReponse(rs.getString("reponse"));
+
+                list.add(ru);
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Reclamation_user.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return list;
     }
 
     public void modifierRep(Reclamation_admin u) {
@@ -111,8 +130,8 @@ public class AdminService {
     }
 
     public Reclamation_admin displayById(int id) {
-        
-        String req = "select * from reclamation_admin WHERE id='"+id+"'";
+
+        String req = "select * from reclamation_admin WHERE id='" + id + "'";
         Reclamation_admin ra = new Reclamation_admin();
         try {
             Statement st = conn.createStatement();
@@ -128,11 +147,11 @@ public class AdminService {
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ra ;
+        return ra;
     }
-    
+
     public int latestId() {
-        
+
         String req = "SELECT * FROM reclamation_user ORDER BY ID DESC LIMIT 1";
         Reclamation_user ru = new Reclamation_user();
         try {
@@ -147,7 +166,7 @@ public class AdminService {
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return ru.getId() ;
+        return ru.getId();
     }
 
 }

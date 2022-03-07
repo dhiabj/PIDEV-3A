@@ -21,6 +21,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import static javafx.scene.control.Alert.AlertType.CONFIRMATION;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -33,6 +34,7 @@ import tray.animations.AnimationType;
 import tray.notification.NotificationType;
 import tray.notification.TrayNotification;
 import utils.GUIutils;
+import static pidev.Pidev.Userconnected;
 
 
 
@@ -56,12 +58,16 @@ public class New_ReclamController implements Initializable {
     private ImageView imageviewlogo;
     @FXML
     private ImageView bqckbtn;
+    @FXML
+    private Label nomUser;
+    
 
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        nomUser.setText(Userconnected.getPrenom()+" "+Userconnected.getNom());
         // TODO
     }    
 
@@ -125,8 +131,9 @@ public class New_ReclamController implements Initializable {
         
         String titre = sujet.getText();
         String text = reclamation.getText();
+        int user_id = Userconnected.getId();
 
-        Reclamation_user rec = new Reclamation_user( titre, text);
+        Reclamation_user rec = new Reclamation_user( titre, text,user_id);
         UserRecService ui = new UserRecService();
         ui.ajouterReclamation(rec);
         AdminService as = new AdminService();
@@ -135,6 +142,17 @@ public class New_ReclamController implements Initializable {
         
         Reclamation_admin ra = new Reclamation_admin(as.latestId());
         as.ajouterRep(ra);
+        try {
+            root = FXMLLoader.load(getClass().getResource("rec_user_list.fxml"));
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException ex) {
+            System.out.println("e");
+        }
+        
+        
 //        gui= new GUIutils() ;
 //        gui.alert(CONFIRMATION , "your reclamation was sent successfully") ;
         

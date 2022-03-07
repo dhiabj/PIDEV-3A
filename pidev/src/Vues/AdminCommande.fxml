@@ -32,9 +32,9 @@
       <Button fx:id="ajout" layoutX="109.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleAddMenu" text="Ajouter" />
       <Button fx:id="modifier" layoutX="196.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleModiferCommande" text="Modifier" />
       <Button fx:id="supprimer" layoutX="276.0" layoutY="479.0" mnemonicParsing="false" onAction="#handleSupprimerCommande" text="Supprimer" />
-      <Label fx:id="etat_error" layoutX="95.0" layoutY="91.0" />
-      <Label fx:id="error_date" layoutX="95.0" layoutY="142.0" />
-      <Label fx:id="error_user" layoutX="95.0" layoutY="197.0" />
+      <Label fx:id="etat_error" layoutX="74.0" layoutY="329.0" prefHeight="17.0" prefWidth="255.0" />
+      <Label fx:id="error_date" layoutX="69.0" layoutY="384.0" prefHeight="17.0" prefWidth="255.0" />
+      <Label fx:id="error_user" layoutX="69.0" layoutY="436.0" prefHeight="17.0" prefWidth="255.0" />
       <TableView fx:id="tablemenu" layoutX="660.0" layoutY="436.0" prefHeight="196.0" prefWidth="248.0">
         <columns>
           <TableColumn fx:id="titremenucol" prefWidth="128.5" text="Titre menu" />

@@ -12,6 +12,7 @@ package entities;
 public class Encapsulation_Reclamation_User {
     private static int id ;
     private static int idr ;
+    private static int user_id;
     private static String titre ; 
     private static String texte ; 
   
@@ -42,8 +43,15 @@ public class Encapsulation_Reclamation_User {
         this.texte = texte;
         
     }
-    
 
+    public static int getUser_id() {
+        return user_id;
+    }
+
+    public static void setUser_id(int user_id) {
+        Encapsulation_Reclamation_User.user_id = user_id;
+    }
+    
     public static int getId() {
         return id;
     }

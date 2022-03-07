@@ -42,7 +42,6 @@ public class Modif_recController implements Initializable {
     private TextArea text_modif;
     @FXML
     private Button modifier;
-    private Button retour;
     GUIutils gui ;
     @FXML
     private ImageView imageviewlogo;
@@ -123,7 +122,7 @@ public class Modif_recController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("rec_user_list.fxml"));
         try {
             Parent root = loader.load();
-            retour.getScene().setRoot(root);
+            bqckbtn.getScene().setRoot(root);
 
         } catch (IOException ex) {
             System.out.println(ex.getMessage());

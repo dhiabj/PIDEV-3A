@@ -14,6 +14,7 @@ import java.util.Date;
 public class Reclamation_user {
     private int id ;
     private int idr ;
+    private int user_id;
     private String titre ; 
     private String texte ; 
 
@@ -27,9 +28,10 @@ public class Reclamation_user {
     public Reclamation_user() {
     }
 
-    public Reclamation_user(String titre, String texte) {
+    public Reclamation_user(String titre, String texte,int user_id) {
         this.titre = titre;
         this.texte = texte;
+        this.user_id = user_id;
        
     }
     
@@ -49,6 +51,14 @@ public class Reclamation_user {
         this.titre = titre;
         this.texte = texte;
         
+    }
+
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
     
 

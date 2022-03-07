@@ -19,13 +19,15 @@ import java.util.ArrayList;
 import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import services.UserRecService;
+
 public class UserRecService  {
     
    
     private Statement ste;
     private PreparedStatement pst;
     private ResultSet rs;
-    
+    AdminService AdminRep = new AdminService();
 
     private final Connection conn;
 
@@ -36,12 +38,13 @@ public class UserRecService  {
 
      
     public void ajouterReclamation(Reclamation_user r) {
-        String req = "insert into reclamation_user (Titre,Texte) values (?,?)";
+        String req = "insert into reclamation_user (Titre,Texte,user_id) values (?,?,?)";
 
         try {
             pst = conn.prepareStatement(req);
             pst.setString(1, r.getTitre());
             pst.setString(2, r.getTexte());
+            pst.setInt(3, r.getUser_id());
             
           
             pst.executeUpdate();
@@ -53,6 +56,7 @@ public class UserRecService  {
     }
      
       public void suppRec(Reclamation_user rec) {
+          
         String req = "delete from reclamation_user where id = ?";
 
         try {

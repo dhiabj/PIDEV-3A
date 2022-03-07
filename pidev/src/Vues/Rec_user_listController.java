@@ -5,7 +5,9 @@
  */
 package vues;
 
+import entities.Encapsulation_Reclamation_Admin;
 import entities.Encapsulation_Reclamation_User;
+import entities.Reclamation_admin;
 import entities.Reclamation_user;
 import java.io.IOException;
 import java.net.URL;
@@ -33,7 +35,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import services.AdminService;
 import services.UserRecService;
+import services.UserService;
 import utils.DataSource;
 
 /**
@@ -53,6 +57,7 @@ public class Rec_user_listController implements Initializable {
     @FXML
     private Pane pane;
     private List list;
+    private List list1;
     GUIutils gui;
     @FXML
     private ImageView imageviewlogo;
@@ -98,108 +103,122 @@ public class Rec_user_listController implements Initializable {
     }
 
     private void render() {
-        //search.setText(Panier_itemsController.searched);
-        //panierDao = new PanierDao();
-
         Reclamation_user ru = new Reclamation_user();
+        Reclamation_admin ra = new Reclamation_admin();
         UserRecService us = new UserRecService();
+        AdminService as = new AdminService();
         //pisteDao = new PisteDao();
         list = us.readAll();
+        list1 = as.readAlls();
         //list = panierDao.displayAll(Panier_itemsController.searched);
-
+        
         //List<String> joinPrix = panierDao.joinPrix(null);
-        for (int i = 0; i < list.size(); i++) {
+        for(int i = 0; i<list.size();i++){
+            
+        try{
+        ru = (Reclamation_user) list.get(i);
+        ra = (Reclamation_admin) list1.get(i) ;
+        final int j = i;
+        //List<String> join = panierDao.joinLink((Panier)list.get(i));
 
-            try {
-                ru = (Reclamation_user) list.get(i);
-                final int j = i;
-                //List<String> join = panierDao.joinLink((Panier)list.get(i));
-
-                Button del = new Button();
-                Button plus = new Button();
-                Label desc = new Label();
-
-                ImageView img = new ImageView();
-                img.setFitHeight(50);
-                img.setFitWidth(80);
-                del.setPrefSize(20, 20);
-                del.setLayoutX(550);
-                del.setLayoutY(140 + (100 * i));
-                desc.setLayoutX(50);
-                desc.setLayoutY(140 + (100 * i));
-                desc.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
-                    if (event.getClickCount() == 2) {
+        Button del = new Button();
+        Button plus = new Button();
+        Label desc = new Label();
+        
+        ImageView img = new ImageView();
+        img.setFitHeight(50);
+        img.setFitWidth(80);
+        del.setPrefSize(20, 20);
+        del.setLayoutX(550);
+        del.setLayoutY(140 + (100 * i));
+        desc.setLayoutX(50);
+        desc.setLayoutY(140 + (100 * i));
+        desc.setOnMouseClicked((javafx.scene.input.MouseEvent event) -> {
+            if (event.getClickCount() == 2) {
 //                ReservationGuide maReservationGuide = tableGuide.getSelectionModel().getSelectedItem();
 //                EncapsulationReservationGuide encapsulationReservationGuide = new EncapsulationReservationGuide(maReservationGuide.getId(), maReservationGuide.getId_guide(), maReservationGuide.getId_touriste(), maReservationGuide.getDate_reservation());
-                        Reclamation_user ruuu = (Reclamation_user) list.get(j);
-                        Encapsulation_Reclamation_User.setId(ruuu.getId());
-                        Encapsulation_Reclamation_User.setIdr(ruuu.getIdr());
-                        Encapsulation_Reclamation_User.setTexte(ruuu.getTexte());
-                        Encapsulation_Reclamation_User.setTitre(ruuu.getTitre());
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("modif_rec.fxml"));
-                        try {
-                            Parent root = loader.load();
-                            desc.getScene().setRoot(root);
+             Reclamation_user ruuu=(Reclamation_user) list.get(j);
+             Reclamation_admin raa = (Reclamation_admin) list1.get(j);
+             Encapsulation_Reclamation_Admin.setIdr(raa.getIdr());
+             Encapsulation_Reclamation_Admin.setId(raa.getId());
+             Encapsulation_Reclamation_Admin.setReponse(raa.getReponse());
+             Encapsulation_Reclamation_User.setId(ruuu.getId());
+             Encapsulation_Reclamation_User.setIdr(ruuu.getIdr());
+             Encapsulation_Reclamation_User.setTexte(ruuu.getTexte());
+             Encapsulation_Reclamation_User.setTitre(ruuu.getTitre());
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("modif_rec.fxml"));
+                try {
+                    Parent root = loader.load();
+                    desc.getScene().setRoot(root);
 
-                        } catch (IOException ex) {
-                            System.out.println(ex.getMessage());
-                        }
-                    }
-                });
-
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+            }
+        });
+        
+        
 //        desc.setLayoutX(pane.getLayoutX()+10);
-                desc.setTextFill(Color.BLACK);
-                desc.setText("Sujet : " + ru.getTitre());
-
-                plus.setPrefSize(20, 20);
-                plus.setLayoutX(550);
-                plus.setLayoutY(140 + 30 + (100 * i));
-
+        desc.setTextFill(Color.BLACK);
+        desc.setText( "Sujet : " + ru.getTitre());
+        
+        plus.setPrefSize(20, 20);
+        plus.setLayoutX(550);
+        plus.setLayoutY(140 + 30 + (100 * i));
+        
+        
                 del.setOnAction((event) -> {
+                    as.suppRep((Reclamation_admin) list1.get(j));
+                    
                     us.suppRec((Reclamation_user) list.get(j));
-                    // gui.newView(event, "rec_user_list.fxml", "panier");
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("rec_user_list.fxml"));
-
-                    try {
-                        Parent root = loader.load();
-                        pane.getScene().setRoot(root);
-                    } catch (IOException ex) {
-                        Logger.getLogger(Rec_user_listController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
+                    
+                   // gui.newView(event, "rec_user_list.fxml", "panier");
+                   FXMLLoader loader = new FXMLLoader(getClass().getResource("rec_user_list.fxml"));
+                 
+            try {
+                Parent root = loader.load();
+                pane.getScene().setRoot(root);
+            } catch (IOException ex) {
+                Logger.getLogger(Rec_user_listController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                   
                 });
-                plus.setOnAction((event) -> {
-                    try {
-                        Reclamation_user ruuu = (Reclamation_user) list.get(j);
-                        Encapsulation_Reclamation_User.setId(ruuu.getId());
-                        Encapsulation_Reclamation_User.setIdr(ruuu.getIdr());
-                        Encapsulation_Reclamation_User.setTexte(ruuu.getTexte());
-                        Encapsulation_Reclamation_User.setTitre(ruuu.getTitre());
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("reponse_user.fxml"));
-
-                        try {
-                            Parent root = loader.load();
-                            pane.getScene().setRoot(root);
-                        } catch (IOException ex) {
-                            Logger.getLogger(Rec_user_listController.class.getName()).log(Level.SEVERE, null, ex);
-                        }
-
-                        //gui.newView(event, "reponse_user.fxml", "piste");
-                    } catch (Exception e) {
-
-                    }
+        plus.setOnAction((event) -> {
+         try{
+            Reclamation_user ruuu=(Reclamation_user) list.get(j);
+             Encapsulation_Reclamation_User.setId(ruuu.getId());
+             Encapsulation_Reclamation_User.setIdr(ruuu.getIdr());
+             Encapsulation_Reclamation_User.setTexte(ruuu.getTexte());
+             Encapsulation_Reclamation_User.setTitre(ruuu.getTitre());
+             Reclamation_admin raa = (Reclamation_admin) list1.get(j);
+             Encapsulation_Reclamation_Admin.setIdr(raa.getIdr());
+             Encapsulation_Reclamation_Admin.setId(raa.getId());
+             Encapsulation_Reclamation_Admin.setReponse(raa.getReponse());
+             FXMLLoader loader = new FXMLLoader(getClass().getResource("reponse_user.fxml"));
+                 
+            try {
+                Parent root = loader.load();
+                pane.getScene().setRoot(root);
+            } catch (IOException ex) {
+                Logger.getLogger(Rec_user_listController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+            //gui.newView(event, "reponse_user.fxml", "piste");
+        }catch(Exception e){
+            
+        }
                 });
 //        GUIutils.Buttonimage(del, "del.png");
 //        GUIutils.Buttonimage(plus, "inspect.png");
-                pane.getChildren().add(img);
-                pane.getChildren().add(del);
-                pane.getChildren().add(plus);
-                pane.getChildren().add(desc);
-
-            } catch (Exception e) {
-            }
-        }
-
+        pane.getChildren().add(img);
+        pane.getChildren().add(del);
+        pane.getChildren().add(plus);
+        pane.getChildren().add(desc);
+            
+        } catch(Exception e){      
+      }
+     } 
+    
     }
 
     @FXML

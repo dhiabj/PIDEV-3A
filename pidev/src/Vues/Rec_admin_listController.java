@@ -6,6 +6,7 @@
 package vues;
 
 import entities.Encapsulation_Reclamation_User;
+import entities.Reclamation_admin;
 import entities.Reclamation_user;
 import java.io.IOException;
 import java.net.URL;
@@ -33,6 +34,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import services.AdminService;
 import services.UserRecService;
 import utils.DataSource;
 
@@ -49,6 +51,7 @@ public class Rec_admin_listController implements Initializable {
     @FXML
     private Pane pane;
     private List list;
+    private List list1;
     @FXML
     private ImageView imageviewlogo;
     @FXML
@@ -65,13 +68,14 @@ public class Rec_admin_listController implements Initializable {
     }    
 
     private void render(){
-        //search.setText(Panier_itemsController.searched);
-        //panierDao = new PanierDao();
-        
+      
         Reclamation_user ru = new Reclamation_user();
+        Reclamation_admin ra = new Reclamation_admin();
         UserRecService us = new UserRecService();
+        AdminService as = new AdminService();
         //pisteDao = new PisteDao();
         list = us.readAll();
+        list1 = as.readAlls();
         //list = panierDao.displayAll(Panier_itemsController.searched);
         
         //List<String> joinPrix = panierDao.joinPrix(null);
@@ -79,6 +83,7 @@ public class Rec_admin_listController implements Initializable {
             
         try{
         ru = (Reclamation_user) list.get(i);
+        ra = (Reclamation_admin) list1.get(i) ;
         final int j = i;
         //List<String> join = panierDao.joinLink((Panier)list.get(i));
 
@@ -86,7 +91,9 @@ public class Rec_admin_listController implements Initializable {
         Button plus = new Button();
         Label desc = new Label();
         
-        
+        ImageView img = new ImageView();
+        img.setFitHeight(50);
+        img.setFitWidth(80);
         del.setPrefSize(20, 20);
         del.setLayoutX(550);
         del.setLayoutY(140 + (100 * i));
@@ -97,11 +104,12 @@ public class Rec_admin_listController implements Initializable {
 //                ReservationGuide maReservationGuide = tableGuide.getSelectionModel().getSelectedItem();
 //                EncapsulationReservationGuide encapsulationReservationGuide = new EncapsulationReservationGuide(maReservationGuide.getId(), maReservationGuide.getId_guide(), maReservationGuide.getId_touriste(), maReservationGuide.getDate_reservation());
              Reclamation_user ruuu=(Reclamation_user) list.get(j);
+             Reclamation_admin raa = (Reclamation_admin) list1.get(j);
              Encapsulation_Reclamation_User.setId(ruuu.getId());
              Encapsulation_Reclamation_User.setIdr(ruuu.getIdr());
              Encapsulation_Reclamation_User.setTexte(ruuu.getTexte());
              Encapsulation_Reclamation_User.setTitre(ruuu.getTitre());
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("modif_rec.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("reponse_admin.fxml.fxml"));
                 try {
                     Parent root = loader.load();
                     desc.getScene().setRoot(root);
@@ -123,7 +131,10 @@ public class Rec_admin_listController implements Initializable {
         
         
                 del.setOnAction((event) -> {
+                    as.suppRep((Reclamation_admin) list1.get(j));
+                    
                     us.suppRec((Reclamation_user) list.get(j));
+                    
                    // gui.newView(event, "rec_user_list.fxml", "panier");
                    FXMLLoader loader = new FXMLLoader(getClass().getResource("rec_admin_list.fxml"));
                  
@@ -158,7 +169,7 @@ public class Rec_admin_listController implements Initializable {
                 });
 //        GUIutils.Buttonimage(del, "del.png");
 //        GUIutils.Buttonimage(plus, "inspect.png");
-        //pane.getChildren().add(img);
+        pane.getChildren().add(img);
         pane.getChildren().add(del);
         pane.getChildren().add(plus);
         pane.getChildren().add(desc);
@@ -166,6 +177,8 @@ public class Rec_admin_listController implements Initializable {
         } catch(Exception e){      
       }
      } 
+    
+    
     
     }
 

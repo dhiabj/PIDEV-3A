@@ -33,5 +33,10 @@
             <Image url="@../ressources/back.png" />
          </image>
       </ImageView>
+      <Label fx:id="nomUser" layoutX="193.0" layoutY="152.0" prefHeight="37.0" prefWidth="291.0" textAlignment="CENTER">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

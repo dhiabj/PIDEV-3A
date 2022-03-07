@@ -6,6 +6,7 @@
  */
 package vues;
 
+import entities.Encapsulation_Reclamation_Admin;
 import entities.Encapsulation_Reclamation_User;
 import java.io.IOException;
 import java.net.URL;
@@ -52,7 +53,7 @@ public class Reponse_userController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         rep_sujet.setText(Encapsulation_Reclamation_User.getTitre());
-        rep_rep.setText(Encapsulation_Reclamation_User.getTexte());
+        rep_rep.setText(Encapsulation_Reclamation_Admin.getReponse());
     }    
 
     @FXML
