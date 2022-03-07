@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="650.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="vues.LivraisonClientController">
@@ -26,26 +28,32 @@
                   <Image url="@../Ressources/Logo.png" />
                </image>
             </ImageView>
-            <Label layoutX="212.0" layoutY="272.0" prefHeight="38.0" prefWidth="76.0" text="Nom">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f5f4f2" height="354.0" layoutX="64.0" layoutY="239.0" stroke="BLACK" strokeType="INSIDE" width="840.0" />
+            <Label layoutX="255.0" layoutY="335.0" prefHeight="38.0" prefWidth="76.0" text="Nom">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="nomLivraison" layoutX="400.0" layoutY="268.0" prefHeight="38.0" prefWidth="254.0">
+            <Label fx:id="nomLivraison" layoutX="443.0" layoutY="331.0" prefHeight="38.0" prefWidth="254.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label layoutX="210.0" layoutY="325.0" prefHeight="38.0" prefWidth="159.0" text="Livreur Nom">
+            <Label layoutX="253.0" layoutY="388.0" prefHeight="38.0" prefWidth="159.0" text="Livreur Nom">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="nomLivreur" layoutX="400.0" layoutY="325.0" prefHeight="38.0" prefWidth="254.0">
+            <Label fx:id="nomLivreur" layoutX="443.0" layoutY="388.0" prefHeight="38.0" prefWidth="254.0">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <Button layoutX="120.0" layoutY="602.0" mnemonicParsing="false" onAction="#Map" prefHeight="38.0" prefWidth="134.0" style="-fx-background-color: white;" text="Google Map">
+               <font>
+                  <Font name="Century Gothic" size="12.0" />
+               </font>
+            </Button>
          </children>
       </Pane>
    </children>

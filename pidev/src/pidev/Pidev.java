@@ -11,6 +11,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 /**
@@ -30,6 +31,7 @@ public class Pidev extends Application {
 
         Parent root = FXMLLoader.load(getClass().getResource("/vues/LoginFXML.fxml"));
         Scene scene = new Scene(root);
+        primaryStage.getIcons().add(new Image("/ressources/logo.png"));
         primaryStage.setTitle("FORU");
         primaryStage.setScene(scene);
         primaryStage.show();
