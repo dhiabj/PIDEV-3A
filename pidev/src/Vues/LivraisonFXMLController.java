@@ -211,21 +211,29 @@ public class LivraisonFXMLController implements Initializable {
     private void ModifLiv(ActionEvent event) {
         livraison l1 = tablelivraison.getSelectionModel().getSelectedItem();
 
-        String nom_livraison = tfnomlivraison.getText();
-        String user_nom = cbuserid.getSelectionModel().getSelectedItem();
-        String livreur_nom = cblivid.getSelectionModel().getSelectedItem();
-        int commande_id = cbcommandeid.getSelectionModel().getSelectedItem();
+//        String nom_livraison = tfnomlivraison.getText();
+//        String user_nom = cbuserid.getSelectionModel().getSelectedItem();
+//        String livreur_nom = cblivid.getSelectionModel().getSelectedItem();
+//        int commande_id = cbcommandeid.getSelectionModel().getSelectedItem();
         String etat = cbetat.getSelectionModel().getSelectedItem();
-        int user_id = us.GetIdUser(user_nom);
-        int livrur_id = us.GetIdUser(livreur_nom);
+//        int user_id = us.GetIdUser(user_nom);
+//        int livrur_id = us.GetIdUser(livreur_nom);
 
-        l1.setNom(nom_livraison);
-        l1.setLivreur_id(user_id);
-        l1.setLivreur_id(livrur_id);
-        l1.setCommande_id(commande_id);
+//        l1.setNom(nom_livraison);
+//        l1.setLivreur_id(user_id);
+//        l1.setLivreur_id(livrur_id);
+//        l1.setCommande_id(commande_id);
         l1.setEtat(etat);
-        ls.modifierLivraisonPst(l1);
-        init();
+        
+         if (ls.modifieretat(l1)) {
+             updateTable();
+            AlertWindow("Modif avec succées", "Livraison Modifié ", Alert.AlertType.INFORMATION);
+             System.out.println(etat);
+        } else {
+            AlertWindow("Echec de modification", "Essayer une autre fois ", Alert.AlertType.ERROR);
+        }
+
+       init();
     }
 
     @FXML

@@ -23,6 +23,7 @@ public class user {
     private String password;
     private String image;
     private String role;
+    private String etat;
 
     public user() {
     }
@@ -34,7 +35,7 @@ public class user {
         //this.password = password;
     }
 
-    public user(int id, String nom, String prenom, String email, String password, Date date, int num_tel, String adresse,String role) {
+    public user(int id, String nom, String prenom, String email, String password, Date date, int num_tel, String adresse,String role, String etat) {
         this.id = id;
         this.nom = nom;
         this.prenom = prenom;
@@ -45,10 +46,11 @@ public class user {
         this.password = password;
         this.image = image;
         this.role = role;
+        this.etat = etat;
     }
     
 
-    public user(String nom, String prenom, String email, String password, Date date, int num_tel, String adresse, String role) {//id auto increment
+    public user(String nom, String prenom, String email, String password, Date date, int num_tel, String adresse, String role, String etat) {//id auto increment
         this.nom = nom;
         this.prenom = prenom;
         this.date = date;
@@ -58,6 +60,7 @@ public class user {
         this.password = password;
         this.image = image;
         this.role = role;
+        this.etat = etat;
     }
     
 
@@ -141,12 +144,19 @@ public class user {
         this.image = image;
     }
 
+    public String getEtat() {
+        return etat;
+    }
+
+    public void setEtat(String etat) {
+        this.etat = etat;
+    }
     
     
 
     @Override
     public String toString() {
-        return "user{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", num_tel=" + num_tel + ", email=" + email + ", password=" + password + '}';
+        return "user{" + "id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + ", num_tel=" + num_tel + ", email=" + email + ", password=" + password +", etat=" + etat +'}';
     }
 
     /**

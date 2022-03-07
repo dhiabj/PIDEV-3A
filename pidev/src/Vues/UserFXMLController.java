@@ -194,8 +194,8 @@ public class UserFXMLController implements Initializable {
         int tel = Integer.valueOf(tftelephone.getText());
         String adresse = tfadresse.getText();
         String role = cbrole.getSelectionModel().getSelectedItem();
-
-        user u = new user(nom, prenom, email, password, d, tel, adresse, role);
+        String etat = "not verified";
+        user u = new user(nom, prenom, email, password, d, tel, adresse, role, etat);
         if (us.ajouterUserPst(u)) {
             AlertWindow("Ajouter " + role, role + " ajouté avec succés", AlertType.INFORMATION);
         } else {

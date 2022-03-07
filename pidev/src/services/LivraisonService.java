@@ -76,6 +76,23 @@ public class LivraisonService {
         }
 
     }
+    
+    public boolean modifieretat(livraison l) {
+        String req = "update livraison set etat = ?  where id = ?";
+
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setString(1, l.getEtat());
+            pst.setInt(2, l.getId());
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(LivraisonService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
     public void suppLivraisonPst(livraison l) {
         String req = "delete from livraison where id = ?";

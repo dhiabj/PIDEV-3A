@@ -96,6 +96,39 @@ public class UserService {
 
     }
 
+    public boolean modifierUserEtat(user u) {
+        String req = "update user set etat = ?  where id = ?";
+
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setString(1, u.getEtat());
+            pst.setInt(2, u.getId());
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
+    public boolean BanUser(user u) {
+        String req = "update user set etat = 'banned'  where id = ?";
+
+        try {
+            pst = conn.prepareStatement(req);
+            pst.setInt(1, u.getId());
+            pst.executeUpdate();
+            return true;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(UserService.class
+                    .getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
+
     public boolean suppUserPst(user u) {
         String req = "delete from user where id = ?";
 
@@ -121,7 +154,7 @@ public class UserService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role"), rs.getString("etat")));
 
             }
 
@@ -141,9 +174,10 @@ public class UserService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             if (rs.first()) {
-                u = new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role"));
+                u = new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role"), rs.getString("etat"));
             }
             System.out.println(u);
+            System.out.println("fghjklmkjhgf");
 
         } catch (SQLException ex) {
             Logger.getLogger(UserService.class
@@ -170,7 +204,7 @@ public class UserService {
         }
         return list;
     }
-    
+
     public ObservableList<String> GetNamesLivreur() {
         String req = "SELECT concat(nom,' ',prenom) as full_name from user where role='Livreur'";
 
@@ -189,7 +223,8 @@ public class UserService {
         }
         return list;
     }
-        public ObservableList<String> GetNamesClient() {
+
+    public ObservableList<String> GetNamesClient() {
         String req = "SELECT concat(nom,' ',prenom) as full_name from user where role='Client'";
 
         ObservableList<String> list = FXCollections.observableArrayList();
@@ -207,8 +242,8 @@ public class UserService {
         }
         return list;
     }
-        
-         public ObservableList<String> GetEmails() {
+
+    public ObservableList<String> GetEmails() {
         String req = "SELECT email from user";
 
         ObservableList<String> list = FXCollections.observableArrayList();
@@ -235,7 +270,7 @@ public class UserService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role"), rs.getString("etat")));
 
             }
 
@@ -254,7 +289,7 @@ public class UserService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role"), rs.getString("etat")));
 
             }
 
@@ -273,7 +308,7 @@ public class UserService {
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             while (rs.next()) {//parcourir le resultset
-                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role")));
+                list.add(new user(rs.getInt("id"), rs.getString("nom"), rs.getString("prenom"), rs.getString("email"), rs.getString("password"), rs.getDate("date"), rs.getInt("num_tel"), rs.getString("adresse"), rs.getString("role"), rs.getString("etat")));
 
             }
 
@@ -331,9 +366,7 @@ public class UserService {
         }
         return nom;
     }
-    
-    
-    
+
     public String GetlivrbyId(int id) {
         String req = "SELECT concat(nom,' ',prenom) as full_name from user where id ='" + id + "'";
         String nom = null;
@@ -370,7 +403,7 @@ public class UserService {
 
     }
 
-    public boolean update(user t){
+    public boolean update(user t) {
         String sql = "UPDATE user SET nom = ? , prenom = ? , adresse = ? WHERE id = ?";
         try {
             pst = conn.prepareStatement(sql);
@@ -389,38 +422,42 @@ public class UserService {
             return false;
         }
     }
-public int rowUSER(){
+
+    public int rowUSER() {
         ObservableList<user> liste = FXCollections.observableArrayList();
         String req = "SELECT * FROM user";
-        int i=0;
-        
+        int i = 0;
+
         try {
             conn = DataSource.getInstance().getCnx();
             ste = conn.createStatement();
             rs = ste.executeQuery(req);
             user user1;
-            while (rs.next()){
-               i=i+1;
+            while (rs.next()) {
+                i = i + 1;
             }
-            
-           
+
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }finally {
-    if (rs != null) {
-        try {
-            rs.close();
-        } catch (SQLException e) { /* Ignored */}
-    }
-    if (ste != null) {
-        try {
-            ste.close();
-        } catch (SQLException e) { /* Ignored */}
-    }
-    }
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
+            if (ste != null) {
+                try {
+                    ste.close();
+                } catch (SQLException e) {
+                    /* Ignored */
+                }
+            }
+        }
         return i;
-        
-}
+
+    }
 
     public int GetIdUserbyEmail(String value) {
         String req = "select id from user where email = '" + value + "';";

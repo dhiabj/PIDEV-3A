@@ -25,11 +25,11 @@
          </font></Button>
       <TableView fx:id="tablelivraison" layoutX="309.0" layoutY="131.0" onMouseClicked="#preModSupp" prefHeight="478.0" prefWidth="558.0" style="-fx-border-color: #6aa84f;">
         <columns>
-          <TableColumn fx:id="coluserid" prefWidth="85.0" text="Client" />
-          <TableColumn fx:id="collivreurid" prefWidth="116.0" text="Livreur" />
-            <TableColumn fx:id="colcommandeid" prefWidth="121.0" text="Commande " />
-            <TableColumn fx:id="colnomlivraison" prefWidth="137.0" text="Nom Livraison" />
-            <TableColumn fx:id="coletat" prefWidth="95.0" text="Etat" />
+          <TableColumn fx:id="coluserid" prefWidth="85.0" text="       Client" />
+          <TableColumn fx:id="collivreurid" prefWidth="116.0" text="            Livreur" />
+            <TableColumn fx:id="colcommandeid" prefWidth="121.0" text="        Commande " />
+            <TableColumn fx:id="colnomlivraison" prefWidth="149.0" text="         Nom Livraison" />
+            <TableColumn fx:id="coletat" prefWidth="82.0" text="       Etat" />
         </columns>
       </TableView>
       <Button fx:id="btnmodif" layoutX="109.0" layoutY="533.0" mnemonicParsing="false" onAction="#ModifLiv" prefHeight="30.0" prefWidth="100.0" style="-fx-border-color: #6aa84f;" text="Modifier">

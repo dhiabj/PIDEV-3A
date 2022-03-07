@@ -139,7 +139,8 @@ public class RegisterFXMLController implements Initializable {
         int tel = Integer.valueOf(tftelephone.getText());
         String adresse = tfadresse.getText();
         String role = "Client";
-        user u = new user(nom, prenom, email, password, d, tel, adresse, role);
+        String etat = "not verified";
+        user u = new user(nom, prenom, email, password, d, tel, adresse, role, etat);
             if (us.ajouterUserPst(u)) {
                 utils.Mailing.sendMail(u);
                 AlertWindow("ForU", "Bienvenu " + prenom, Alert.AlertType.INFORMATION);

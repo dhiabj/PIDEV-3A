@@ -70,7 +70,21 @@ public class UserRecService  {
         }
 
     } 
-       
+      
+      public int getnbRec(int id){
+        try {
+            String req ="select COUNT(*) nb from reclamation_user where user_id= "+id;
+            Statement st = conn.createStatement();
+            rs=st.executeQuery(req);
+            rs.next();
+            System.out.println(rs.getInt("nb"));
+            return rs.getInt("nb");
+        } catch (SQLException ex) {
+            Logger.getLogger(UserRecService.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+      }
+
       public void modifierRec(Reclamation_user u) {
         String req = "update reclamation_user set Titre = ? , Texte = ?   where id = ?";
 

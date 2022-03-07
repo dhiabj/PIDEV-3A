@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package vues;
+
 import services.UserService;
 import static pidev.Pidev.Userconnected;
 import java.io.IOException;
@@ -29,7 +30,6 @@ import javafx.event.Event;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import utils.Utils;
-
 
 /**
  * FXML Controller class
@@ -65,12 +65,12 @@ public class LoginFXMLController implements Initializable {
         // TODO
     }
 
-    private void GotoFXML(String vue, String title,Event aEvent) {
+    private void GotoFXML(String vue, String title, Event aEvent) {
         try {
             Event event;
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(vue + ".fxml"));
             Parent root1 = (Parent) fxmlLoader.load();
-            Stage stage =(Stage)((Node) aEvent.getSource()).getScene().getWindow() ;
+            Stage stage = (Stage) ((Node) aEvent.getSource()).getScene().getWindow();
             stage.setTitle(title);
             stage.setScene(new Scene(root1));
             stage.show();
@@ -87,31 +87,39 @@ public class LoginFXMLController implements Initializable {
         alert.showAndWait();
     }
 
-
     @FXML
     private void MdpOublie(MouseEvent event) {
-        GotoFXML("GimmeEmailFXML", "Bienvenue",event);
+        GotoFXML("GimmeEmailFXML", "Bienvenue", event);
     }
 
     @FXML
     private void gotoREGISTER(MouseEvent event) {
-        GotoFXML("RegisterFXML", "Bienvenue",event);
+        GotoFXML("RegisterFXML", "Bienvenue", event);
     }
 
     @FXML
-    private void connexion(ActionEvent event) {
-         String email = tfemail.getText();
+    private void connexion(ActionEvent event) throws Exception {
+        String email = tfemail.getText();
         String mdp = pfpassword.getText();
         Userconnected = us.getUserbyEmailPass(email, mdp);
+        System.out.println(Userconnected);
         if (Userconnected.getId() != 0) {
-            Userconnected.setId(Userconnected.getId());
-            Userconnected.setEmail(Userconnected.getEmail());
-            Userconnected.setPassword(Userconnected.getPassword());
-            AlertWindow("Connexion avec succées", "Je vous souhaite la bienvenue Mr/Mme " + Userconnected.getNom() + ",\nInterface " + Userconnected.getRole(), Alert.AlertType.INFORMATION);
-            if ("Admin".equals(Userconnected.getRole())) {
-                GotoFXML("MainFXML", "Dashbord Admin",event);
+            if ("verified".equals(Userconnected.getEtat())) {
+                Userconnected.setId(Userconnected.getId());
+                Userconnected.setEmail(Userconnected.getEmail());
+                Userconnected.setPassword(Userconnected.getPassword());
+                AlertWindow("Connexion avec succées", "Je vous souhaite la bienvenue Mr/Mme " + Userconnected.getNom() + ",\nInterface " + Userconnected.getRole(), Alert.AlertType.INFORMATION);
+                if ("Admin".equals(Userconnected.getRole())) {
+                    GotoFXML("MainFXML", "Dashbord Admin", event);
+                } else {
+                    GotoFXML("MainClientFXML", "ForU", event);
+                }
+            } else if("not verified".equals(Userconnected.getEtat())){
+                utils.MailingCode.sendMail(Userconnected.getEmail());
+                AlertWindow("Vérifier votre compte","Vous devez consulter votre boite mail!", Alert.AlertType.INFORMATION);
+                GotoFXML("CodeVerif", "Verifier votre compte", event);
             } else {
-                GotoFXML("MainClientFXML", "ForU",event);
+                AlertWindow("Compte bannis", "Votre compte est bannis à cause des activités ...", Alert.AlertType.WARNING);
             }
         } else {
             AlertWindow("Connexion echouée", "Email ou mot de pass invalid!!", Alert.AlertType.ERROR);
@@ -120,8 +128,8 @@ public class LoginFXMLController implements Initializable {
 
     @FXML
     private void handleCloseButtonAction(MouseEvent event) {
-     Stage stage = (Stage) fermer.getScene().getWindow();
-         stage.close();
+        Stage stage = (Stage) fermer.getScene().getWindow();
+        stage.close();
     }
 
 }
