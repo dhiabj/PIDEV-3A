@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="571.0" prefWidth="675.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="foru_crud.Modif_recController">
+   <children>
+      <Label layoutX="24.0" layoutY="36.0" prefHeight="57.0" prefWidth="216.0" text="Nouveau sujet : ">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextField fx:id="sujet_modif" layoutX="110.0" layoutY="93.0" prefHeight="48.0" prefWidth="456.0" />
+      <Label layoutX="24.0" layoutY="155.0" prefHeight="48.0" prefWidth="289.0" text="Nouvelle Réclamation :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="text_modif" layoutX="30.0" layoutY="203.0" prefHeight="293.0" prefWidth="618.0" />
+      <Button fx:id="modifier" layoutX="541.0" layoutY="514.0" mnemonicParsing="false" onAction="#modifierOnaction" prefHeight="48.0" prefWidth="114.0" text="Modifier" />
+      <Button fx:id="retour" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#retourOnaction" prefHeight="25.0" prefWidth="29.0" />
+   </children>
+</AnchorPane>

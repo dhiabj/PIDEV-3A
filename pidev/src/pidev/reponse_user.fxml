@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="562.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16" fx:controller="foru_crud.Reponse_userController">
+   <children>
+      <Label layoutX="54.0" layoutY="52.0" prefHeight="56.0" prefWidth="64.0" text="Sujet :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="54.0" layoutY="149.0" prefHeight="56.0" prefWidth="91.0" text="Réponse :">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="retour" layoutX="14.0" layoutY="8.0" mnemonicParsing="false" onAction="#retourOnaction" prefHeight="25.0" prefWidth="40.0" />
+      <Label fx:id="rep_sujet" layoutX="118.0" layoutY="52.0" prefHeight="56.0" prefWidth="433.0" />
+      <Label fx:id="rep_rep" layoutX="54.0" layoutY="205.0" prefHeight="323.0" prefWidth="516.0" />
+   </children>
+</AnchorPane>
