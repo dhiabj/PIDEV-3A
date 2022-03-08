@@ -48,7 +48,7 @@ public class UserService {
     }
 
     public boolean ajouterUserPst(user u) {
-        String req = "insert into user (nom,prenom,adresse,num_tel,email,password,date,role) values (?,?,?,?,?,?,?,?)";
+        String req = "insert into user (nom,prenom,adresse,num_tel,email,password,date,role,etat) values (?,?,?,?,?,?,?,?,?)";
 
         try {
             pst = conn.prepareStatement(req);
@@ -60,6 +60,7 @@ public class UserService {
             pst.setString(6, MD5Utils.cryptage(u.getPassword()));
             pst.setDate(7, u.getDate());
             pst.setString(8, u.getRole());
+            pst.setString(9, u.getEtat());
             pst.executeUpdate();
             return true;
 
